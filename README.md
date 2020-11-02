@@ -14,7 +14,7 @@ Because splay trees tend to organize themselves with the most frequently
 accessed elements towards the root of the tree, the least frequently accessed
 items tend to migrate towards the leaves of the tree. This implementation
 offers a method that can be used to prune its leaves, which generally has the
-effect of removing the least frequently accessed items from the hash.
+effect of removing the least frequently accessed items from the tree.
 
 This is useful if the data structure is being used to implement a cache, as
 it can be used to control the size of the cache while generaly keeping the
