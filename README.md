@@ -65,7 +65,7 @@ end
 
 stm.delete("junk")
 
-puts stm.find("something") # This finds, but doesn't splay.
+puts stm.obtain("something") # This finds, but doesn't splay.
 
 stm.prune # remove all leaves
 ```
