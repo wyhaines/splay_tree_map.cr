@@ -44,6 +44,8 @@ is used, but it can be useful at the right time.
 
 ## Usage
 
+Full documentation can be found at: https://wyhaines.github.io/splay_tree_map.cr/SplayTreeMap.html
+
 ```crystal
 require "splay_tree_map"
 ```
