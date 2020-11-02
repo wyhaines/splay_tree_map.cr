@@ -1,5 +1,7 @@
 # Splay Tree Map
 
+[![GitHub release](https://img.shields.io/github/release/wyhaines/splay_tree_map.cr.svg)](https://github.com/wyhaines/splay_tree_map.cr/releases)
+
 A splay tree is a type of binary search tree that self organizes so that the
 most frequently accessed items tend to be towards the root of the tree, where
 they can be accessed more quickly.
