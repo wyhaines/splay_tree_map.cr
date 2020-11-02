@@ -52,7 +52,7 @@ class SplayTreeMap(K, V)
   include Comparable(SplayTreeMap)
   VERSION = "0.1.0"
 
-  class Unk; end
+  private class Unk; end
 
   @root : Node(K, V)? = nil
   @size : Int32 = 0
@@ -337,6 +337,7 @@ class SplayTreeMap(K, V)
     deleted
   end
 
+  # DEPRECATED: This is just `reject!` by another name. Use that instead.
   # Deletes each key-value pair for which the given block returns `true`.
   # Returns the `SplayTreeMap`.
   #
@@ -789,7 +790,7 @@ class SplayTreeMap(K, V)
     self
   end
 
-  def merge!(other : Enumerable(Tuple)) forall A#, L, W
+  def merge!(other : Enumerable(Tuple))
     other.each do |*args|      
       if args[0].size == 1
         k = v = args[0][0]

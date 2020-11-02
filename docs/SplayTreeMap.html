@@ -51,18 +51,8 @@
   <div class="types-list">
     <ul>
   
-  <li class="parent open current" data-id="stm/SplayTreeMap" data-name="splaytreemap(k, v)">
+  <li class=" current" data-id="stm/SplayTreeMap" data-name="splaytreemap(k, v)">
       <a href="SplayTreeMap.html">SplayTreeMap</a>
-      
-        <ul>
-  
-  <li class=" " data-id="stm/SplayTreeMap/Unk" data-name="splaytreemap::unk">
-      <a href="SplayTreeMap/Unk.html">Unk</a>
-      
-    </li>
-  
-</ul>
-
       
     </li>
   
@@ -293,7 +283,7 @@
       <li class="entry-summary">
         <a href="#delete_if(&):self-instance-method" class="signature"><strong>#delete_if</strong>(&) : <span class="k">self</span></a>
         
-          <div class="summary"><p>Deletes each key-value pair for which the given block returns <code>true</code>.</p></div>
+          <div class="summary"><p><span class="flag red">DEPRECATED</span>  This is just <code><a href="SplayTreeMap.html#reject!(&block:K,V-%3E_)-instance-method">#reject!</a></code> by another name.</p></div>
         
       </li>
     
@@ -489,7 +479,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#merge!(other:Enumerable(Tuple),&)forallA-instance-method" class="signature"><strong>#merge!</strong>(other : Enumerable(Tuple), &) forall A</a>
+        <a href="#merge!(other:Enumerable(Tuple),&)-instance-method" class="signature"><strong>#merge!</strong>(other : Enumerable(Tuple), &)</a>
         
       </li>
     
@@ -1137,7 +1127,8 @@ stm.fetch(<span class="s">&quot;foo&quot;</span>, <span class="n">nil</span>) <s
       
         <div class="doc">
           
-          <p>Deletes each key-value pair for which the given block returns <code>true</code>.
+          <p><span class="flag red">DEPRECATED</span>  This is just <code><a href="SplayTreeMap.html#reject!(&block:K,V-%3E_)-instance-method">#reject!</a></code> by another name. Use that instead.
+Deletes each key-value pair for which the given block returns <code>true</code>.
 Returns the <code><a href="SplayTreeMap.html">SplayTreeMap</a></code>.</p>
 
 <pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;fob&quot;</span> => <span class="s">&quot;baz&quot;</span>, <span class="s">&quot;bar&quot;</span> => <span class="s">&quot;qux&quot;</span>})
@@ -1798,12 +1789,12 @@ stm                         <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot
       </div>
     </div>
   
-    <div class="entry-detail" id="merge!(other:Enumerable(Tuple),&)forallA-instance-method">
+    <div class="entry-detail" id="merge!(other:Enumerable(Tuple),&)-instance-method">
       <div class="signature">
         
-        def <strong>merge!</strong>(other : Enumerable(Tuple), &) forall A
+        def <strong>merge!</strong>(other : Enumerable(Tuple), &)
 
-        <a class="method-permalink" href="#merge!(other:Enumerable(Tuple),&)forallA-instance-method">#</a>
+        <a class="method-permalink" href="#merge!(other:Enumerable(Tuple),&)-instance-method">#</a>
       </div>
       
       <br/>
