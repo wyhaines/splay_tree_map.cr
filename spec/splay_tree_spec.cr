@@ -599,6 +599,14 @@ describe SplayTreeMap do
     stm.values_at?("a", "d", "e").should eq ({1, 4, nil})
   end
 
+  it "zip; can combine two arrays into a single tree" do
+    stm = SplayTreeMap.zip(["key1", "key2", "key3"], ["value1", "value2", "value3"])
+    stm.size.should eq 3
+    stm["key1"].should eq "value1"
+    stm["key2"].should eq "value2"
+    stm["key3"].should eq "value3"
+  end
+
   it "can return an array of tuples of key and value" do
     st = SplayTreeMap(Int32, Int32).new
     log = [] of {Int32, Int32}

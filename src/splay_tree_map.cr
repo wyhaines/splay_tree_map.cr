@@ -1102,10 +1102,25 @@ class SplayTreeMap(K, V)
     end
   end
 
+  # Modifies the values of the current `SplayTreeMap` according to the provided block.
+  #
+  # ```
+  # stm = SplayTreeMap.new({:a => 1, :b => 2, :c => 3})
+  # stm.transform_values! { |value| value + 1 } # => {:a => 2, :b => 3, :c => 4}
+  # ```
+  def transform_values!(&block : V -> V)
+    each do |key, value|
+      memo[key] = yield(value)
+    end
+    self
+  end
+
   # Returns an array containing all of the values in the tree. The array is in
   # the order of the associated keys.
   #
   # ```
+  # stm = SplayTreeMap.new({"a" => 1, "b" => 2, "c" => 3, "d" => 4})
+  # stm.values  # => [1, 2, 3, 4]
   # ```
   #
   def values : Array(V)
@@ -1136,6 +1151,20 @@ class SplayTreeMap(K, V)
   # ```
   def values_at?(*indexes : K)
     indexes.map { |index| self[index]? }
+  end
+
+  # Zips two arrays into a `SplayTreeMap`, taking keys from *ary1* and values from *ary2*.
+  #
+  # ```
+  # SplayTreeMap.zip(["key1", "key2", "key3"], ["value1", "value2", "value3"])
+  # # => {"key1" => "value1", "key2" => "value2", "key3" => "value3"}
+  # ```
+  def self.zip(ary1 : Array(K), ary2 : Array(V))
+    stm = SplayTreeMap(K,V).new
+    ary1.each_with_index do |key, i|
+      stm[key] = ary2[i]
+    end
+    stm
   end
 
   # This will recursively walk the whole tree, calling the given block for each node.
