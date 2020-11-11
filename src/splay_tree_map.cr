@@ -422,10 +422,8 @@ class SplayTreeMap(K, V)
   # The enumeration follows the order the keys were inserted.
   def each(& : {K, V} ->) : Nil
     iter = EntryIterator(K, V).new(self)
-    while true
-      entry = iter.next
-      break if entry == Iterator.stop
-      yield entry.as({K, V})
+    while !(entry=iter.next).is_a?(Iterator::Stop)
+      yield entry
     end
   end
 
@@ -1301,8 +1299,7 @@ class SplayTreeMap(K, V)
 
     def next? : {K,V}?
       retval = base_next { |entry| {entry.key, entry.value} }
-
-      retval == Iterator.stop ? nil : retval.as({K,V})
+      retval.is_a?(Iterator::Stop) ? nil : retval
     end
   end
 
