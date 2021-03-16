@@ -2,6 +2,7 @@
 
 ![SplayTreeMap CI](https://img.shields.io/github/workflow/status/wyhaines/splay_tree_map.cr/SplayTreeMap%20CI?style=for-the-badge&logo=GitHub)
 [![GitHub release](https://img.shields.io/github/release/wyhaines/splay_tree_map.cr.svg?style=for-the-badge)](https://github.com/wyhaines/splay_tree_map.cr/releases)
+![GitHub commits since latest release (by SemVer)](https://img.shields.io/github/commits-since/wyhaines/splay_tree_map.cr/latest?style=for-the-badge)
 
 A splay tree is a type of binary search tree that self organizes so that the
 most frequently accessed items tend to be towards the root of the tree, where
@@ -95,3 +96,6 @@ in the Crystalline shard found at https://github.com/jtomschroeder/crystalline
 ## Contributors
 
 - [Kirk Haines](https://github.com/wyhaines) - creator and maintainer
+
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/wyhaines/splay_tree_map.cr?style=for-the-badge)
+![GitHub issues](https://img.shields.io/github/issues/wyhaines/splay_tree_map.cr?style=for-the-badge)
