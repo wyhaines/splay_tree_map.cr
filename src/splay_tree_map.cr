@@ -288,7 +288,7 @@ class SplayTreeMap(K, V)
   # stm.compact! # => nil
   # ```
   def compact!
-    reject! { |key, value| value.nil? }
+    reject! { |_key, value| value.nil? }
   end
 
   # Deletes the key-value pair and returns the value, else yields *key* with given block.
@@ -401,7 +401,7 @@ class SplayTreeMap(K, V)
   # stm_a # => {"foo" => "bar"}
   # ```
   def dup
-    stm = SplayTreeMap.new(self)
+    SplayTreeMap.new(self)
   end
 
   # Calls the given block for each key/value pair, passing the pair into the block.
@@ -455,7 +455,7 @@ class SplayTreeMap(K, V)
   #
   # The enumeration is in tree order, from smallest to largest.
   def each_key
-    each do |key, value|
+    each do |key, _value|
       yield key
     end
   end
@@ -489,7 +489,7 @@ class SplayTreeMap(K, V)
   #
   # The enumeration is in tree order, from smallest to largest.
   def each_value
-    each do |key, value|
+    each do |_key, value|
       yield value
     end
   end
@@ -602,7 +602,7 @@ class SplayTreeMap(K, V)
   # ```
   #
   def has_value?(value) : Bool
-    self.each do |k, v|
+    self.each do |_k, v|
       return true if v == value
     end
     false
@@ -705,7 +705,7 @@ class SplayTreeMap(K, V)
   #
   def keys : Array(K)
     a = [] of K
-    each { |k, v| a << k }
+    each { |k, _v| a << k }
     a
   end
 
@@ -755,7 +755,7 @@ class SplayTreeMap(K, V)
   # stm[7] # => 343
   #
   def merge!(other : T) forall T
-    self.merge!(other) { |k, v1, v2| v2 }
+    self.merge!(other) { |_k, _v1, v2| v2 }
   end
 
   # Adds the contents of *other* to this `SplayTreeMap`.
@@ -789,7 +789,7 @@ class SplayTreeMap(K, V)
   end
 
   def merge!(other : Enumerable(Tuple))
-    other.each do |*args|      
+    other.each do |*args|
       if args[0].size == 1
         k = v = args[0][0]
       else
@@ -907,7 +907,7 @@ class SplayTreeMap(K, V)
     end
   end
 
-  
+
   # Removes a list of keys out of the tree, returning a new tree.
   #
   # ```
@@ -991,7 +991,6 @@ class SplayTreeMap(K, V)
     self.select(keys)
   end
 
-  
   # Equivalent to `Hash#select` but makes modification on the current object rather that returning a new one. Returns `nil` if no changes were made
   def select!(&block : K, V -> _)
     reject! { |k, v| !yield(k, v) }
@@ -1007,7 +1006,7 @@ class SplayTreeMap(K, V)
   # h1             # => {"a" => 1, "c" => 3}
   # ```
   def select!(keys : Array | Tuple)
-    each { |k, v| delete(k) unless keys.includes?(k) }
+    each { |k, _v| delete(k) unless keys.includes?(k) }
     self
   end
 
@@ -1041,7 +1040,7 @@ class SplayTreeMap(K, V)
     each { |k, v| h[k] = v }
     h
   end
-  
+
   # Transform the `SplayTreeMap` into a `String` representation.
   def to_s(io : IO) : Nil
     final = self.size
@@ -1124,7 +1123,7 @@ class SplayTreeMap(K, V)
   #
   def values : Array(V)
     a = [] of V
-    each { |k, v| a << v }
+    each { |_k, v| a << v }
     a
   end
 
