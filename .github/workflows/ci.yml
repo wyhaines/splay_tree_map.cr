@@ -25,7 +25,9 @@ jobs:
       run: shards install
     - name: Run tests
       run: crystal spec -s -t --error-trace
-    - name: Build and Deploy Docs
+    - name: Build docs
+      run: crystal docs
+    - name: Deploy Docs
       uses: JamesIves/github-pages-deploy-action@4.1.0
       with:
         branch: gh-pages
