@@ -16,19 +16,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Crystal Ameba Linter
-      id: crystal-ameba
-      uses: crystal-ameba/github-action@v0.2.8
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Install dependencies
       run: shards install
     - name: Run tests
       run: crystal spec -s -t --error-trace
+    - name: Run Ameba
+      run: bin/ameba
     - name: Build docs
       run: crystal docs
-    - name: Deploy Docs
-      uses: JamesIves/github-pages-deploy-action@4.1.0
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        branch: gh-pages
-        folder: ./docs
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs
