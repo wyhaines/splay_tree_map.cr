@@ -1,17 +1,16 @@
 name: SplayTreeMap CI
 
 on:
+  schedule:
+    - cron:  '0 3 * * *'
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-  schedule:
-    - cron: '0 3 * * *'
-      
+
+jobs:
   build:
-
     runs-on: ubuntu-latest
-
     container:
       image: crystallang/crystal
 
