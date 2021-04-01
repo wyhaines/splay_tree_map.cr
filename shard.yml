@@ -1,14 +1,14 @@
 name: splay_tree_map
-version: 0.1.0
+version: 0.1.1
 
 authors:
   - Kirk Haines <wyhaines@gmail.com>
 
-crystal: 0.35.1
+crystal: 1.0.0
 
 license: MIT
 
 development_dependencies:
   ameba:
     github: crystal-ameba/ameba
-    version: ~> 0.13.0
+    version: ~> 0.14
