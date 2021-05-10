@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Crystal Docs 0.36.1">
-<meta name="crystal_docs.project_version" content="0.1.0">
+<meta name="crystal_docs.project_version" content="0.1.1">
 <meta name="crystal_docs.project_name" content="splay_tree_map">
 
 
@@ -13,7 +13,7 @@
 <script type="text/javascript" src="js/doc.js"></script>
 
   <meta name="repository-name" content="splay_tree_map">
-  <title>SplayTreeMap(K, V) - splay_tree_map 0.1.0</title>
+  <title>SplayTreeMap(K, V) - splay_tree_map 0.1.1</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "";
   </script>
@@ -39,7 +39,7 @@
       </h1>
 
       <span class="project-version">
-        0.1.0
+        0.1.1
       </span>
     </div>
   </div>
@@ -141,7 +141,7 @@
   <dl>
     
       <dt class="entry-const" id="VERSION">
-        <strong>VERSION</strong> = <code><span class="s">&quot;0.1.0&quot;</span></code>
+        <strong>VERSION</strong> = <code><span class="s">&quot;0.1.1&quot;</span></code>
       </dt>
       
     
@@ -1043,7 +1043,7 @@ stm[<span class="s">&quot;foo&quot;</span>]? <span class="c"># =&gt; nil</span><
 associated keys removed.</p>
 
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;hello&quot;</span> => <span class="s">&quot;world&quot;</span>, <span class="s">&quot;foo&quot;</span> => <span class="n">nil</span>})
-stm.compact  <span class="c"># =&gt; {&quot;hello&quot; =&gt; &quot;world&quot;}</span></code></pre>
+stm.compact <span class="c"># =&gt; {&quot;hello&quot; =&gt; &quot;world&quot;}</span></code></pre>
         </div>
       
       <br/>
@@ -2279,9 +2279,9 @@ h1             <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&g
           <p>Transform the <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> into an <code>Array(Tuple(K, V))</code>.</p>
 
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>})
-ary <span class="o">=</span> stm.to_a  <span class="c"># =&gt; [{&quot;baz&quot;, &quot;qux&quot;}, {&quot;foo&quot;, &quot;bar&quot;}]</span>
+ary <span class="o">=</span> stm.to_a <span class="c"># =&gt; [{&quot;baz&quot;, &quot;qux&quot;}, {&quot;foo&quot;, &quot;bar&quot;}]</span>
 stm2 <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>(ary)
-stm <span class="o">==</span> stm2  <span class="c"># =&gt; true</span></code></pre>
+stm <span class="o">==</span> stm2 <span class="c"># =&gt; true</span></code></pre>
         </div>
       
       <br/>
@@ -2303,7 +2303,7 @@ stm <span class="o">==</span> stm2  <span class="c"># =&gt; true</span></code></
           <p>Transform a <code><a href="SplayTreeMap.html">SplayTreeMap</a>(K,V)</code> into a <code>Hash(K,V)</code>.</p>
 
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>})
-h <span class="o">=</span> stm.to_h  <span class="c"># =&gt; {&quot;baz&quot; =&gt; &quot;qux&quot;, &quot;foo&quot; =&gt; &quot;bar&quot;}</span></code></pre>
+h <span class="o">=</span> stm.to_h <span class="c"># =&gt; {&quot;baz&quot; =&gt; &quot;qux&quot;, &quot;foo&quot; =&gt; &quot;bar&quot;}</span></code></pre>
         </div>
       
       <br/>
@@ -2437,7 +2437,7 @@ stm.transform_values! { <span class="o">|</span>value<span class="o">|</span> va
 the order of the associated keys.</p>
 
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>})
-stm.values  <span class="c"># =&gt; [1, 2, 3, 4]</span></code></pre>
+stm.values <span class="c"># =&gt; [1, 2, 3, 4]</span></code></pre>
         </div>
       
       <br/>
