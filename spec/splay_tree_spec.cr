@@ -58,11 +58,11 @@ describe SplayTreeMap do
     st.size.should eq 1000
 
     found = 0
-    ins.keys.shuffle.each { |k| found += 1 if st.has_key?(k) }
+    ins.keys.shuffle!.each { |k| found += 1 if st.has_key?(k) }
     found.should eq 1000
 
     found = 0
-    ins.keys.shuffle.each { |k| found += 1 if st[k] == ins[k] }
+    ins.keys.shuffle!.each { |k| found += 1 if st[k] == ins[k] }
     found.should eq 1000
   end
 
@@ -81,7 +81,7 @@ describe SplayTreeMap do
     end
 
     found = 0
-    ins.keys.shuffle.each { |k| found += 1 if st.obtain(k) == ins[k] }
+    ins.keys.shuffle!.each { |k| found += 1 if st.obtain(k) == ins[k] }
     found.should eq 1000
   end
 
@@ -99,7 +99,7 @@ describe SplayTreeMap do
       end
     end
 
-    random_300 = ins.keys.shuffle[0..299]
+    random_300 = ins.keys.shuffle![0..299]
     top_100 = random_300[0..99]
     intermediate_100 = random_300[100..199]
     regular_100 = random_300[200..299]
@@ -136,7 +136,6 @@ describe SplayTreeMap do
     (stm_1 < stm_2).should be_true
     (stm_1 < stm_3).should be_false
     (stm_1 < stm_4).should be_false
-
   end
 
   it "[]?; can retrive values while returning nil if they are missing" do
@@ -296,7 +295,7 @@ describe SplayTreeMap do
     stm["kleine"].should eq "xyzzy"
     stm.fetch("foo") { "default value" }.should eq "bar"
     stm.fetch("bar") { "default value" }.should eq "default value"
-    stm.fetch("bar") { |key| key.upcase }.should eq "BAR"
+    stm.fetch("bar", &.upcase).should eq "BAR"
     stm.fetch("foo", "foo").should eq "bar"
     stm.fetch("bar", "foo").should eq "foo"
   end
@@ -318,7 +317,7 @@ describe SplayTreeMap do
 
     st_a = SplayTreeMap(Int32, Int32).new({6 => 0, 11 => 0}).merge!(a)
     st_h = SplayTreeMap(Int32, Int32).new.merge!(h)
-    st_c = SplayTreeMap(Int32, Int32).new.merge!([ {0, 0}, {1, 1}, {2, 4}, {3, 9}, {4, 16}, {5}, {6, 36}, {7, 49, 343} ])
+    st_c = SplayTreeMap(Int32, Int32).new.merge!([{0, 0}, {1, 1}, {2, 4}, {3, 9}, {4, 16}, {5}, {6, 36}, {7, 49, 343}])
     _st_d = SplayTreeMap(Int32, Int32).new.merge!({ {0, 0}, {1, 1}, {2, 4}, {3, 9}, {4, 16}, {5}, {6, 36}, {7, 49, 343} })
     st_a.size.should eq 11
     st_h.size.should eq 10
@@ -391,8 +390,8 @@ describe SplayTreeMap do
 
   it "key_for; returns a key for a given value, and handles missing keys appropriately" do
     stm = SplayTreeMap.new({"foo" => "bar", "baz" => "qux"})
-    (stm.key_for("bar") { |value| value.upcase }).should eq "foo"
-    (stm.key_for("qix") { |value| value.upcase }).should eq "QIX"
+    (stm.key_for("bar", &.upcase)).should eq "foo"
+    (stm.key_for("qix", &.upcase)).should eq "QIX"
     stm.key_for("bar").should eq "foo"
     stm.key_for("qux").should eq "baz"
     expect_raises(KeyError) do
@@ -409,7 +408,7 @@ describe SplayTreeMap do
     10.times { |x| st[x] = x; log << x }
 
     st.keys.size.should eq 10
-    st.keys.sort.should eq log.sort
+    st.keys.sort!.should eq log.sort
 
     stm = SplayTreeMap.new({"foo" => "bar", "baz" => "qux"})
     stm.keys.should eq ["baz", "foo"]
@@ -553,7 +552,7 @@ describe SplayTreeMap do
 
   it "transform; can transform both the keys and the values of a tree to new types" do
     stm = SplayTreeMap.new({1 => 1, 2 => 4, 3 => 9, 4 => 16})
-    stm = stm.transform {|k, v| {k.to_s, v.to_s}}
+    stm = stm.transform { |k, v| {k.to_s, v.to_s} }
     stm["1"]?.should eq "1"
     stm["2"]?.should eq "4"
     stm["3"]?.should eq "9"
@@ -562,7 +561,7 @@ describe SplayTreeMap do
 
   it "transform_keys; can transform the keys of a tree using a block" do
     stm = SplayTreeMap.new({:a => 1, :b => 2, :c => 3})
-    stm = stm.transform_keys { |key| key.to_s }
+    stm = stm.transform_keys(&.to_s)
     stm["a"]?.should eq 1
     stm["b"]?.should eq 2
     stm["c"]?.should eq 3
@@ -582,7 +581,7 @@ describe SplayTreeMap do
     10.times { |x| st[x] = x; log << x }
 
     st.values.size.should eq 10
-    st.values.sort.should eq log.sort
+    st.values.sort!.should eq log.sort
   end
 
   it "values_at; returns a tuple with the associated values, and raises on invalid" do
@@ -632,7 +631,7 @@ describe SplayTreeMap do
       end
     end
 
-    random_300 = ins.keys.shuffle[0..299]
+    random_300 = ins.keys.shuffle![0..299]
     top_100 = random_300[0..99]
     intermediate_100 = random_300[100..199]
     _regular_100 = random_300[200..299]

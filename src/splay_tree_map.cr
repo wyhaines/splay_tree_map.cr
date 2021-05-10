@@ -122,7 +122,7 @@ class SplayTreeMap(K, V)
 
   # Compares two SplayTreeMaps. All contained objects must also be comparable,
   # or this method will trigger an exception.
-  def <=>(other : SplayTreeMap(L, W)) forall L,W
+  def <=>(other : SplayTreeMap(L, W)) forall L, W
     cmp = surface_cmp(other)
     return cmp unless cmp == 0
 
@@ -272,7 +272,7 @@ class SplayTreeMap(K, V)
   #
   # ```
   # stm = SplayTreeMap.new({"hello" => "world", "foo" => nil})
-  # stm.compact  # => {"hello" => "world"}
+  # stm.compact # => {"hello" => "world"}
   # ```
   def compact
     each_with_object(self.class.new) do |(key, value), memo|
@@ -347,7 +347,7 @@ class SplayTreeMap(K, V)
   # stm # => { "bar" => "qux" }
   # ```
   def delete_if : self
-    reject! {|k,v| yield k, v}
+    reject! { |k, v| yield k, v }
     self
   end
 
@@ -422,7 +422,7 @@ class SplayTreeMap(K, V)
   # The enumeration follows the order the keys were inserted.
   def each(& : {K, V} ->) : Nil
     iter = EntryIterator(K, V).new(self)
-    while !(entry=iter.next).is_a?(Iterator::Stop)
+    while !(entry = iter.next).is_a?(Iterator::Stop)
       yield entry
     end
   end
@@ -907,7 +907,6 @@ class SplayTreeMap(K, V)
     end
   end
 
-
   # Removes a list of keys out of the tree, returning a new tree.
   #
   # ```
@@ -981,7 +980,7 @@ class SplayTreeMap(K, V)
   # SplayTreeMap.new({"a" => 1, "b" => 2, "c" => 3, "d" => 4}).select(["a", "c"]) # => {"a" => 1, "c" => 3}
   # ```
   def select(keys : Array | Tuple)
-    stm = SplayTreeMap(K,V).new
+    stm = SplayTreeMap(K, V).new
     keys.each { |k| k = k.as(K); stm[k] = obtain(k) if has_key?(k) }
     stm
   end
@@ -1019,9 +1018,9 @@ class SplayTreeMap(K, V)
   #
   # ```
   # stm = SplayTreeMap.new({"foo" => "bar", "baz" => "qux"})
-  # ary = stm.to_a  # => [{"baz", "qux"}, {"foo", "bar"}]
+  # ary = stm.to_a # => [{"baz", "qux"}, {"foo", "bar"}]
   # stm2 = SplayTreeMap.new(ary)
-  # stm == stm2  # => true
+  # stm == stm2 # => true
   # ```
   def to_a
     a = Array({K, V}).new
@@ -1033,10 +1032,10 @@ class SplayTreeMap(K, V)
   #
   # ```
   # stm = SplayTreeMap.new({"foo" => "bar", "baz" => "qux"})
-  # h = stm.to_h  # => {"baz" => "qux", "foo" => "bar"}
+  # h = stm.to_h # => {"baz" => "qux", "foo" => "bar"}
   # ```
   def to_h
-    h = Hash(K,V).new
+    h = Hash(K, V).new
     each { |k, v| h[k] = v }
     h
   end
@@ -1118,7 +1117,7 @@ class SplayTreeMap(K, V)
   #
   # ```
   # stm = SplayTreeMap.new({"a" => 1, "b" => 2, "c" => 3, "d" => 4})
-  # stm.values  # => [1, 2, 3, 4]
+  # stm.values # => [1, 2, 3, 4]
   # ```
   #
   def values : Array(V)
@@ -1158,7 +1157,7 @@ class SplayTreeMap(K, V)
   # # => {"key1" => "value1", "key2" => "value2", "key3" => "value3"}
   # ```
   def self.zip(ary1 : Array(K), ary2 : Array(V))
-    stm = SplayTreeMap(K,V).new
+    stm = SplayTreeMap(K, V).new
     ary1.each_with_index do |key, i|
       stm[key] = ary2[i]
     end
@@ -1296,7 +1295,7 @@ class SplayTreeMap(K, V)
       base_next { |entry| {entry.key, entry.value} }
     end
 
-    def next? : {K,V}?
+    def next? : {K, V}?
       retval = base_next { |entry| {entry.key, entry.value} }
       retval.is_a?(Iterator::Stop) ? nil : retval
     end
@@ -1329,7 +1328,7 @@ class SplayTreeMap(K, V)
   end
 
   private class Node(K, V)
-    include Comparable(Node(K,V))
+    include Comparable(Node(K, V))
     property left : Node(K, V)?
     property right : Node(K, V)?
 
@@ -1349,7 +1348,7 @@ class SplayTreeMap(K, V)
     node_prop key, K
     node_prop value, V
 
-    def <=>(other : Node(K,V))
+    def <=>(other : Node(K, V))
       cmp = key <=> other.key
       return cmp unless cmp == 0
       value <=> other.value
