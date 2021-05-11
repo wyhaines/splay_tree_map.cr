@@ -1,4 +1,4 @@
-require "crystal/spin_lock"
+require "mutex"
 
 # A splay tree is a type of binary search tree that self organizes so that the
 # most frequently accessed items tend to be towards the root of the tree, where
@@ -56,7 +56,7 @@ class SplayTreeMap(K, V)
 
   private class Unk; end
 
-  @lock = Crystal::SpinLock.new
+  @lock = Mutex.new(protection: Mutex::Protection::Reentrant)
   @root : Node(K, V)? = nil
   @size : Int32 = 0
   @header : Node(K, V) = Node(K, V).new(nil, nil)
@@ -136,7 +136,7 @@ class SplayTreeMap(K, V)
     other_iter = other.each
 
     cmp = 0
-    @lock.sync do
+    @lock.synchronize do
       loop do
         me_entry = me_iter.next?
         other_entry = other_iter.next?
@@ -151,7 +151,7 @@ class SplayTreeMap(K, V)
   end
 
   private def surface_cmp(other)
-    @lock.sync do
+    @lock.synchronize do
       return nil if !other.is_a?(SplayTreeMap) || typeof(self) != typeof(other)
 
       return -1 if self.size < other.size
@@ -211,7 +211,7 @@ class SplayTreeMap(K, V)
   end
 
   private def get_impl(key : K)
-    @lock.sync do
+    @lock.synchronize do
       return Unk unless @root
 
       splay(key)
@@ -236,7 +236,7 @@ class SplayTreeMap(K, V)
     # TODO: This is surprisingly slow. I assume it is due to the overhead
     # of declaring nodes on the heap. Is there a way to make them work as
     # structs instead of classes?
-    @lock.sync do
+    @lock.synchronize do
       unless @root
         @root = Node(K, V).new(key.as(K), value.as(V))
         @size = 1
@@ -272,9 +272,11 @@ class SplayTreeMap(K, V)
 
   # Resets the state of the `SplayTreeMap`, clearing all key/value associations.
   def clear
-    @root = nil
-    @size = 0
-    @header = Node(K, V).new(nil, nil)
+    @lock.synchronize do
+      @root = nil
+      @size = 0
+      @header = Node(K, V).new(nil, nil)
+    end
   end
 
   # Returns new `SplayTreeMap` that has all of the `nil` values and their
@@ -285,8 +287,10 @@ class SplayTreeMap(K, V)
   # stm.compact # => {"hello" => "world"}
   # ```
   def compact
-    each_with_object(self.class.new) do |(key, value), memo|
-      memo[key] = value unless value.nil?
+    @lock.synchronize do
+      each_with_object(self.class.new) do |(key, value), memo|
+        memo[key] = value unless value.nil?
+      end
     end
   end
 
@@ -328,20 +332,22 @@ class SplayTreeMap(K, V)
   # :nodoc:
   def delete_impl(key)
     deleted = Unk
-    splay(key)
-    if root = @root
-      if key == root.key # The key exists
-        deleted = root.value
-        if root.left.nil?
-          @root = root.right
-        else
-          x = root.right
-          @root = root.left
-          new_root = max
-          splay(new_root.not_nil!)
-          @root.not_nil!.right = x
+    @lock.synchronize do
+      splay(key)
+      if root = @root
+        if key == root.key # The key exists
+          deleted = root.value
+          if root.left.nil?
+            @root = root.right
+          else
+            x = root.right
+            @root = root.left
+            new_root = max
+            splay(new_root.not_nil!)
+            @root.not_nil!.right = x
+          end
+          @size -= 1
         end
-        @size -= 1
       end
     end
     deleted
@@ -371,8 +377,10 @@ class SplayTreeMap(K, V)
   # stm.dig "a", "c" # raises KeyError
   # ```
   def dig(key : K, *subkeys)
-    if (value = self[key]) && value.responds_to?(:dig)
-      return value.dig(*subkeys)
+    @lock.synchronize do
+      if (value = self[key]) && value.responds_to?(:dig)
+        return value.dig(*subkeys)
+      end
     end
     raise KeyError.new "SplayTreeMap value not diggable for key: #{key.inspect}"
   end
@@ -392,8 +400,10 @@ class SplayTreeMap(K, V)
   # stm.dig "a", "c" # => nil
   # ```
   def dig?(key : K, *subkeys)
-    if (value = self[key]?) && value.responds_to?(:dig?)
-      value.dig?(*subkeys)
+    @lock.synchronize do
+      if (value = self[key]?) && value.responds_to?(:dig?)
+        return value.dig?(*subkeys)
+      end
     end
   end
 
@@ -411,7 +421,9 @@ class SplayTreeMap(K, V)
   # stm_a # => {"foo" => "bar"}
   # ```
   def dup
-    SplayTreeMap.new(self)
+    @lock.synchronize do
+      return SplayTreeMap.new(self)
+    end
   end
 
   # Calls the given block for each key/value pair, passing the pair into the block.
@@ -431,9 +443,11 @@ class SplayTreeMap(K, V)
   #
   # The enumeration follows the order the keys were inserted.
   def each(& : {K, V} ->) : Nil
-    iter = EntryIterator(K, V).new(self)
-    while !(entry = iter.next).is_a?(Iterator::Stop)
-      yield entry
+    @lock.synchronize do
+      iter = EntryIterator(K, V).new(self)
+      while !(entry = iter.next).is_a?(Iterator::Stop)
+        yield entry
+      end
     end
   end
 
@@ -574,18 +588,20 @@ class SplayTreeMap(K, V)
   end
 
   private def obtain_impl(key : K)
-    node = @root
-    return Unk if node.nil?
+    @lock.synchronize do
+      node = @root
+      return Unk if node.nil?
 
-    loop do
-      return Unk unless node
-      cmp = key <=> node.key
-      if cmp == -1
-        node = node.left
-      elsif cmp == 1
-        node = node.right
-      else
-        return node.value
+      loop do
+        return Unk unless node
+        cmp = key <=> node.key
+        if cmp == -1
+          node = node.left
+        elsif cmp == 1
+          node = node.right
+        else
+          return node.value
+        end
       end
     end
   end
