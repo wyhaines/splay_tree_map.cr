@@ -1,3 +1,5 @@
+require "crystal/spin_lock"
+
 # A splay tree is a type of binary search tree that self organizes so that the
 # most frequently accessed items tend to be towards the root of the tree, where
 # they can be accessed more quickly.
@@ -54,6 +56,7 @@ class SplayTreeMap(K, V)
 
   private class Unk; end
 
+  @lock = Crystal::SpinLock.new
   @root : Node(K, V)? = nil
   @size : Int32 = 0
   @header : Node(K, V) = Node(K, V).new(nil, nil)
@@ -133,23 +136,27 @@ class SplayTreeMap(K, V)
     other_iter = other.each
 
     cmp = 0
-    loop do
-      me_entry = me_iter.next?
-      other_entry = other_iter.next?
-      if me_entry.nil? || other_entry.nil?
-        return 0
-      else
-        cmp = me_entry.as({K, V}) <=> other_entry.as({L, W})
-        return cmp unless cmp == 0
+    @lock.sync do
+      loop do
+        me_entry = me_iter.next?
+        other_entry = other_iter.next?
+        if me_entry.nil? || other_entry.nil?
+          return 0
+        else
+          cmp = me_entry.as({K, V}) <=> other_entry.as({L, W})
+          return cmp unless cmp == 0
+        end
       end
     end
   end
 
   private def surface_cmp(other)
-    return nil if !other.is_a?(SplayTreeMap) || typeof(self) != typeof(other)
+    @lock.sync do
+      return nil if !other.is_a?(SplayTreeMap) || typeof(self) != typeof(other)
 
-    return -1 if self.size < other.size
-    return 1 if self.size > other.size
+      return -1 if self.size < other.size
+      return 1 if self.size > other.size
+    end
     0
   end
 
@@ -204,11 +211,13 @@ class SplayTreeMap(K, V)
   end
 
   private def get_impl(key : K)
-    return Unk unless @root
+    @lock.sync do
+      return Unk unless @root
 
-    splay(key)
-    if root = @root
-      root.key == key ? root.value : Unk
+      splay(key)
+      if root = @root
+        root.key == key ? root.value : Unk
+      end
     end
   end
 
@@ -227,36 +236,37 @@ class SplayTreeMap(K, V)
     # TODO: This is surprisingly slow. I assume it is due to the overhead
     # of declaring nodes on the heap. Is there a way to make them work as
     # structs instead of classes?
-    unless @root
-      @root = Node(K, V).new(key.as(K), value.as(V))
-      @size = 1
-      return value
-    end
-
-    splay(key)
-
-    if root = @root
-      cmp = key <=> root.key
-      if cmp == 0
-        old_value = root.value
-        root.value = value
-        return old_value
+    @lock.sync do
+      unless @root
+        @root = Node(K, V).new(key.as(K), value.as(V))
+        @size = 1
+        return value
       end
-      node = Node(K, V).new(key, value)
-      if cmp == -1
-        node.left = root.left
-        node.right = root
-        root.left = nil
-      else
-        node.right = root.right
-        node.left = root
-        root.right = nil
+
+      splay(key)
+
+      if root = @root
+        cmp = key <=> root.key
+        if cmp == 0
+          old_value = root.value
+          root.value = value
+          return old_value
+        end
+        node = Node(K, V).new(key, value)
+        if cmp == -1
+          node.left = root.left
+          node.right = root
+          root.left = nil
+        else
+          node.right = root.right
+          node.left = root
+          root.right = nil
+        end
       end
+
+      @root = node
+      @size += 1
     end
-
-    @root = node
-    @size += 1
-
     nil
   end
 
