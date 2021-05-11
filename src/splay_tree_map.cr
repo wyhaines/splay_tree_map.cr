@@ -730,9 +730,11 @@ class SplayTreeMap(K, V)
   # ```
   #
   def keys : Array(K)
-    a = [] of K
-    each { |k, _v| a << k }
-    a
+    @lock.synchronize do
+      a = [] of K
+      each { |k, _v| a << k }
+      a
+    end
   end
 
   # Returns the largest key in the tree.
@@ -928,8 +930,10 @@ class SplayTreeMap(K, V)
   # stm.reject { |k, v| v < 200 } # => {"b" => 200, "c" => 300}
   # ```
   def reject(&block : K, V -> _)
-    each_with_object(SplayTreeMap(K, V).new) do |(k, v), memo|
-      memo[k] = v unless yield k, v
+    @lock.synchronize do
+      each_with_object(SplayTreeMap(K, V).new) do |(k, v), memo|
+        memo[k] = v unless yield k, v
+      end
     end
   end
 
@@ -940,9 +944,11 @@ class SplayTreeMap(K, V)
   # h # => {"b" => 2, "d" => 4}
   # ```
   def reject(keys : Array | Tuple)
-    stm = dup
-    keys.each { |k| stm.delete(k) }
-    stm
+    @lock.synchronize do
+      stm = dup
+      keys.each { |k| stm.delete(k) }
+      return stm
+    end
   end
 
   # Returns a new `SplayTreeMap` with the given keys removed.
@@ -957,15 +963,17 @@ class SplayTreeMap(K, V)
   # Equivalent to `SplayTreeMap#reject`, but modifies the current object rather than
   # returning a new one. Returns `nil` if no changes were made.
   def reject!(&block : K, V -> _)
-    num_entries = size
-    keys_to_delete = [] of K
-    each do |key, value|
-      keys_to_delete << key if yield(key, value)
+    @lock.synchronize do
+      num_entries = size
+      keys_to_delete = [] of K
+      each do |key, value|
+        keys_to_delete << key if yield(key, value)
+      end
+      keys_to_delete.each do |key|
+        delete(key)
+      end
+      num_entries == size ? nil : self
     end
-    keys_to_delete.each do |key|
-      delete(key)
-    end
-    num_entries == size ? nil : self
   end
 
   # Removes a list of keys out of the tree.
@@ -975,7 +983,9 @@ class SplayTreeMap(K, V)
   # h # => {"b" => 2, "d" => 4}
   # ```
   def reject!(keys : Array | Tuple)
-    keys.each { |k| delete(k) }
+    @lock.synchronize do
+      keys.each { |k| delete(k) }
+    end
     self
   end
 
@@ -1007,7 +1017,9 @@ class SplayTreeMap(K, V)
   # ```
   def select(keys : Array | Tuple)
     stm = SplayTreeMap(K, V).new
-    keys.each { |k| k = k.as(K); stm[k] = obtain(k) if has_key?(k) }
+    @lock.synchronize do
+      keys.each { |k| k = k.as(K); stm[k] = obtain(k) if has_key?(k) }
+    end
     stm
   end
 
