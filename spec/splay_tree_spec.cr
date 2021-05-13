@@ -121,7 +121,7 @@ describe SplayTreeMap do
     sum_intermediate_100 = intermediate_heights.reduce(0) { |a, v| a + v }
     sum_regular_100 = regular_heights.reduce(0) { |a, v| a + v }
 
-    puts "\naverage height -- top :: intermediate :: other == #{sum_top_100 / 100} :: #{sum_intermediate_100 / 100} :: #{sum_regular_100 / 100}"
+    Log.debug { "average height -- top :: intermediate :: other == #{sum_top_100 / 100} :: #{sum_intermediate_100 / 100} :: #{sum_regular_100 / 100}" }
     sum_top_100.should be < sum_intermediate_100
     sum_intermediate_100.should be < sum_regular_100
   end
