@@ -52,7 +52,7 @@ class SplayTreeMap(K, V)
   include Enumerable({K, V})
   include Iterable({K, V})
   include Comparable(SplayTreeMap)
-  VERSION = "0.1.1"
+  VERSION = "0.1.2"
 
   private class Unk; end
 
