@@ -74,6 +74,10 @@ puts stm.obtain("something") # This finds, but doesn't splay.
 stm.prune # remove all leaves
 ```
 
+## Testing
+
+To run the specs run `crystal spec`.  To run specs with more debugging output use `LOG_LEVEL=DEBUG crystal spec`.
+
 ## TODO
 
 Experiment with other variations of splay operations, such as lazy semi-splay
