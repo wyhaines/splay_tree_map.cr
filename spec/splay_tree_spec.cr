@@ -643,6 +643,6 @@ describe SplayTreeMap do
 
     st.size.should eq 100000
     st.prune
-    st.size.should be < 95000 # It should actually be around 90000, give or take 2000
+    st.size.should be < 96000 # It should actually be around 90000, give or take, but because random numbers, may sometimes be higher.
   end
 end
