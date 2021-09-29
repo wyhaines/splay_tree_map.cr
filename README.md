@@ -40,7 +40,7 @@ is used, but it can be useful at the right time.
 
    ```yaml
    dependencies:
-     stm:
+     splay_tree_map:
        github: wyhaines/splay_tree_map.cr
    ```
 
