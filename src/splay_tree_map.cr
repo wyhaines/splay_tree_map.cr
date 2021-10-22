@@ -35,14 +35,20 @@ require "mutex"
 # puts stm["Gone West"] # => nil
 #
 # # Remove a key from the tree.
+#
 # stm.delete("junk")
 #
 # # Find a value very quickly (particularly if it is near the root of the tree).
+#
 # entry = stm.obtain("something") # This finds, but doesn't splay.
 #
 # # Remove the elements of the tree which are likely to be the least accessed elements.
+#
 # stm.prune # remove all leaves
 #
+# # SplayTreeMap is (mostly) threadsafe
+#
+# As of Crystal 1.0.0, a Hash is not thread safe, by default. A SplayTreeMap is.
 # ```
 #
 # This implementation was originally derived from the incomplete and broken implementation
