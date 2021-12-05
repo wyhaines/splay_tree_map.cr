@@ -650,7 +650,7 @@ describe SplayTreeMap do
     ins = {} of Int32 => Int32
     st = SplayTreeMap(Int32, Int32).new
     100000.times do
-      while true
+      loop do
         x = Math.sqrt(rand(1000000000000)).to_i
         if !ins.has_key?(x)
           ins[x] = x
@@ -664,7 +664,7 @@ describe SplayTreeMap do
     st = SplayTreeMap(Int32, Int32).new
     st.maxsize = 10000
     100000.times do
-      while true
+      loop do
         x = Math.sqrt(rand(1000000000000)).to_i
         if !ins.has_key?(x)
           ins[x] = x
