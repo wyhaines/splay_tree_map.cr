@@ -62,6 +62,7 @@ Generally, the data structure is used like a hash.
 
 ```crystal
 stm = SplayTreeMap(String, String).new
+stm.maxsize = 10
 
 stm["this"] = "that"
 stm["something"] = "else"
