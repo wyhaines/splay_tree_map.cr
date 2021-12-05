@@ -646,4 +646,34 @@ describe SplayTreeMap do
     st.prune
     st.size.should be < 95000 # It should actually be around 90000, give or take 2000
   end
+
+  it "can automatically enforce a maximum size" do
+    ins = {} of Int32 => Int32
+    st = SplayTreeMap(Int32, Int32).new
+    100000.times do
+      while true
+        x = Math.sqrt(rand(1000000000000)).to_i
+        if !ins.has_key?(x)
+          ins[x] = x
+          st[x] = x
+          break
+        end
+      end
+    end
+    st.size.should eq 100000
+
+    st = SplayTreeMap(Int32, Int32).new
+    st.maxsize = 10000
+    100000.times do
+      while true
+        x = Math.sqrt(rand(1000000000000)).to_i
+        if !ins.has_key?(x)
+          ins[x] = x
+          st[x] = x
+          break
+        end
+      end
+    end
+    st.size.should be <= 10000
+  end
 end

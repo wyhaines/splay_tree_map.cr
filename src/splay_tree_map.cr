@@ -50,10 +50,11 @@ class SplayTreeMap(K, V)
   include Enumerable({K, V})
   include Iterable({K, V})
   include Comparable(SplayTreeMap)
-  VERSION = "0.1.0"
+  VERSION = "0.2.0"
 
   private class Unk; end
 
+  @maxsize : UInt64? = nil
   @root : Node(K, V)? = nil
   @size : Int32 = 0
   @header : Node(K, V) = Node(K, V).new(nil, nil)
@@ -119,6 +120,14 @@ class SplayTreeMap(K, V)
   # Return the current number of key/value pairs in the tree.
   getter size
   getter root
+
+  def maxsize
+    @maxsize
+  end
+
+  def maxsize=(value)
+    @maxsize = value.to_u64
+  end
 
   # Compares two SplayTreeMaps. All contained objects must also be comparable,
   # or this method will trigger an exception.
@@ -256,6 +265,12 @@ class SplayTreeMap(K, V)
 
     @root = node
     @size += 1
+
+    if mxsz = maxsize
+      if @size > mxsz
+        prune
+      end
+    end
 
     nil
   end

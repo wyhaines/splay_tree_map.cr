@@ -1,9 +1,9 @@
 name: splay_tree_map
-version: 0.1.0
+version: 0.2.0
 
 authors:
   - Kirk Haines <wyhaines@gmail.com>
 
-crystal: 0.35.1
+crystal: ">=0.35.1"
 
-license: MIT
+license: "Apache 2.0"
