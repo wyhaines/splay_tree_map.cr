@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 1.0.0">
+<meta name="generator" content="Crystal Docs 1.1.1">
 <meta name="crystal_docs.project_version" content="main">
 <meta name="crystal_docs.project_name" content="splay_tree_map">
 
@@ -63,46 +63,36 @@
 
 
 <div class="main-content">
+<p><img src="https://img.shields.io/github/workflow/status/wyhaines/splay_tree_map.cr/SplayTreeMap%20CI?style=for-the-badge&amp;logo=GitHub" alt="SplayTreeMap CI" />
+<a href="https://github.com/wyhaines/splay_tree_map.cr/releases"><img src="https://img.shields.io/github/release/wyhaines/splay_tree_map.cr.svg?style=for-the-badge" alt="GitHub release" /></a>
+<img src="https://img.shields.io/github/commits-since/wyhaines/splay_tree_map.cr/latest?style=for-the-badge" alt="GitHub commits since latest release (by SemVer)" /></p>
 <h1><a id="splay-tree-map" class="anchor" href="#splay-tree-map">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
-</a>Splay Tree Map</h1>
-
-<p><img src="https://img.shields.io/github/workflow/status/wyhaines/splay_tree_map.cr/SplayTreeMap%20CI?style=for-the-badge&logo=GitHub" alt="SplayTreeMap CI"/>
-<a href="https://github.com/wyhaines/splay_tree_map.cr/releases"><img src="https://img.shields.io/github/release/wyhaines/splay_tree_map.cr.svg?style=for-the-badge" alt="GitHub release"/></a>
-<img src="https://img.shields.io/github/commits-since/wyhaines/splay_tree_map.cr/latest?style=for-the-badge" alt="GitHub commits since latest release (by SemVer)"/></p>
-
-<p>A splay tree is a type of binary search tree that self organizes so that the
-most frequently accessed items tend to be towards the root of the tree, where
-they can be accessed more quickly.</p>
-
-<p>This implementation provides a hash-like interface, and it provides a couple
+</a><a href="https://wyhaines.github.io/splay_tree_map.cr/">Splay Tree Map</a></h1>
+<p>A splay tree is a type of <a href="https://en.wikipedia.org/wiki/Binary_search_tree">binary search</a> tree that self organizes so that the most frequently accessed items tend to be towards theroot of the tree, where they can be accessed more quickly.</p>
+<p>This implementation provides a <a href="https://crystal-lang.org/api/latest/Hash.html">hash-like</a> interface, and it provides a couple
 features not typically found in Splay Trees -- efficient removal of the items
 that are generally least frequently accessed, and an extra fast search option.</p>
-
 <h3><a id="leaf-pruning" class="anchor" href="#leaf-pruning">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Leaf Pruning</h3>
-
 <p>Because splay trees tend to organize themselves with the most frequently
 accessed elements towards the root of the tree, the least frequently accessed
 items tend to migrate towards the leaves of the tree. This implementation
 offers a method that can be used to prune its leaves, which generally has the
 effect of removing the least frequently accessed items from the tree.</p>
-
 <p>This is useful if the data structure is being used to implement a cache, as
 it can be used to control the size of the cache while generaly keeping the
 most useful items in the cache without any other extensive bookkeeping.</p>
-
 <h3><a id="search-without-splaying" class="anchor" href="#search-without-splaying">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Search without Splaying</h3>
-
 <p>A splay operation is generally performed on any access to a splay tree. This is
 the operation that moves the most important items towards the root. This operation
 has a cost to it, however, and there are times when it is desireable to search the
@@ -110,38 +100,40 @@ hash without a splay operation occuring for the key that is searched. This resul
 in a faster search operation, at the cost of not performing any efficiency improving
 structural changes to the tree. This should not be the primary search method that
 is used, but it can be useful at the right time.</p>
-
+<h3><a id="maximum-size" class="anchor" href="#maximum-size">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Maximum Size</h3>
+<p>If <code>#maxsize</code> is set to an integer alue, then the splay tree will perform a prune
+operation when the maximum size of the tree is reached. This is useful for implementing
+a cache.</p>
 <h2><a id="installation" class="anchor" href="#installation">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Installation</h2>
-
-<ol><li>Add the dependency to your <code>shard.yml</code>:</li></ol>
-
-<p><code></code>`yaml
-   dependencies:</p>
-
-<pre><code class="language-crystal"> stm:
-   github: wyhaines/splay_tree_map.cr</code></pre>
-
-<p><code></code>`</p>
-
-<ol><li>Run <code>shards install</code></li></ol>
-
+<ol>
+<li>
+<p>Add the dependency to your <code>shard.yml</code>:</p>
+<pre><code class="language-yaml">dependencies:
+  splay_tree_map:
+    github: wyhaines/splay_tree_map.cr</code></pre>
+</li>
+<li>
+<p>Run <code>shards install</code></p>
+</li>
+</ol>
 <h2><a id="usage" class="anchor" href="#usage">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Usage</h2>
-
 <p>Full documentation can be found at: <a href="https://wyhaines.github.io/splay_tree_map.cr/index.html">https://wyhaines.github.io/splay_tree_map.cr/index.html</a></p>
-
 <pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;splay_tree_map&quot;</span></code></pre>
-
 <p>Generally, the data structure is used like a hash.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>
+stm.maxsize <span class="o">=</span> <span class="n">10</span>
 
 stm[<span class="s">&quot;this&quot;</span>] <span class="o">=</span> <span class="s">&quot;that&quot;</span>
 stm[<span class="s">&quot;something&quot;</span>] <span class="o">=</span> <span class="s">&quot;else&quot;</span>
@@ -156,52 +148,49 @@ stm.delete(<span class="s">&quot;junk&quot;</span>)
 puts stm.obtain(<span class="s">&quot;something&quot;</span>) <span class="c"># This finds, but doesn&#39;t splay.</span>
 
 stm.prune <span class="c"># remove all leaves</span></code></pre>
-
 <h2><a id="testing" class="anchor" href="#testing">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Testing</h2>
-
 <p>To run the specs run <code>crystal spec</code>.  To run specs with more debugging output use <code>LOG_LEVEL=DEBUG crystal spec</code>.</p>
-
 <h2><a id="todo" class="anchor" href="#todo">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>TODO</h2>
-
 <p>Experiment with other variations of splay operations, such as lazy semi-splay
 to see if performance can be improved. Right now this isn't any better than
 just using a Hash and arbitrarily deleting half of the hash if it grows too big.</p>
-
 <h2><a id="credits" class="anchor" href="#credits">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Credits</h2>
-
 <p>This implementation is derived from the incomplete and broken implementation
 in the Crystalline shard found at https://github.com/jtomschroeder/crystalline</p>
-
 <h2><a id="contributing" class="anchor" href="#contributing">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Contributing</h2>
-
-<ol><li>Fork it (&lt;https://github.com/wyhaines/splay_tree_map/fork>)</li><li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li><li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li><li>Push to the branch (<code>git push origin my-new-feature</code>)</li><li>Create a new Pull Request</li></ol>
-
+<ol>
+<li>Fork it (<a href="https://github.com/wyhaines/splay_tree_map/fork">https://github.com/wyhaines/splay_tree_map/fork</a>)</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create a new Pull Request</li>
+</ol>
 <h2><a id="contributors" class="anchor" href="#contributors">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Contributors</h2>
-
-<ul><li><a href="https://github.com/wyhaines">Kirk Haines</a> - creator and maintainer</li></ul>
-
-<p><img src="https://img.shields.io/github/languages/code-size/wyhaines/splay_tree_map.cr?style=for-the-badge" alt="GitHub code size in bytes"/>
-<img src="https://img.shields.io/github/issues/wyhaines/splay_tree_map.cr?style=for-the-badge" alt="GitHub issues"/></p>
+<ul>
+<li><a href="https://github.com/wyhaines">Kirk Haines</a> - creator and maintainer</li>
+</ul>
+<p><img src="https://img.shields.io/github/languages/code-size/wyhaines/splay_tree_map.cr?style=for-the-badge" alt="GitHub code size in bytes" />
+<img src="https://img.shields.io/github/issues/wyhaines/splay_tree_map.cr?style=for-the-badge" alt="GitHub issues" /></p>
 </div>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 1.0.0">
+<meta name="generator" content="Crystal Docs 1.1.1">
 <meta name="crystal_docs.project_version" content="main">
 <meta name="crystal_docs.project_name" content="splay_tree_map">
 
@@ -116,7 +116,7 @@
   </h2>
   
     
-      <a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L51" target="_blank">
+      <a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L57" target="_blank">
         splay_tree_map.cr
       </a>
     
@@ -138,7 +138,7 @@
   <dl>
     
       <dt class="entry-const" id="VERSION">
-        <strong>VERSION</strong> = <code><span class="s">&quot;0.1.3&quot;</span></code>
+        <strong>VERSION</strong> = <code><span class="s">&quot;0.2.0&quot;</span></code>
       </dt>
       
     
@@ -157,28 +157,28 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(seed:Enumerable(Tuple(K,V))?%7CIterable(Tuple(K,V))?=nil,block:SplayTreeMap(K,V),K-%3EV?=nil)-class-method" class="signature"><strong>.new</strong>(seed : Enumerable(Tuple(K, V))? | Iterable(Tuple(K, V))? = <span class="n">nil</span>, block : SplayTreeMap(K, V), K -> V? = <span class="n">nil</span>)</a>
+        <a href="#new%28seed%3AEnumerable%28Tuple%28K%2CV%29%29%3F%7CIterable%28Tuple%28K%2CV%29%29%3F%3Dnil%2Cblock%3ASplayTreeMap%28K%2CV%29%2CK-%3EV%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(seed : Enumerable(Tuple(K, V))? | Iterable(Tuple(K, V))? = <span class="n">nil</span>, block : SplayTreeMap(K, V), K -> V? = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Creates a new empty <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with a <em>block</em> that is called when a key is missing from the tree.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new(seed:Enumerable(Tuple(K,V))?%7CIterable(Tuple(K,V))?=nil,&block:SplayTreeMap(K,V),K-%3EV)-class-method" class="signature"><strong>.new</strong>(seed : Enumerable(Tuple(K, V))? | Iterable(Tuple(K, V))? = <span class="n">nil</span>, &block : SplayTreeMap(K, V), K -> V)</a>
+        <a href="#new%28seed%3AEnumerable%28Tuple%28K%2CV%29%29%3F%7CIterable%28Tuple%28K%2CV%29%29%3F%3Dnil%2C%26block%3ASplayTreeMap%28K%2CV%29%2CK-%3EV%29-class-method" class="signature"><strong>.new</strong>(seed : Enumerable(Tuple(K, V))? | Iterable(Tuple(K, V))? = <span class="n">nil</span>, &block : SplayTreeMap(K, V), K -> V)</a>
         
           <div class="summary"><p>Creates a new empty <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with a <em>block</em> that is called when a key is missing from the tree.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new(seed:Enumerable(Tuple(K,V))?%7CIterable(Tuple(K,V))?,default_value:V)-class-method" class="signature"><strong>.new</strong>(seed : Enumerable(Tuple(K, V))? | Iterable(Tuple(K, V))?, default_value : V)</a>
+        <a href="#new%28seed%3AEnumerable%28Tuple%28K%2CV%29%29%3F%7CIterable%28Tuple%28K%2CV%29%29%3F%2Cdefault_value%3AV%29-class-method" class="signature"><strong>.new</strong>(seed : Enumerable(Tuple(K, V))? | Iterable(Tuple(K, V))?, default_value : V)</a>
         
           <div class="summary"><p>Creates a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code>, populating it with values from the <em>Enumerable</em> or the <em>Iterable</em> seed object, and with a default return value for any missing key.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new(default_value:V)-class-method" class="signature"><strong>.new</strong>(default_value : V)</a>
+        <a href="#new%28default_value%3AV%29-class-method" class="signature"><strong>.new</strong>(default_value : V)</a>
         
           <div class="summary"><p>Creates a new empty <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with a default return value for any missing key.</p></div>
         
@@ -199,7 +199,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#zip(ary1:Array(K),ary2:Array(V))-class-method" class="signature"><strong>.zip</strong>(ary1 : Array(K), ary2 : Array(V))</a>
+        <a href="#zip%28ary1%3AArray%28K%29%2Cary2%3AArray%28V%29%29-class-method" class="signature"><strong>.zip</strong>(ary1 : Array(K), ary2 : Array(V))</a>
         
           <div class="summary"><p>Zips two arrays into a <code><a href="SplayTreeMap.html">SplayTreeMap</a></code>, taking keys from <em>ary1</em> and values from <em>ary2</em>.</p></div>
         
@@ -220,28 +220,28 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#%3C=%3E(other:SplayTreeMap(L,W))forallL,W-instance-method" class="signature"><strong>#<=></strong>(other : SplayTreeMap(L, W)) forall L, W</a>
+        <a href="#%3C%3D%3E%28other%3ASplayTreeMap%28L%2CW%29%29forallL%2CW-instance-method" class="signature"><strong>#<=></strong>(other : SplayTreeMap(L, W)) forall L, W</a>
         
           <div class="summary"><p>Compares two SplayTreeMaps.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#[](key:K)-instance-method" class="signature"><strong>#[]</strong>(key : K)</a>
+        <a href="#%5B%5D%28key%3AK%29-instance-method" class="signature"><strong>#[]</strong>(key : K)</a>
         
           <div class="summary"><p>Searches for the given <em>key</em> in the tree and returns the associated value.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#[]=(key,value)-instance-method" class="signature"><strong>#[]=</strong>(key, value)</a>
+        <a href="#%5B%5D%3D%28key%2Cvalue%29-instance-method" class="signature"><strong>#[]=</strong>(key, value)</a>
         
           <div class="summary"><p>Create a key/value association.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#[]?(key:K)-instance-method" class="signature"><strong>#[]?</strong>(key : K)</a>
+        <a href="#%5B%5D%3F%28key%3AK%29-instance-method" class="signature"><strong>#[]?</strong>(key : K)</a>
         
           <div class="summary"><p>Returns the value for the key given by <em>key</em>.</p></div>
         
@@ -262,42 +262,42 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#compact!-instance-method" class="signature"><strong>#compact!</strong></a>
+        <a href="#compact%21-instance-method" class="signature"><strong>#compact!</strong></a>
         
           <div class="summary"><p>Removes all <code>nil</code> values from <code>self</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#delete(key,&)-instance-method" class="signature"><strong>#delete</strong>(key, &)</a>
+        <a href="#delete%28key%2C%26%29-instance-method" class="signature"><strong>#delete</strong>(key, &)</a>
         
           <div class="summary"><p>Deletes the key-value pair and returns the value, else yields <em>key</em> with given block.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#delete(key)-instance-method" class="signature"><strong>#delete</strong>(key)</a>
+        <a href="#delete%28key%29-instance-method" class="signature"><strong>#delete</strong>(key)</a>
         
           <div class="summary"><p>Deletes the key-value pair and returns the value, otherwise returns <code>nil</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#delete_if(&):self-instance-method" class="signature"><strong>#delete_if</strong>(&) : <span class="k">self</span></a>
+        <a href="#delete_if%28%26%29%3Aself-instance-method" class="signature"><strong>#delete_if</strong>(&) : <span class="k">self</span></a>
         
-          <div class="summary"><p><span class="flag red">DEPRECATED</span>  This is just <code><a href="SplayTreeMap.html#reject!(&block:K,V-%3E_)-instance-method">#reject!</a></code> by another name.</p></div>
+          <div class="summary"><p><span class="flag red">DEPRECATED</span>  This is just <code><a href="SplayTreeMap.html#reject%21%28%26block%3AK%2CV-%3E_%29-instance-method">#reject!</a></code> by another name.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#dig(key:K,*subkeys)-instance-method" class="signature"><strong>#dig</strong>(key : K, *subkeys)</a>
+        <a href="#dig%28key%3AK%2C%2Asubkeys%29-instance-method" class="signature"><strong>#dig</strong>(key : K, *subkeys)</a>
         
           <div class="summary"><p>Traverses the depth of a structure and returns the value, otherwise raises <code>KeyError</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#dig?(key:K,*subkeys)-instance-method" class="signature"><strong>#dig?</strong>(key : K, *subkeys)</a>
+        <a href="#dig%3F%28key%3AK%2C%2Asubkeys%29-instance-method" class="signature"><strong>#dig?</strong>(key : K, *subkeys)</a>
         
           <div class="summary"><p>Traverses the depth of a structure and returns the value.</p></div>
         
@@ -311,21 +311,21 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#each(&:Tuple(K,V)-%3E):Nil-instance-method" class="signature"><strong>#each</strong>(& : Tuple(K, V) -> ) : Nil</a>
+        <a href="#each%28%26%3ATuple%28K%2CV%29-%3E%29%3ANil-instance-method" class="signature"><strong>#each</strong>(& : Tuple(K, V) -> ) : Nil</a>
         
           <div class="summary"><p>Calls the given block for each key/value pair, passing the pair into the block.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#each:EntryIterator(K,V)-instance-method" class="signature"><strong>#each</strong> : EntryIterator(K, V)</a>
+        <a href="#each%3AEntryIterator%28K%2CV%29-instance-method" class="signature"><strong>#each</strong> : EntryIterator(K, V)</a>
         
           <div class="summary"><p>Returns an iterator which can be used to access all of the elements in the tree.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#each_key(&)-instance-method" class="signature"><strong>#each_key</strong>(&)</a>
+        <a href="#each_key%28%26%29-instance-method" class="signature"><strong>#each_key</strong>(&)</a>
         
           <div class="summary"><p>Calls the given block for each key-value pair and passes in the key.</p></div>
         
@@ -339,7 +339,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#each_value(&)-instance-method" class="signature"><strong>#each_value</strong>(&)</a>
+        <a href="#each_value%28%26%29-instance-method" class="signature"><strong>#each_value</strong>(&)</a>
         
           <div class="summary"><p>Calls the given block for each key-value pair and passes in the value.</p></div>
         
@@ -353,42 +353,42 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#empty?-instance-method" class="signature"><strong>#empty?</strong></a>
+        <a href="#empty%3F-instance-method" class="signature"><strong>#empty?</strong></a>
         
           <div class="summary"><p>Returns true of the tree contains no key/value pairs.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#fetch(key,&)-instance-method" class="signature"><strong>#fetch</strong>(key, &)</a>
+        <a href="#fetch%28key%2C%26%29-instance-method" class="signature"><strong>#fetch</strong>(key, &)</a>
         
           <div class="summary"><p>Returns the value for the key given by <em>key</em>, or when not found calls the given block with the key.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#fetch(key,default)-instance-method" class="signature"><strong>#fetch</strong>(key, default)</a>
+        <a href="#fetch%28key%2Cdefault%29-instance-method" class="signature"><strong>#fetch</strong>(key, default)</a>
         
           <div class="summary"><p>Returns the value for the key given by <em>key</em>, or when not found the value given by <em>default</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#has_key?(key):Bool-instance-method" class="signature"><strong>#has_key?</strong>(key) : Bool</a>
+        <a href="#has_key%3F%28key%29%3ABool-instance-method" class="signature"><strong>#has_key?</strong>(key) : Bool</a>
         
           <div class="summary"><p>Return a boolean value indicating whether the given key can be found in the tree.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#has_value?(value):Bool-instance-method" class="signature"><strong>#has_value?</strong>(value) : Bool</a>
+        <a href="#has_value%3F%28value%29%3ABool-instance-method" class="signature"><strong>#has_value?</strong>(value) : Bool</a>
         
           <div class="summary"><p>Return a boolean value indicating whether the given value can be found in the tree.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#height(key):Int32?-instance-method" class="signature"><strong>#height</strong>(key) : Int32?</a>
+        <a href="#height%28key%29%3AInt32%3F-instance-method" class="signature"><strong>#height</strong>(key) : Int32?</a>
         
           <div class="summary"><p>Return the height at which a given key can be found.</p></div>
         
@@ -402,28 +402,28 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#key_for(value,&)-instance-method" class="signature"><strong>#key_for</strong>(value, &)</a>
+        <a href="#key_for%28value%2C%26%29-instance-method" class="signature"><strong>#key_for</strong>(value, &)</a>
         
           <div class="summary"><p>Returns a key with the given <em>value</em>, else yields <em>value</em> with the given block.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#key_for(value)-instance-method" class="signature"><strong>#key_for</strong>(value)</a>
+        <a href="#key_for%28value%29-instance-method" class="signature"><strong>#key_for</strong>(value)</a>
         
           <div class="summary"><p>Returns a key with the given <em>value</em>, else raises <code>KeyError</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#key_for?(value)-instance-method" class="signature"><strong>#key_for?</strong>(value)</a>
+        <a href="#key_for%3F%28value%29-instance-method" class="signature"><strong>#key_for?</strong>(value)</a>
         
           <div class="summary"><p>Returns a key with the given <em>value</em>, else <code>nil</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#keys:Array(K)-instance-method" class="signature"><strong>#keys</strong> : Array(K)</a>
+        <a href="#keys%3AArray%28K%29-instance-method" class="signature"><strong>#keys</strong> : Array(K)</a>
         
           <div class="summary"><p>Returns an array of all keys in the tree.</p></div>
         
@@ -444,56 +444,70 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#merge(other:Enumerable(Tuple(L,W)))forallL,W-instance-method" class="signature"><strong>#merge</strong>(other : Enumerable(Tuple(L, W))) forall L, W</a>
+        <a href="#maxsize-instance-method" class="signature"><strong>#maxsize</strong></a>
+        
+          <div class="summary"><p>Get the maximum size of the tree.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#maxsize%3D%28value%29-instance-method" class="signature"><strong>#maxsize=</strong>(value)</a>
+        
+          <div class="summary"><p>Set the maximum size of the tree.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#merge%28other%3AEnumerable%28Tuple%28L%2CW%29%29%29forallL%2CW-instance-method" class="signature"><strong>#merge</strong>(other : Enumerable(Tuple(L, W))) forall L, W</a>
         
           <div class="summary"><p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with the keys and values of this tree and <em>other</em> combined.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#merge(other:Enumerable(Tuple(L,W)),&block:K,V,W-%3EV%7CW)forallL,W-instance-method" class="signature"><strong>#merge</strong>(other : Enumerable(Tuple(L, W)), &block : K, V, W -> V | W) forall L, W</a>
+        <a href="#merge%28other%3AEnumerable%28Tuple%28L%2CW%29%29%2C%26block%3AK%2CV%2CW-%3EV%7CW%29forallL%2CW-instance-method" class="signature"><strong>#merge</strong>(other : Enumerable(Tuple(L, W)), &block : K, V, W -> V | W) forall L, W</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#merge(other:Enumerable(A(Tuple(L,W))))forallA,L,W-instance-method" class="signature"><strong>#merge</strong>(other : Enumerable(A(Tuple(L, W)))) forall A, L, W</a>
+        <a href="#merge%28other%3AEnumerable%28A%28Tuple%28L%2CW%29%29%29%29forallA%2CL%2CW-instance-method" class="signature"><strong>#merge</strong>(other : Enumerable(A(Tuple(L, W)))) forall A, L, W</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#merge(other:Enumerable(L))forallL-instance-method" class="signature"><strong>#merge</strong>(other : Enumerable(L)) forall L</a>
+        <a href="#merge%28other%3AEnumerable%28L%29%29forallL-instance-method" class="signature"><strong>#merge</strong>(other : Enumerable(L)) forall L</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#merge(other:Enumerable(Tuple(L)),&block:K,V,W-%3EV%7CW)forallL-instance-method" class="signature"><strong>#merge</strong>(other : Enumerable(Tuple(L)), &block : K, V, W -> V | W) forall L</a>
+        <a href="#merge%28other%3AEnumerable%28Tuple%28L%29%29%2C%26block%3AK%2CV%2CW-%3EV%7CW%29forallL-instance-method" class="signature"><strong>#merge</strong>(other : Enumerable(Tuple(L)), &block : K, V, W -> V | W) forall L</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#merge(other:Enumerable(A(Tuple(L,W))),&block:K,V,W-%3EV%7CW)forallA,L,W-instance-method" class="signature"><strong>#merge</strong>(other : Enumerable(A(Tuple(L, W))), &block : K, V, W -> V | W) forall A, L, W</a>
+        <a href="#merge%28other%3AEnumerable%28A%28Tuple%28L%2CW%29%29%29%2C%26block%3AK%2CV%2CW-%3EV%7CW%29forallA%2CL%2CW-instance-method" class="signature"><strong>#merge</strong>(other : Enumerable(A(Tuple(L, W))), &block : K, V, W -> V | W) forall A, L, W</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#merge!(other:T)forallT-instance-method" class="signature"><strong>#merge!</strong>(other : T) forall T</a>
+        <a href="#merge%21%28other%3AT%29forallT-instance-method" class="signature"><strong>#merge!</strong>(other : T) forall T</a>
         
           <div class="summary"><p>Adds the contents of <em>other</em> to this <code><a href="SplayTreeMap.html">SplayTreeMap</a></code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#merge!(other:Enumerable(Tuple(L,W)),&)forallL,W-instance-method" class="signature"><strong>#merge!</strong>(other : Enumerable(Tuple(L, W)), &) forall L, W</a>
+        <a href="#merge%21%28other%3AEnumerable%28Tuple%28L%2CW%29%29%2C%26%29forallL%2CW-instance-method" class="signature"><strong>#merge!</strong>(other : Enumerable(Tuple(L, W)), &) forall L, W</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#merge!(other:Enumerable(Tuple),&)-instance-method" class="signature"><strong>#merge!</strong>(other : Enumerable(Tuple), &)</a>
+        <a href="#merge%21%28other%3AEnumerable%28Tuple%29%2C%26%29-instance-method" class="signature"><strong>#merge!</strong>(other : Enumerable(Tuple), &)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#merge!(other:Enumerable(L),&)forallL-instance-method" class="signature"><strong>#merge!</strong>(other : Enumerable(L), &) forall L</a>
+        <a href="#merge%21%28other%3AEnumerable%28L%29%2C%26%29forallL-instance-method" class="signature"><strong>#merge!</strong>(other : Enumerable(L), &) forall L</a>
         
       </li>
     
@@ -505,7 +519,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#obtain(key:K):V-instance-method" class="signature"><strong>#obtain</strong>(key : K) : V</a>
+        <a href="#obtain%28key%3AK%29%3AV-instance-method" class="signature"><strong>#obtain</strong>(key : K) : V</a>
         
           <div class="summary"><p>Obtain a key without splaying.</p></div>
         
@@ -519,49 +533,49 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#put(key:K,value:V,&)-instance-method" class="signature"><strong>#put</strong>(key : K, value : V, &)</a>
+        <a href="#put%28key%3AK%2Cvalue%3AV%2C%26%29-instance-method" class="signature"><strong>#put</strong>(key : K, value : V, &)</a>
         
           <div class="summary"><p>Sets the value of <em>key</em> to the given <em>value</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#reject(&block:K,V-%3E_)-instance-method" class="signature"><strong>#reject</strong>(&block : K, V -> _)</a>
+        <a href="#reject%28%26block%3AK%2CV-%3E_%29-instance-method" class="signature"><strong>#reject</strong>(&block : K, V -> _)</a>
         
           <div class="summary"><p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> consisting of entries for which the block returns <code>false</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#reject(keys:Array%7CTuple)-instance-method" class="signature"><strong>#reject</strong>(keys : Array | Tuple)</a>
+        <a href="#reject%28keys%3AArray%7CTuple%29-instance-method" class="signature"><strong>#reject</strong>(keys : Array | Tuple)</a>
         
           <div class="summary"><p>Removes a list of keys out of the tree, returning a new tree.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#reject(*keys)-instance-method" class="signature"><strong>#reject</strong>(*keys)</a>
+        <a href="#reject%28%2Akeys%29-instance-method" class="signature"><strong>#reject</strong>(*keys)</a>
         
           <div class="summary"><p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with the given keys removed.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#reject!(&block:K,V-%3E_)-instance-method" class="signature"><strong>#reject!</strong>(&block : K, V -> _)</a>
+        <a href="#reject%21%28%26block%3AK%2CV-%3E_%29-instance-method" class="signature"><strong>#reject!</strong>(&block : K, V -> _)</a>
         
-          <div class="summary"><p>Equivalent to <code><a href="SplayTreeMap.html#reject(&block:K,V-%3E_)-instance-method">SplayTreeMap#reject</a></code>, but modifies the current object rather than returning a new one.</p></div>
+          <div class="summary"><p>Equivalent to <code><a href="SplayTreeMap.html#reject%28%26block%3AK%2CV-%3E_%29-instance-method">SplayTreeMap#reject</a></code>, but modifies the current object rather than returning a new one.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#reject!(keys:Array%7CTuple)-instance-method" class="signature"><strong>#reject!</strong>(keys : Array | Tuple)</a>
+        <a href="#reject%21%28keys%3AArray%7CTuple%29-instance-method" class="signature"><strong>#reject!</strong>(keys : Array | Tuple)</a>
         
           <div class="summary"><p>Removes a list of keys out of the tree.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#reject!(*keys)-instance-method" class="signature"><strong>#reject!</strong>(*keys)</a>
+        <a href="#reject%21%28%2Akeys%29-instance-method" class="signature"><strong>#reject!</strong>(*keys)</a>
         
           <div class="summary"><p>Removes the given keys from the tree.</p></div>
         
@@ -573,42 +587,42 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#select(&block:K,V-%3E_)-instance-method" class="signature"><strong>#select</strong>(&block : K, V -> _)</a>
+        <a href="#select%28%26block%3AK%2CV-%3E_%29-instance-method" class="signature"><strong>#select</strong>(&block : K, V -> _)</a>
         
           <div class="summary"><p>Returns a new hash consisting of entries for which the block returns <code>true</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#select(keys:Array%7CTuple)-instance-method" class="signature"><strong>#select</strong>(keys : Array | Tuple)</a>
+        <a href="#select%28keys%3AArray%7CTuple%29-instance-method" class="signature"><strong>#select</strong>(keys : Array | Tuple)</a>
         
           <div class="summary"><p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with the given keys.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#select(*keys)-instance-method" class="signature"><strong>#select</strong>(*keys)</a>
+        <a href="#select%28%2Akeys%29-instance-method" class="signature"><strong>#select</strong>(*keys)</a>
         
           <div class="summary"><p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with the given keys.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#select!(&block:K,V-%3E_)-instance-method" class="signature"><strong>#select!</strong>(&block : K, V -> _)</a>
+        <a href="#select%21%28%26block%3AK%2CV-%3E_%29-instance-method" class="signature"><strong>#select!</strong>(&block : K, V -> _)</a>
         
           <div class="summary"><p>Equivalent to <code>Hash#select</code> but makes modification on the current object rather that returning a new one.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#select!(keys:Array%7CTuple)-instance-method" class="signature"><strong>#select!</strong>(keys : Array | Tuple)</a>
+        <a href="#select%21%28keys%3AArray%7CTuple%29-instance-method" class="signature"><strong>#select!</strong>(keys : Array | Tuple)</a>
         
           <div class="summary"><p>Removes every element except the given ones.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#select!(*keys)-instance-method" class="signature"><strong>#select!</strong>(*keys)</a>
+        <a href="#select%21%28%2Akeys%29-instance-method" class="signature"><strong>#select!</strong>(*keys)</a>
         
           <div class="summary"><p>Removes every element except the given ones.</p></div>
         
@@ -636,56 +650,56 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#to_s(io:IO):Nil-instance-method" class="signature"><strong>#to_s</strong>(io : IO) : Nil</a>
+        <a href="#to_s%28io%3AIO%29%3ANil-instance-method" class="signature"><strong>#to_s</strong>(io : IO) : Nil</a>
         
           <div class="summary"><p>Transform the <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> into a <code>String</code> representation.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#transform(&block:Tuple(K,V)-%3ETuple(K2,V2))forallK2,V2-instance-method" class="signature"><strong>#transform</strong>(&block : Tuple(K, V) -> Tuple(K2, V2)) forall K2, V2</a>
+        <a href="#transform%28%26block%3ATuple%28K%2CV%29-%3ETuple%28K2%2CV2%29%29forallK2%2CV2-instance-method" class="signature"><strong>#transform</strong>(&block : Tuple(K, V) -> Tuple(K2, V2)) forall K2, V2</a>
         
           <div class="summary"><p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with all of the key/value pairs converted using the provided block.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#transform_keys(&block:K-%3EK2)forallK2-instance-method" class="signature"><strong>#transform_keys</strong>(&block : K -> K2) forall K2</a>
+        <a href="#transform_keys%28%26block%3AK-%3EK2%29forallK2-instance-method" class="signature"><strong>#transform_keys</strong>(&block : K -> K2) forall K2</a>
         
           <div class="summary"><p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with all keys converted using the block operation.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#transform_values(&block:V-%3EV2)forallV2-instance-method" class="signature"><strong>#transform_values</strong>(&block : V -> V2) forall V2</a>
+        <a href="#transform_values%28%26block%3AV-%3EV2%29forallV2-instance-method" class="signature"><strong>#transform_values</strong>(&block : V -> V2) forall V2</a>
         
           <div class="summary"><p>Returns a new SplayTreeMap with all values converted using the block operation.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#transform_values!(&block:V-%3EV)-instance-method" class="signature"><strong>#transform_values!</strong>(&block : V -> V)</a>
+        <a href="#transform_values%21%28%26block%3AV-%3EV%29-instance-method" class="signature"><strong>#transform_values!</strong>(&block : V -> V)</a>
         
           <div class="summary"><p>Modifies the values of the current <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> according to the provided block.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#values:Array(V)-instance-method" class="signature"><strong>#values</strong> : Array(V)</a>
+        <a href="#values%3AArray%28V%29-instance-method" class="signature"><strong>#values</strong> : Array(V)</a>
         
           <div class="summary"><p>Returns an array containing all of the values in the tree.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#values_at(*indexes:K)-instance-method" class="signature"><strong>#values_at</strong>(*indexes : K)</a>
+        <a href="#values_at%28%2Aindexes%3AK%29-instance-method" class="signature"><strong>#values_at</strong>(*indexes : K)</a>
         
           <div class="summary"><p>Returns a tuple populated with the values associated with the given <em>keys</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#values_at?(*indexes:K)-instance-method" class="signature"><strong>#values_at?</strong>(*indexes : K)</a>
+        <a href="#values_at%3F%28%2Aindexes%3AK%29-instance-method" class="signature"><strong>#values_at?</strong>(*indexes : K)</a>
         
           <div class="summary"><p>Returns a tuple populated with the values associated with the given <em>keys</em>.</p></div>
         
@@ -766,14 +780,13 @@
         
         def self.<strong>new</strong>(seed : Enumerable(Tuple(K, V))? | Iterable(Tuple(K, V))? = <span class="n">nil</span>, block : <a href="SplayTreeMap.html">SplayTreeMap</a>(K, V), K -> V? = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new(seed:Enumerable(Tuple(K,V))?%7CIterable(Tuple(K,V))?=nil,block:SplayTreeMap(K,V),K-%3EV?=nil)-class-method">#</a>
+        <a class="method-permalink" href="#new%28seed%3AEnumerable%28Tuple%28K%2CV%29%29%3F%7CIterable%28Tuple%28K%2CV%29%29%3F%3Dnil%2Cblock%3ASplayTreeMap%28K%2CV%29%2CK-%3EV%3F%3Dnil%29-class-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Creates a new empty <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with a <em>block</em> that is called when a key is
 missing from the tree.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">String</span>, <span class="t">Array</span>(<span class="t">Int32</span>)).<span class="k">new</span> { <span class="o">|</span>t, k<span class="o">|</span> t[k] <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span> }
 stm[<span class="s">&quot;a&quot;</span>] <span class="o">&lt;&lt;</span> <span class="n">1</span>
 stm[<span class="s">&quot;a&quot;</span>] <span class="o">&lt;&lt;</span> <span class="n">2</span>
@@ -784,7 +797,7 @@ puts stm.inspect <span class="c"># =&gt; [1,2,3]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L80" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L87" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -794,14 +807,13 @@ puts stm.inspect <span class="c"># =&gt; [1,2,3]</span></code></pre>
         
         def self.<strong>new</strong>(seed : Enumerable(Tuple(K, V))? | Iterable(Tuple(K, V))? = <span class="n">nil</span>, &block : <a href="SplayTreeMap.html">SplayTreeMap</a>(K, V), K -> V)
 
-        <a class="method-permalink" href="#new(seed:Enumerable(Tuple(K,V))?%7CIterable(Tuple(K,V))?=nil,&block:SplayTreeMap(K,V),K-%3EV)-class-method">#</a>
+        <a class="method-permalink" href="#new%28seed%3AEnumerable%28Tuple%28K%2CV%29%29%3F%7CIterable%28Tuple%28K%2CV%29%29%3F%3Dnil%2C%26block%3ASplayTreeMap%28K%2CV%29%2CK-%3EV%29-class-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Creates a new empty <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with a <em>block</em> that is called when a key is
 missing from the tree.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">String</span>, <span class="t">Array</span>(<span class="t">Int32</span>)).<span class="k">new</span> { <span class="o">|</span>t, k<span class="o">|</span> t[k] <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span> }
 stm[<span class="s">&quot;a&quot;</span>] <span class="o">&lt;&lt;</span> <span class="n">1</span>
 stm[<span class="s">&quot;a&quot;</span>] <span class="o">&lt;&lt;</span> <span class="n">2</span>
@@ -812,7 +824,7 @@ puts stm.inspect <span class="c"># =&gt; [1,2,3]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L95" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L102" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -822,7 +834,7 @@ puts stm.inspect <span class="c"># =&gt; [1,2,3]</span></code></pre>
         
         def self.<strong>new</strong>(seed : Enumerable(Tuple(K, V))? | Iterable(Tuple(K, V))?, default_value : V)
 
-        <a class="method-permalink" href="#new(seed:Enumerable(Tuple(K,V))?%7CIterable(Tuple(K,V))?,default_value:V)-class-method">#</a>
+        <a class="method-permalink" href="#new%28seed%3AEnumerable%28Tuple%28K%2CV%29%29%3F%7CIterable%28Tuple%28K%2CV%29%29%3F%2Cdefault_value%3AV%29-class-method">#</a>
       </div>
       
         <div class="doc">
@@ -830,7 +842,6 @@ puts stm.inspect <span class="c"># =&gt; [1,2,3]</span></code></pre>
           <p>Creates a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code>, populating it with values from the <em>Enumerable</em>
 or the <em>Iterable</em> seed object, and with a default return value for any missing
 key.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;this&quot;</span> => <span class="s">&quot;that&quot;</span>, <span class="s">&quot;something&quot;</span> => <span class="s">&quot;else&quot;</span>}, <span class="s">&quot;Unknown&quot;</span>)
 stm[<span class="s">&quot;something&quot;</span>] <span class="c"># =&gt; &quot;else&quot;</span>
 stm[<span class="s">&quot;xyzzy&quot;</span>]     <span class="c"># =&gt; &quot;Unknown&quot;</span></code></pre>
@@ -839,7 +850,7 @@ stm[<span class="s">&quot;xyzzy&quot;</span>]     <span class="c"># =&gt; &quot;
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L118" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L125" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -849,13 +860,12 @@ stm[<span class="s">&quot;xyzzy&quot;</span>]     <span class="c"># =&gt; &quot;
         
         def self.<strong>new</strong>(default_value : V)
 
-        <a class="method-permalink" href="#new(default_value:V)-class-method">#</a>
+        <a class="method-permalink" href="#new%28default_value%3AV%29-class-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Creates a new empty <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with a default return value for any missing key.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>(<span class="s">&quot;Unknown&quot;</span>)
 stm[<span class="s">&quot;xyzzy&quot;</span>] <span class="c"># =&gt; &quot;Unknown&quot;</span></code></pre>
         </div>
@@ -863,7 +873,7 @@ stm[<span class="s">&quot;xyzzy&quot;</span>] <span class="c"># =&gt; &quot;Unkn
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L105" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L112" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -885,13 +895,12 @@ stm[<span class="s">&quot;xyzzy&quot;</span>] <span class="c"># =&gt; &quot;Unkn
         
         def self.<strong>zip</strong>(ary1 : Array(K), ary2 : Array(V))
 
-        <a class="method-permalink" href="#zip(ary1:Array(K),ary2:Array(V))-class-method">#</a>
+        <a class="method-permalink" href="#zip%28ary1%3AArray%28K%29%2Cary2%3AArray%28V%29%29-class-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Zips two arrays into a <code><a href="SplayTreeMap.html">SplayTreeMap</a></code>, taking keys from <em>ary1</em> and values from <em>ary2</em>.</p>
-
 <pre><code class="language-crystal"><span class="t">SplayTreeMap</span>.zip([<span class="s">&quot;key1&quot;</span>, <span class="s">&quot;key2&quot;</span>, <span class="s">&quot;key3&quot;</span>], [<span class="s">&quot;value1&quot;</span>, <span class="s">&quot;value2&quot;</span>, <span class="s">&quot;value3&quot;</span>])
 <span class="c"># =&gt; {&quot;key1&quot; =&gt; &quot;value1&quot;, &quot;key2&quot; =&gt; &quot;value2&quot;, &quot;key3&quot; =&gt; &quot;value3&quot;}</span></code></pre>
         </div>
@@ -899,7 +908,7 @@ stm[<span class="s">&quot;xyzzy&quot;</span>] <span class="c"># =&gt; &quot;Unkn
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L1197" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1233" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -921,7 +930,7 @@ stm[<span class="s">&quot;xyzzy&quot;</span>] <span class="c"># =&gt; &quot;Unkn
         
         def <strong><=></strong>(other : <a href="SplayTreeMap.html">SplayTreeMap</a>(L, W)) forall L, W
 
-        <a class="method-permalink" href="#%3C=%3E(other:SplayTreeMap(L,W))forallL,W-instance-method">#</a>
+        <a class="method-permalink" href="#%3C%3D%3E%28other%3ASplayTreeMap%28L%2CW%29%29forallL%2CW-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -933,7 +942,7 @@ or this method will trigger an exception.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L128" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L155" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -943,14 +952,13 @@ or this method will trigger an exception.</p>
         
         def <strong>[]</strong>(key : K)
 
-        <a class="method-permalink" href="#[](key:K)-instance-method">#</a>
+        <a class="method-permalink" href="#%5B%5D%28key%3AK%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Searches for the given <em>key</em> in the tree and returns the associated value.
 If the key is not in the tree, a KeyError will be raised.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>
 stm[<span class="s">&quot;foo&quot;</span>] <span class="o">=</span> <span class="s">&quot;bar&quot;</span>
 stm[<span class="s">&quot;foo&quot;</span>] <span class="c"># =&gt; &quot;bar&quot;</span>
@@ -968,7 +976,7 @@ stm[<span class="s">&quot;foo&quot;</span>] <span class="c"># raises KeyError</s
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L180" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L207" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -978,20 +986,19 @@ stm[<span class="s">&quot;foo&quot;</span>] <span class="c"># raises KeyError</s
         
         def <strong>[]=</strong>(key, value)
 
-        <a class="method-permalink" href="#[]=(key,value)-instance-method">#</a>
+        <a class="method-permalink" href="#%5B%5D%3D%28key%2Cvalue%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Create a key/value association.</p>
-
 <pre><code class="language-crystal">stm[<span class="s">&quot;this&quot;</span>] <span class="o">=</span> <span class="s">&quot;that&quot;</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L229" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L256" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1001,14 +1008,13 @@ stm[<span class="s">&quot;foo&quot;</span>] <span class="c"># raises KeyError</s
         
         def <strong>[]?</strong>(key : K)
 
-        <a class="method-permalink" href="#[]?(key:K)-instance-method">#</a>
+        <a class="method-permalink" href="#%5B%5D%3F%28key%3AK%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Returns the value for the key given by <em>key</em>.
 If not found, returns <code>nil</code>. This ignores the default value set by <code>Hash.new</code>.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>
 stm[<span class="s">&quot;foo&quot;</span>]? <span class="c"># =&gt; &quot;bar&quot;</span>
 stm[<span class="s">&quot;bar&quot;</span>]? <span class="c"># =&gt; nil</span>
@@ -1020,7 +1026,7 @@ stm[<span class="s">&quot;foo&quot;</span>]? <span class="c"># =&gt; nil</span><
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L195" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L222" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1041,7 +1047,7 @@ stm[<span class="s">&quot;foo&quot;</span>]? <span class="c"># =&gt; nil</span><
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L274" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L308" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1058,7 +1064,6 @@ stm[<span class="s">&quot;foo&quot;</span>]? <span class="c"># =&gt; nil</span><
           
           <p>Returns new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> that has all of the <code>nil</code> values and their
 associated keys removed.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;hello&quot;</span> => <span class="s">&quot;world&quot;</span>, <span class="s">&quot;foo&quot;</span> => <span class="n">nil</span>})
 stm.compact <span class="c"># =&gt; {&quot;hello&quot; =&gt; &quot;world&quot;}</span></code></pre>
         </div>
@@ -1066,7 +1071,7 @@ stm.compact <span class="c"># =&gt; {&quot;hello&quot; =&gt; &quot;world&quot;}<
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L289" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L323" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1076,13 +1081,12 @@ stm.compact <span class="c"># =&gt; {&quot;hello&quot; =&gt; &quot;world&quot;}<
         
         def <strong>compact!</strong>
 
-        <a class="method-permalink" href="#compact!-instance-method">#</a>
+        <a class="method-permalink" href="#compact%21-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Removes all <code>nil</code> values from <code>self</code>. Returns <code>nil</code> if no changes were made.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;hello&quot;</span> => <span class="s">&quot;world&quot;</span>, <span class="s">&quot;foo&quot;</span> => <span class="n">nil</span>})
 stm.compact! <span class="c"># =&gt; {&quot;hello&quot; =&gt; &quot;world&quot;}</span>
 stm.compact! <span class="c"># =&gt; nil</span></code></pre>
@@ -1091,7 +1095,7 @@ stm.compact! <span class="c"># =&gt; nil</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L304" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L338" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1101,13 +1105,12 @@ stm.compact! <span class="c"># =&gt; nil</span></code></pre>
         
         def <strong>delete</strong>(key, &)
 
-        <a class="method-permalink" href="#delete(key,&)-instance-method">#</a>
+        <a class="method-permalink" href="#delete%28key%2C%26%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Deletes the key-value pair and returns the value, else yields <em>key</em> with given block.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
 stm.delete(<span class="s">&quot;foo&quot;</span>) { <span class="o">|</span>key<span class="o">|</span> <span class="s">&quot;</span><span class="i">#{</span>key<span class="i">}</span><span class="s"> not found&quot;</span> } <span class="c"># =&gt; &quot;bar&quot;</span>
 stm.fetch(<span class="s">&quot;foo&quot;</span>, <span class="n">nil</span>)                          <span class="c"># =&gt; nil</span>
@@ -1117,7 +1120,7 @@ stm.delete(<span class="s">&quot;baz&quot;</span>) { <span class="o">|</span>key
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L316" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L350" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1127,13 +1130,12 @@ stm.delete(<span class="s">&quot;baz&quot;</span>) { <span class="o">|</span>key
         
         def <strong>delete</strong>(key)
 
-        <a class="method-permalink" href="#delete(key)-instance-method">#</a>
+        <a class="method-permalink" href="#delete%28key%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Deletes the key-value pair and returns the value, otherwise returns <code>nil</code>.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
 stm.delete(<span class="s">&quot;foo&quot;</span>)     <span class="c"># =&gt; &quot;bar&quot;</span>
 stm.fetch(<span class="s">&quot;foo&quot;</span>, <span class="n">nil</span>) <span class="c"># =&gt; nil</span></code></pre>
@@ -1142,7 +1144,7 @@ stm.fetch(<span class="s">&quot;foo&quot;</span>, <span class="n">nil</span>) <s
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L328" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L362" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1152,15 +1154,14 @@ stm.fetch(<span class="s">&quot;foo&quot;</span>, <span class="n">nil</span>) <s
         
         def <strong>delete_if</strong>(&) : <span class="k">self</span>
 
-        <a class="method-permalink" href="#delete_if(&):self-instance-method">#</a>
+        <a class="method-permalink" href="#delete_if%28%26%29%3Aself-instance-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p><span class="flag red">DEPRECATED</span>  This is just <code><a href="SplayTreeMap.html#reject!(&block:K,V-%3E_)-instance-method">#reject!</a></code> by another name. Use that instead.
+          <p><span class="flag red">DEPRECATED</span>  This is just <code><a href="SplayTreeMap.html#reject%21%28%26block%3AK%2CV-%3E_%29-instance-method">#reject!</a></code> by another name. Use that instead.
 Deletes each key-value pair for which the given block returns <code>true</code>.
 Returns the <code><a href="SplayTreeMap.html">SplayTreeMap</a></code>.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;fob&quot;</span> => <span class="s">&quot;baz&quot;</span>, <span class="s">&quot;bar&quot;</span> => <span class="s">&quot;qux&quot;</span>})
 stm.delete_if { <span class="o">|</span>key, value<span class="o">|</span> key.starts_with?(<span class="s">&quot;fo&quot;</span>) }
 stm <span class="c"># =&gt; { &quot;bar&quot; =&gt; &quot;qux&quot; }</span></code></pre>
@@ -1169,7 +1170,7 @@ stm <span class="c"># =&gt; { &quot;bar&quot; =&gt; &quot;qux&quot; }</span></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L365" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L399" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1179,14 +1180,13 @@ stm <span class="c"># =&gt; { &quot;bar&quot; =&gt; &quot;qux&quot; }</span></co
         
         def <strong>dig</strong>(key : K, *subkeys)
 
-        <a class="method-permalink" href="#dig(key:K,*subkeys)-instance-method">#</a>
+        <a class="method-permalink" href="#dig%28key%3AK%2C%2Asubkeys%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Traverses the depth of a structure and returns the value, otherwise
 raises <code>KeyError</code>.</p>
-
 <pre><code class="language-crystal">h <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => {<span class="s">&quot;b&quot;</span> => [<span class="n">10</span>, <span class="n">20</span>, <span class="n">30</span>]}}
 stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>(h)
 stm.dig <span class="s">&quot;a&quot;</span>, <span class="s">&quot;b&quot;</span> <span class="c"># =&gt; [10, 20, 30]</span>
@@ -1196,7 +1196,7 @@ stm.dig <span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</spa
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L379" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L413" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1206,14 +1206,13 @@ stm.dig <span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</spa
         
         def <strong>dig?</strong>(key : K, *subkeys)
 
-        <a class="method-permalink" href="#dig?(key:K,*subkeys)-instance-method">#</a>
+        <a class="method-permalink" href="#dig%3F%28key%3AK%2C%2Asubkeys%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Traverses the depth of a structure and returns the value.
 Returns <code>nil</code> if not found.</p>
-
 <pre><code class="language-crystal">h <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => {<span class="s">&quot;b&quot;</span> => [<span class="n">10</span>, <span class="n">20</span>, <span class="n">30</span>]}}
 stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>(h)
 stm.dig <span class="s">&quot;a&quot;</span>, <span class="s">&quot;b&quot;</span> <span class="c"># =&gt; [10, 20, 30]</span>
@@ -1223,7 +1222,7 @@ stm.dig <span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</spa
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L402" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L436" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1239,7 +1238,6 @@ stm.dig <span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</spa
         <div class="doc">
           
           <p>Duplicates a <code><a href="SplayTreeMap.html">SplayTreeMap</a></code>.</p>
-
 <pre><code class="language-crystal">stm_a <span class="o">=</span> {<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>}
 stm_b <span class="o">=</span> hash_a.dup
 stm_b.merge!({<span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>})
@@ -1249,7 +1247,7 @@ stm_a <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot;bar&quot;}</span></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L423" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L457" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1259,13 +1257,12 @@ stm_a <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot;bar&quot;}</span></co
         
         def <strong>each</strong>(& : Tuple(K, V) -> ) : Nil
 
-        <a class="method-permalink" href="#each(&:Tuple(K,V)-%3E):Nil-instance-method">#</a>
+        <a class="method-permalink" href="#each%28%26%3ATuple%28K%2CV%29-%3E%29%3ANil-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Calls the given block for each key/value pair, passing the pair into the block.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
 
 stm.each <span class="k">do</span> <span class="o">|</span>key, value<span class="o">|</span>
@@ -1276,14 +1273,13 @@ stm.each <span class="k">do</span> <span class="o">|</span>key, value<span class
 stm.each <span class="k">do</span> <span class="o">|</span>key_and_value<span class="o">|</span>
   key_and_value <span class="c"># =&gt; {&quot;foo&quot;, &quot;bar&quot;}</span>
 <span class="k">end</span></code></pre>
-
 <p>The enumeration follows the order the keys were inserted.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L445" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L479" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1293,13 +1289,12 @@ stm.each <span class="k">do</span> <span class="o">|</span>key_and_value<span cl
         
         def <strong>each</strong> : EntryIterator(K, V)
 
-        <a class="method-permalink" href="#each:EntryIterator(K,V)-instance-method">#</a>
+        <a class="method-permalink" href="#each%3AEntryIterator%28K%2CV%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Returns an iterator which can be used to access all of the elements in the tree.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;fob&quot;</span> => <span class="s">&quot;baz&quot;</span>, <span class="s">&quot;qix&quot;</span> => <span class="s">&quot;qux&quot;</span>})
 
 set <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="t">Tuple</span>(<span class="t">String</span>, <span class="t">String</span>)
@@ -1314,7 +1309,7 @@ set  <span class="c"># =&gt; [{&quot;fob&quot; =&gt; &quot;baz&quot;}, {&quot;fo
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L467" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L501" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1324,25 +1319,23 @@ set  <span class="c"># =&gt; [{&quot;fob&quot; =&gt; &quot;baz&quot;}, {&quot;fo
         
         def <strong>each_key</strong>(&)
 
-        <a class="method-permalink" href="#each_key(&)-instance-method">#</a>
+        <a class="method-permalink" href="#each_key%28%26%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Calls the given block for each key-value pair and passes in the key.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
 stm.each_key <span class="k">do</span> <span class="o">|</span>key<span class="o">|</span>
   key <span class="c"># =&gt; &quot;foo&quot;</span>
 <span class="k">end</span></code></pre>
-
 <p>The enumeration is in tree order, from smallest to largest.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L481" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L515" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1358,7 +1351,6 @@ stm.each_key <span class="k">do</span> <span class="o">|</span>key<span class="o
         <div class="doc">
           
           <p>Returns an iterator over the SplayTreeMap keys.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>})
 iterator <span class="o">=</span> stm.each_key
 
@@ -1367,14 +1359,13 @@ key <span class="c"># =&gt; &quot;foo&quot;</span>
 
 key <span class="o">=</span> iterator.<span class="k">next</span>
 key <span class="c"># =&gt; &quot;baz&quot;</span></code></pre>
-
 <p>The enumeration is in tree order, from smallest to largest.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L501" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L535" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1384,25 +1375,23 @@ key <span class="c"># =&gt; &quot;baz&quot;</span></code></pre>
         
         def <strong>each_value</strong>(&)
 
-        <a class="method-permalink" href="#each_value(&)-instance-method">#</a>
+        <a class="method-permalink" href="#each_value%28%26%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Calls the given block for each key-value pair and passes in the value.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
 stm.each_value <span class="k">do</span> <span class="o">|</span>value<span class="o">|</span>
   value <span class="c"># =&gt; &quot;bar&quot;</span>
 <span class="k">end</span></code></pre>
-
 <p>The enumeration is in tree order, from smallest to largest.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L515" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L549" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1419,7 +1408,6 @@ stm.each_value <span class="k">do</span> <span class="o">|</span>value<span clas
           
           <p>Returns an iterator over the hash values.
 Which behaves like an <code>Iterator</code> consisting of the value's types.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>})
 iterator <span class="o">=</span> stm.each_value
 
@@ -1428,14 +1416,13 @@ value <span class="c"># =&gt; &quot;bar&quot;</span>
 
 value <span class="o">=</span> iterator.<span class="k">next</span>
 value <span class="c"># =&gt; &quot;qux&quot;</span></code></pre>
-
 <p>The enumeration is in tree order, from smallest to largest.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L536" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L570" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1445,13 +1432,12 @@ value <span class="c"># =&gt; &quot;qux&quot;</span></code></pre>
         
         def <strong>empty?</strong>
 
-        <a class="method-permalink" href="#empty?-instance-method">#</a>
+        <a class="method-permalink" href="#empty%3F-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Returns true of the tree contains no key/value pairs.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">Int32</span>, <span class="t">Int32</span>).<span class="k">new</span>
 stm.empty? <span class="c"># =&gt; true</span>
 stm[<span class="n">1</span>] <span class="o">=</span> <span class="n">1</span>
@@ -1461,7 +1447,7 @@ stm.empty? <span class="c"># =&gt; false</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L549" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L583" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1471,14 +1457,13 @@ stm.empty? <span class="c"># =&gt; false</span></code></pre>
         
         def <strong>fetch</strong>(key, &)
 
-        <a class="method-permalink" href="#fetch(key,&)-instance-method">#</a>
+        <a class="method-permalink" href="#fetch%28key%2C%26%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Returns the value for the key given by <em>key</em>, or when not found calls the given block with the key.
-This ignores the default value set by <code><a href="SplayTreeMap.html#new(seed:Enumerable(Tuple(K,V))?%7CIterable(Tuple(K,V))?=nil,block:SplayTreeMap(K,V),K-%3EV?=nil)-class-method">SplayTreeMap.new</a></code>.</p>
-
+This ignores the default value set by <code><a href="SplayTreeMap.html#new%28seed%3AEnumerable%28Tuple%28K%2CV%29%29%3F%7CIterable%28Tuple%28K%2CV%29%29%3F%3Dnil%2Cblock%3ASplayTreeMap%28K%2CV%29%2CK-%3EV%3F%3Dnil%29-class-method">SplayTreeMap.new</a></code>.</p>
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
 stm.fetch(<span class="s">&quot;foo&quot;</span>) { <span class="s">&quot;default value&quot;</span> }  <span class="c"># =&gt; &quot;bar&quot;</span>
 stm.fetch(<span class="s">&quot;bar&quot;</span>) { <span class="s">&quot;default value&quot;</span> }  <span class="c"># =&gt; &quot;default value&quot;</span>
@@ -1488,7 +1473,7 @@ stm.fetch(<span class="s">&quot;bar&quot;</span>) { <span class="o">|</span>key<
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L562" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L596" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1498,14 +1483,13 @@ stm.fetch(<span class="s">&quot;bar&quot;</span>) { <span class="o">|</span>key<
         
         def <strong>fetch</strong>(key, default)
 
-        <a class="method-permalink" href="#fetch(key,default)-instance-method">#</a>
+        <a class="method-permalink" href="#fetch%28key%2Cdefault%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Returns the value for the key given by <em>key</em>, or when not found the value given by <em>default</em>.
-This ignores the default value set by <code><a href="SplayTreeMap.html#new(seed:Enumerable(Tuple(K,V))?%7CIterable(Tuple(K,V))?=nil,block:SplayTreeMap(K,V),K-%3EV?=nil)-class-method">SplayTreeMap.new</a></code>.</p>
-
+This ignores the default value set by <code><a href="SplayTreeMap.html#new%28seed%3AEnumerable%28Tuple%28K%2CV%29%29%3F%7CIterable%28Tuple%28K%2CV%29%29%3F%3Dnil%2Cblock%3ASplayTreeMap%28K%2CV%29%2CK-%3EV%3F%3Dnil%29-class-method">SplayTreeMap.new</a></code>.</p>
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
 stm.fetch(<span class="s">&quot;foo&quot;</span>, <span class="s">&quot;foo&quot;</span>) <span class="c"># =&gt; &quot;bar&quot;</span>
 stm.fetch(<span class="s">&quot;bar&quot;</span>, <span class="s">&quot;foo&quot;</span>) <span class="c"># =&gt; &quot;foo&quot;</span></code></pre>
@@ -1514,7 +1498,7 @@ stm.fetch(<span class="s">&quot;bar&quot;</span>, <span class="s">&quot;foo&quot
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L575" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L609" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1524,13 +1508,12 @@ stm.fetch(<span class="s">&quot;bar&quot;</span>, <span class="s">&quot;foo&quot
         
         def <strong>has_key?</strong>(key) : Bool
 
-        <a class="method-permalink" href="#has_key?(key):Bool-instance-method">#</a>
+        <a class="method-permalink" href="#has_key%3F%28key%29%3ABool-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Return a boolean value indicating whether the given key can be found in the tree.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>})
 stm.has_key?(<span class="s">&quot;a&quot;</span>) <span class="c"># =&gt; true</span>
 stm.has_key?(<span class="s">&quot;c&quot;</span>) <span class="c"># =&gt; false</span></code></pre>
@@ -1539,7 +1522,7 @@ stm.has_key?(<span class="s">&quot;c&quot;</span>) <span class="c"># =&gt; false
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L617" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L651" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1549,7 +1532,7 @@ stm.has_key?(<span class="s">&quot;c&quot;</span>) <span class="c"># =&gt; false
         
         def <strong>has_value?</strong>(value) : Bool
 
-        <a class="method-permalink" href="#has_value?(value):Bool-instance-method">#</a>
+        <a class="method-permalink" href="#has_value%3F%28value%29%3ABool-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -1557,7 +1540,6 @@ stm.has_key?(<span class="s">&quot;c&quot;</span>) <span class="c"># =&gt; false
           <p>Return a boolean value indicating whether the given value can be found in the tree.
 This is potentially slow as it requires scanning the tree until a match is found or
 the end of the tree is reached.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>})
 stm.has_value?(<span class="s">&quot;2&quot;</span>) <span class="c"># =&gt; true</span>
 stm.has_value?(<span class="s">&quot;4&quot;</span>) <span class="c"># =&gt; false</span></code></pre>
@@ -1566,7 +1548,7 @@ stm.has_value?(<span class="s">&quot;4&quot;</span>) <span class="c"># =&gt; fal
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L630" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L664" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1576,7 +1558,7 @@ stm.has_value?(<span class="s">&quot;4&quot;</span>) <span class="c"># =&gt; fal
         
         def <strong>height</strong>(key) : Int32?
 
-        <a class="method-permalink" href="#height(key):Int32?-instance-method">#</a>
+        <a class="method-permalink" href="#height%28key%29%3AInt32%3F-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -1587,7 +1569,7 @@ stm.has_value?(<span class="s">&quot;4&quot;</span>) <span class="c"># =&gt; fal
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L643" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L677" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1608,7 +1590,7 @@ stm.has_value?(<span class="s">&quot;4&quot;</span>) <span class="c"># =&gt; fal
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L638" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L672" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1618,13 +1600,12 @@ stm.has_value?(<span class="s">&quot;4&quot;</span>) <span class="c"># =&gt; fal
         
         def <strong>key_for</strong>(value, &)
 
-        <a class="method-permalink" href="#key_for(value,&)-instance-method">#</a>
+        <a class="method-permalink" href="#key_for%28value%2C%26%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Returns a key with the given <em>value</em>, else yields <em>value</em> with the given block.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
 stm.key_for(<span class="s">&quot;bar&quot;</span>) { <span class="o">|</span>value<span class="o">|</span> value.upcase } <span class="c"># =&gt; &quot;foo&quot;</span>
 stm.key_for(<span class="s">&quot;qux&quot;</span>) { <span class="o">|</span>value<span class="o">|</span> value.upcase } <span class="c"># =&gt; &quot;QUX&quot;</span></code></pre>
@@ -1633,7 +1614,7 @@ stm.key_for(<span class="s">&quot;qux&quot;</span>) { <span class="o">|</span>va
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L682" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L716" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1643,13 +1624,12 @@ stm.key_for(<span class="s">&quot;qux&quot;</span>) { <span class="o">|</span>va
         
         def <strong>key_for</strong>(value)
 
-        <a class="method-permalink" href="#key_for(value)-instance-method">#</a>
+        <a class="method-permalink" href="#key_for%28value%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Returns a key with the given <em>value</em>, else raises <code>KeyError</code>.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>})
 stm.key_for(<span class="s">&quot;bar&quot;</span>)    <span class="c"># =&gt; &quot;foo&quot;</span>
 stm.key_for(<span class="s">&quot;qux&quot;</span>)    <span class="c"># =&gt; &quot;baz&quot;</span>
@@ -1659,7 +1639,7 @@ stm.key_for(<span class="s">&quot;foobar&quot;</span>) <span class="c"># raises 
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L697" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L731" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1669,13 +1649,12 @@ stm.key_for(<span class="s">&quot;foobar&quot;</span>) <span class="c"># raises 
         
         def <strong>key_for?</strong>(value)
 
-        <a class="method-permalink" href="#key_for?(value)-instance-method">#</a>
+        <a class="method-permalink" href="#key_for%3F%28value%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Returns a key with the given <em>value</em>, else <code>nil</code>.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>})
 stm.key_for?(<span class="s">&quot;bar&quot;</span>)    <span class="c"># =&gt; &quot;foo&quot;</span>
 stm.key_for?(<span class="s">&quot;qux&quot;</span>)    <span class="c"># =&gt; &quot;baz&quot;</span>
@@ -1685,7 +1664,7 @@ stm.key_for?(<span class="s">&quot;foobar&quot;</span>) <span class="c"># =&gt; 
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L709" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L743" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1695,13 +1674,12 @@ stm.key_for?(<span class="s">&quot;foobar&quot;</span>) <span class="c"># =&gt; 
         
         def <strong>keys</strong> : Array(K)
 
-        <a class="method-permalink" href="#keys:Array(K)-instance-method">#</a>
+        <a class="method-permalink" href="#keys%3AArray%28K%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Returns an array of all keys in the tree.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>})
 stm.keys.should eq [<span class="s">&quot;baz&quot;</span>, <span class="s">&quot;foo&quot;</span>]</code></pre>
         </div>
@@ -1709,7 +1687,7 @@ stm.keys.should eq [<span class="s">&quot;baz&quot;</span>, <span class="s">&quo
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L732" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L766" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1730,7 +1708,7 @@ stm.keys.should eq [<span class="s">&quot;baz&quot;</span>, <span class="s">&quo
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L714" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L748" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1751,7 +1729,51 @@ stm.keys.should eq [<span class="s">&quot;baz&quot;</span>, <span class="s">&quo
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L741" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L775" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="maxsize-instance-method">
+      <div class="signature">
+        
+        def <strong>maxsize</strong>
+
+        <a class="method-permalink" href="#maxsize-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Get the maximum size of the tree. If set to nil, the size in unbounded.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L134" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="maxsize=(value)-instance-method">
+      <div class="signature">
+        
+        def <strong>maxsize=</strong>(value)
+
+        <a class="method-permalink" href="#maxsize%3D%28value%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Set the maximum size of the tree. If set to nil, the size is unbounded.
+If the size is set to a value that is less than the current size, an immediate
+prune operation will be performed.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L141" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1761,7 +1783,7 @@ stm.keys.should eq [<span class="s">&quot;baz&quot;</span>, <span class="s">&quo
         
         def <strong>merge</strong>(other : Enumerable(Tuple(L, W))) forall L, W
 
-        <a class="method-permalink" href="#merge(other:Enumerable(Tuple(L,W)))forallL,W-instance-method">#</a>
+        <a class="method-permalink" href="#merge%28other%3AEnumerable%28Tuple%28L%2CW%29%29%29forallL%2CW-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -1769,7 +1791,6 @@ stm.keys.should eq [<span class="s">&quot;baz&quot;</span>, <span class="s">&quo
           <p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with the keys and values of this tree and <em>other</em> combined.
 A value in <em>other</em> takes precedence over the one in this tree. Key types <strong>must</strong> be
 comparable or this will cause a missing <code>no overload matches</code> exception on compilation.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
 stm.merge({<span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>}) <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot;bar&quot;, &quot;baz&quot; =&gt; &quot;qux&quot;}</span>
 stm                         <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot;bar&quot;}</span></code></pre>
@@ -1778,7 +1799,7 @@ stm                         <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L847" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L881" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1788,13 +1809,13 @@ stm                         <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot
         
         def <strong>merge</strong>(other : Enumerable(Tuple(L, W)), &block : K, V, W -> V | W) forall L, W
 
-        <a class="method-permalink" href="#merge(other:Enumerable(Tuple(L,W)),&block:K,V,W-%3EV%7CW)forallL,W-instance-method">#</a>
+        <a class="method-permalink" href="#merge%28other%3AEnumerable%28Tuple%28L%2CW%29%29%2C%26block%3AK%2CV%2CW-%3EV%7CW%29forallL%2CW-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L853" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L887" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1804,13 +1825,13 @@ stm                         <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot
         
         def <strong>merge</strong>(other : Enumerable(A(Tuple(L, W)))) forall A, L, W
 
-        <a class="method-permalink" href="#merge(other:Enumerable(A(Tuple(L,W))))forallA,L,W-instance-method">#</a>
+        <a class="method-permalink" href="#merge%28other%3AEnumerable%28A%28Tuple%28L%2CW%29%29%29%29forallA%2CL%2CW-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L871" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L905" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1820,13 +1841,13 @@ stm                         <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot
         
         def <strong>merge</strong>(other : Enumerable(L)) forall L
 
-        <a class="method-permalink" href="#merge(other:Enumerable(L))forallL-instance-method">#</a>
+        <a class="method-permalink" href="#merge%28other%3AEnumerable%28L%29%29forallL-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L859" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L893" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1836,13 +1857,13 @@ stm                         <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot
         
         def <strong>merge</strong>(other : Enumerable(Tuple(L)), &block : K, V, W -> V | W) forall L
 
-        <a class="method-permalink" href="#merge(other:Enumerable(Tuple(L)),&block:K,V,W-%3EV%7CW)forallL-instance-method">#</a>
+        <a class="method-permalink" href="#merge%28other%3AEnumerable%28Tuple%28L%29%29%2C%26block%3AK%2CV%2CW-%3EV%7CW%29forallL-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L865" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L899" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1852,13 +1873,13 @@ stm                         <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot
         
         def <strong>merge</strong>(other : Enumerable(A(Tuple(L, W))), &block : K, V, W -> V | W) forall A, L, W
 
-        <a class="method-permalink" href="#merge(other:Enumerable(A(Tuple(L,W))),&block:K,V,W-%3EV%7CW)forallA,L,W-instance-method">#</a>
+        <a class="method-permalink" href="#merge%28other%3AEnumerable%28A%28Tuple%28L%2CW%29%29%29%2C%26block%3AK%2CV%2CW-%3EV%7CW%29forallA%2CL%2CW-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L877" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L911" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1868,27 +1889,22 @@ stm                         <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot
         
         def <strong>merge!</strong>(other : <a href="SplayTreeMap.html">T</a>) forall T
 
-        <a class="method-permalink" href="#merge!(other:T)forallT-instance-method">#</a>
+        <a class="method-permalink" href="#merge%21%28other%3AT%29forallT-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Adds the contents of <em>other</em> to this <code><a href="SplayTreeMap.html">SplayTreeMap</a></code>.</p>
-
 <p>For Array-like structures, which return a single value to the block passed
-to <code><a href="SplayTreeMap.html#each(&:Tuple(K,V)-%3E):Nil-instance-method">#each</a></code>, that value will be used for both the key and the value.</p>
-
+to <code><a href="SplayTreeMap.html#each%28%26%3ATuple%28K%2CV%29-%3E%29%3ANil-instance-method">#each</a></code>, that value will be used for both the key and the value.</p>
 <p>For Array-like structures, where each array element is a two value Tuple,
 the first value of the Tuple will be the key, and the second will be the
 value.</p>
-
-<p>For Hash-like structures, which pass a key/value tuple into the <code><a href="SplayTreeMap.html#each(&:Tuple(K,V)-%3E):Nil-instance-method">#each</a></code>,
+<p>For Hash-like structures, which pass a key/value tuple into the <code><a href="SplayTreeMap.html#each%28%26%3ATuple%28K%2CV%29-%3E%29%3ANil-instance-method">#each</a></code>,
 the key and value will be used for the key and value in the tree entry.</p>
-
-<p>If a Tuple is passed into the <code><a href="SplayTreeMap.html#each(&:Tuple(K,V)-%3E):Nil-instance-method">#each</a></code> that has more or fewer than 2 elements,
+<p>If a Tuple is passed into the <code><a href="SplayTreeMap.html#each%28%26%3ATuple%28K%2CV%29-%3E%29%3ANil-instance-method">#each</a></code> that has more or fewer than 2 elements,
 the key for the tree entry will come from the first element in the Tuple, and
 the value will come from the last element in the Tuple.</p>
-
 <pre><code class="language-crystal">a <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>
 <span class="n">10</span>.times {<span class="o">|</span>x<span class="o">|</span> a <span class="o">&lt;&lt;</span> x}
 stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">Int32</span>, <span class="t">Int32</span>).<span class="k">new</span>({<span class="n">6</span> => <span class="n">0</span>, <span class="n">11</span> => <span class="n">0</span>}).merge!(a)
@@ -1909,7 +1925,7 @@ stm[<span class="n">7</span>] <span class="c"># =&gt; 343</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L785" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L819" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1919,13 +1935,13 @@ stm[<span class="n">7</span>] <span class="c"># =&gt; 343</span></code></pre>
         
         def <strong>merge!</strong>(other : Enumerable(Tuple(L, W)), &) forall L, W
 
-        <a class="method-permalink" href="#merge!(other:Enumerable(Tuple(L,W)),&)forallL,W-instance-method">#</a>
+        <a class="method-permalink" href="#merge%21%28other%3AEnumerable%28Tuple%28L%2CW%29%29%2C%26%29forallL%2CW-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L795" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L829" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1935,13 +1951,13 @@ stm[<span class="n">7</span>] <span class="c"># =&gt; 343</span></code></pre>
         
         def <strong>merge!</strong>(other : Enumerable(Tuple), &)
 
-        <a class="method-permalink" href="#merge!(other:Enumerable(Tuple),&)-instance-method">#</a>
+        <a class="method-permalink" href="#merge%21%28other%3AEnumerable%28Tuple%29%2C%26%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L819" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L853" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1951,13 +1967,13 @@ stm[<span class="n">7</span>] <span class="c"># =&gt; 343</span></code></pre>
         
         def <strong>merge!</strong>(other : Enumerable(L), &) forall L
 
-        <a class="method-permalink" href="#merge!(other:Enumerable(L),&)forallL-instance-method">#</a>
+        <a class="method-permalink" href="#merge%21%28other%3AEnumerable%28L%29%2C%26%29forallL-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L807" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L841" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1978,7 +1994,7 @@ stm[<span class="n">7</span>] <span class="c"># =&gt; 343</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L884" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L918" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1988,23 +2004,22 @@ stm[<span class="n">7</span>] <span class="c"># =&gt; 343</span></code></pre>
         
         def <strong>obtain</strong>(key : K) : V
 
-        <a class="method-permalink" href="#obtain(key:K):V-instance-method">#</a>
+        <a class="method-permalink" href="#obtain%28key%3AK%29%3AV-instance-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>Obtain a key without splaying. This is much faster than using <code><a href="SplayTreeMap.html#[](key:K)-instance-method">#[]</a></code> but the
+          <p>Obtain a key without splaying. This is much faster than using <code><a href="SplayTreeMap.html#%5B%5D%28key%3AK%29-instance-method">#[]</a></code> but the
 lack of a splay operation means that the accessed value will not move closer
 to the root of the tree, which bypasses the normal optimization behavior of
 Splay Trees.</p>
-
 <p>A KeyError will be raised if the key can not be found in the tree.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L585" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L619" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2024,14 +2039,13 @@ That is, every node that does not have any children. This will tend
 to remove the least used elements from the tree.
 This function is expensive, as implemented, as it must walk every
 node in the tree.</p>
-
 <p><span class="flag orange">TODO</span>  Come up with a more efficient way of getting this same effect.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L901" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L935" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2041,16 +2055,14 @@ node in the tree.</p>
         
         def <strong>put</strong>(key : K, value : V, &)
 
-        <a class="method-permalink" href="#put(key:K,value:V,&)-instance-method">#</a>
+        <a class="method-permalink" href="#put%28key%3AK%2Cvalue%3AV%2C%26%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Sets the value of <em>key</em> to the given <em>value</em>.</p>
-
 <p>If a value already exists for <code>key</code>, that (old) value is returned.
 Otherwise the given block is invoked with <em>key</em> and its value is returned.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">Int32</span>, <span class="t">String</span>).<span class="k">new</span>
 stm.put(<span class="n">1</span>, <span class="s">&quot;one&quot;</span>) { <span class="s">&quot;didn&#39;t exist&quot;</span> } <span class="c"># =&gt; &quot;didn&#39;t exist&quot;</span>
 stm.put(<span class="n">1</span>, <span class="s">&quot;uno&quot;</span>) { <span class="s">&quot;didn&#39;t exist&quot;</span> } <span class="c"># =&gt; &quot;one&quot;</span>
@@ -2060,7 +2072,7 @@ stm.put(<span class="n">2</span>, <span class="s">&quot;two&quot;</span>) { <spa
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L921" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L957" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2070,13 +2082,12 @@ stm.put(<span class="n">2</span>, <span class="s">&quot;two&quot;</span>) { <spa
         
         def <strong>reject</strong>(&block : K, V -> _)
 
-        <a class="method-permalink" href="#reject(&block:K,V-%3E_)-instance-method">#</a>
+        <a class="method-permalink" href="#reject%28%26block%3AK%2CV-%3E_%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> consisting of entries for which the block returns <code>false</code>.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">100</span>, <span class="s">&quot;b&quot;</span> => <span class="n">200</span>, <span class="s">&quot;c&quot;</span> => <span class="n">300</span>})
 stm.reject { <span class="o">|</span>k, v<span class="o">|</span> k <span class="o">&gt;</span> <span class="s">&quot;a&quot;</span> } <span class="c"># =&gt; {&quot;a&quot; =&gt; 100}</span>
 stm.reject { <span class="o">|</span>k, v<span class="o">|</span> v <span class="o">&lt;</span> <span class="n">200</span> } <span class="c"># =&gt; {&quot;b&quot; =&gt; 200, &quot;c&quot; =&gt; 300}</span></code></pre>
@@ -2085,7 +2096,7 @@ stm.reject { <span class="o">|</span>k, v<span class="o">|</span> v <span class=
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L932" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L968" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2095,13 +2106,12 @@ stm.reject { <span class="o">|</span>k, v<span class="o">|</span> v <span class=
         
         def <strong>reject</strong>(keys : Array | Tuple)
 
-        <a class="method-permalink" href="#reject(keys:Array%7CTuple)-instance-method">#</a>
+        <a class="method-permalink" href="#reject%28keys%3AArray%7CTuple%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Removes a list of keys out of the tree, returning a new tree.</p>
-
 <pre><code class="language-crystal">h <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.reject(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>)
 h <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span></code></pre>
         </div>
@@ -2109,7 +2119,7 @@ h <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span><
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L946" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L982" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2119,20 +2129,19 @@ h <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span><
         
         def <strong>reject</strong>(*keys)
 
-        <a class="method-permalink" href="#reject(*keys)-instance-method">#</a>
+        <a class="method-permalink" href="#reject%28%2Akeys%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with the given keys removed.</p>
-
 <pre><code class="language-crystal">{<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.reject(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>) <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L959" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L995" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2142,19 +2151,19 @@ h <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span><
         
         def <strong>reject!</strong>(&block : K, V -> _)
 
-        <a class="method-permalink" href="#reject!(&block:K,V-%3E_)-instance-method">#</a>
+        <a class="method-permalink" href="#reject%21%28%26block%3AK%2CV-%3E_%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>Equivalent to <code><a href="SplayTreeMap.html#reject(&block:K,V-%3E_)-instance-method">SplayTreeMap#reject</a></code>, but modifies the current object rather than
+          <p>Equivalent to <code><a href="SplayTreeMap.html#reject%28%26block%3AK%2CV-%3E_%29-instance-method">SplayTreeMap#reject</a></code>, but modifies the current object rather than
 returning a new one. Returns <code>nil</code> if no changes were made.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L965" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1001" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2164,13 +2173,12 @@ returning a new one. Returns <code>nil</code> if no changes were made.</p>
         
         def <strong>reject!</strong>(keys : Array | Tuple)
 
-        <a class="method-permalink" href="#reject!(keys:Array%7CTuple)-instance-method">#</a>
+        <a class="method-permalink" href="#reject%21%28keys%3AArray%7CTuple%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Removes a list of keys out of the tree.</p>
-
 <pre><code class="language-crystal">h <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.reject!(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>)
 h <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span></code></pre>
         </div>
@@ -2178,7 +2186,7 @@ h <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span><
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L985" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1021" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2188,20 +2196,19 @@ h <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span><
         
         def <strong>reject!</strong>(*keys)
 
-        <a class="method-permalink" href="#reject!(*keys)-instance-method">#</a>
+        <a class="method-permalink" href="#reject%21%28%2Akeys%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Removes the given keys from the tree.</p>
-
 <pre><code class="language-crystal">{<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.reject!(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>) <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L997" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1033" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2217,7 +2224,7 @@ h <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span><
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L124" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L131" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2227,13 +2234,12 @@ h <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span><
         
         def <strong>select</strong>(&block : K, V -> _)
 
-        <a class="method-permalink" href="#select(&block:K,V-%3E_)-instance-method">#</a>
+        <a class="method-permalink" href="#select%28%26block%3AK%2CV-%3E_%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Returns a new hash consisting of entries for which the block returns <code>true</code>.</p>
-
 <pre><code class="language-crystal">h <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => <span class="n">100</span>, <span class="s">&quot;b&quot;</span> => <span class="n">200</span>, <span class="s">&quot;c&quot;</span> => <span class="n">300</span>}
 h.<span class="k">select</span> { <span class="o">|</span>k, v<span class="o">|</span> k <span class="o">&gt;</span> <span class="s">&quot;a&quot;</span> } <span class="c"># =&gt; {&quot;b&quot; =&gt; 200, &quot;c&quot; =&gt; 300}</span>
 h.<span class="k">select</span> { <span class="o">|</span>k, v<span class="o">|</span> v <span class="o">&lt;</span> <span class="n">200</span> } <span class="c"># =&gt; {&quot;a&quot; =&gt; 100}</span></code></pre>
@@ -2242,7 +2248,7 @@ h.<span class="k">select</span> { <span class="o">|</span>k, v<span class="o">|<
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L1007" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1043" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2252,13 +2258,12 @@ h.<span class="k">select</span> { <span class="o">|</span>k, v<span class="o">|<
         
         def <strong>select</strong>(keys : Array | Tuple)
 
-        <a class="method-permalink" href="#select(keys:Array%7CTuple)-instance-method">#</a>
+        <a class="method-permalink" href="#select%28keys%3AArray%7CTuple%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with the given keys.</p>
-
 <pre><code class="language-crystal"><span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}).<span class="k">select</span>({<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>}) <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&gt; 3}</span>
 <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}).<span class="k">select</span>(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>)   <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&gt; 3}</span>
 <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}).<span class="k">select</span>([<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>]) <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&gt; 3}</span></code></pre>
@@ -2267,7 +2272,7 @@ h.<span class="k">select</span> { <span class="o">|</span>k, v<span class="o">|<
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L1018" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1054" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2277,13 +2282,12 @@ h.<span class="k">select</span> { <span class="o">|</span>k, v<span class="o">|<
         
         def <strong>select</strong>(*keys)
 
-        <a class="method-permalink" href="#select(*keys)-instance-method">#</a>
+        <a class="method-permalink" href="#select%28%2Akeys%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with the given keys.</p>
-
 <pre><code class="language-crystal"><span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}).<span class="k">select</span>({<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>}) <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&gt; 3}</span>
 <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}).<span class="k">select</span>(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>)   <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&gt; 3}</span>
 <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}).<span class="k">select</span>([<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>]) <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&gt; 3}</span></code></pre>
@@ -2292,7 +2296,7 @@ h.<span class="k">select</span> { <span class="o">|</span>k, v<span class="o">|<
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L1027" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1063" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2302,7 +2306,7 @@ h.<span class="k">select</span> { <span class="o">|</span>k, v<span class="o">|<
         
         def <strong>select!</strong>(&block : K, V -> _)
 
-        <a class="method-permalink" href="#select!(&block:K,V-%3E_)-instance-method">#</a>
+        <a class="method-permalink" href="#select%21%28%26block%3AK%2CV-%3E_%29-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -2313,7 +2317,7 @@ h.<span class="k">select</span> { <span class="o">|</span>k, v<span class="o">|<
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L1032" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1068" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2323,13 +2327,12 @@ h.<span class="k">select</span> { <span class="o">|</span>k, v<span class="o">|<
         
         def <strong>select!</strong>(keys : Array | Tuple)
 
-        <a class="method-permalink" href="#select!(keys:Array%7CTuple)-instance-method">#</a>
+        <a class="method-permalink" href="#select%21%28keys%3AArray%7CTuple%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Removes every element except the given ones.</p>
-
 <pre><code class="language-crystal">h1 <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.select!({<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>})
 h2 <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.select!(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>)
 h3 <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.select!([<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>])
@@ -2340,7 +2343,7 @@ h1             <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&g
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L1045" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1081" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2350,13 +2353,12 @@ h1             <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&g
         
         def <strong>select!</strong>(*keys)
 
-        <a class="method-permalink" href="#select!(*keys)-instance-method">#</a>
+        <a class="method-permalink" href="#select%21%28%2Akeys%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Removes every element except the given ones.</p>
-
 <pre><code class="language-crystal">h1 <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.select!({<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>})
 h2 <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.select!(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>)
 h3 <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.select!([<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>])
@@ -2367,7 +2369,7 @@ h1             <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&g
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L1051" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1087" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2388,7 +2390,7 @@ h1             <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&g
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L123" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L130" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2404,7 +2406,6 @@ h1             <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&g
         <div class="doc">
           
           <p>Transform the <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> into an <code>Array(Tuple(K, V))</code>.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>})
 ary <span class="o">=</span> stm.to_a <span class="c"># =&gt; [{&quot;baz&quot;, &quot;qux&quot;}, {&quot;foo&quot;, &quot;bar&quot;}]</span>
 stm2 <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>(ary)
@@ -2414,7 +2415,7 @@ stm <span class="o">==</span> stm2 <span class="c"># =&gt; true</span></code></p
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L1063" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1099" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2430,7 +2431,6 @@ stm <span class="o">==</span> stm2 <span class="c"># =&gt; true</span></code></p
         <div class="doc">
           
           <p>Transform a <code><a href="SplayTreeMap.html">SplayTreeMap</a>(K,V)</code> into a <code>Hash(K,V)</code>.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>})
 h <span class="o">=</span> stm.to_h <span class="c"># =&gt; {&quot;baz&quot; =&gt; &quot;qux&quot;, &quot;foo&quot; =&gt; &quot;bar&quot;}</span></code></pre>
         </div>
@@ -2438,7 +2438,7 @@ h <span class="o">=</span> stm.to_h <span class="c"># =&gt; {&quot;baz&quot; =&g
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L1075" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1111" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2448,7 +2448,7 @@ h <span class="o">=</span> stm.to_h <span class="c"># =&gt; {&quot;baz&quot; =&g
         
         def <strong>to_s</strong>(io : IO) : Nil
 
-        <a class="method-permalink" href="#to_s(io:IO):Nil-instance-method">#</a>
+        <a class="method-permalink" href="#to_s%28io%3AIO%29%3ANil-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -2459,7 +2459,7 @@ h <span class="o">=</span> stm.to_h <span class="c"># =&gt; {&quot;baz&quot; =&g
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L1082" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1118" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2469,14 +2469,13 @@ h <span class="o">=</span> stm.to_h <span class="c"># =&gt; {&quot;baz&quot; =&g
         
         def <strong>transform</strong>(&block : Tuple(K, V) -> Tuple(K2, V2)) forall K2, V2
 
-        <a class="method-permalink" href="#transform(&block:Tuple(K,V)-%3ETuple(K2,V2))forallK2,V2-instance-method">#</a>
+        <a class="method-permalink" href="#transform%28%26block%3ATuple%28K%2CV%29-%3ETuple%28K2%2CV2%29%29forallK2%2CV2-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with all of the key/value pairs converted using
 the provided block. The block can change the types of both keys and values.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>({<span class="n">1</span> => <span class="n">1</span>, <span class="n">2</span> => <span class="n">4</span>, <span class="n">3</span> => <span class="n">9</span>, <span class="n">4</span> => <span class="n">16</span>})
 stm <span class="o">=</span> stm.transform {<span class="o">|</span>k, v<span class="o">|</span> {k.to_s, v.to_s}}
 stm  <span class="c"># =&gt; {&quot;1&quot; =&gt; &quot;1&quot;, &quot;2&quot; =&gt; &quot;4&quot;, &quot;3&quot; =&gt; &quot;9&quot;, &quot;4&quot; =&gt; &quot;16&quot;}</span></code></pre>
@@ -2485,7 +2484,7 @@ stm  <span class="c"># =&gt; {&quot;1&quot; =&gt; &quot;1&quot;, &quot;2&quot; =
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L1107" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1143" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2495,14 +2494,13 @@ stm  <span class="c"># =&gt; {&quot;1&quot; =&gt; &quot;1&quot;, &quot;2&quot; =
         
         def <strong>transform_keys</strong>(&block : K -> K2) forall K2
 
-        <a class="method-permalink" href="#transform_keys(&block:K-%3EK2)forallK2-instance-method">#</a>
+        <a class="method-permalink" href="#transform_keys%28%26block%3AK-%3EK2%29forallK2-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with all keys converted using the block operation.
 The block can change a type of keys.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="n">:a</span> => <span class="n">1</span>, <span class="n">:b</span> => <span class="n">2</span>, <span class="n">:c</span> => <span class="n">3</span>})
 stm.transform_keys { <span class="o">|</span>key<span class="o">|</span> key.to_s } <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;b&quot; =&gt; 2, &quot;c&quot; =&gt; 3}</span></code></pre>
         </div>
@@ -2510,7 +2508,7 @@ stm.transform_keys { <span class="o">|</span>key<span class="o">|</span> key.to_
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L1121" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1157" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2520,14 +2518,13 @@ stm.transform_keys { <span class="o">|</span>key<span class="o">|</span> key.to_
         
         def <strong>transform_values</strong>(&block : V -> V2) forall V2
 
-        <a class="method-permalink" href="#transform_values(&block:V-%3EV2)forallV2-instance-method">#</a>
+        <a class="method-permalink" href="#transform_values%28%26block%3AV-%3EV2%29forallV2-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Returns a new SplayTreeMap with all values converted using the block operation.
 The block can change a type of values.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="n">:a</span> => <span class="n">1</span>, <span class="n">:b</span> => <span class="n">2</span>, <span class="n">:c</span> => <span class="n">3</span>})
 stm.transform_values { <span class="o">|</span>value<span class="o">|</span> value <span class="o">+</span> <span class="n">1</span> } <span class="c"># =&gt; {:a =&gt; 2, :b =&gt; 3, :c =&gt; 4}</span></code></pre>
         </div>
@@ -2535,7 +2532,7 @@ stm.transform_values { <span class="o">|</span>value<span class="o">|</span> val
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L1134" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1170" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2545,13 +2542,12 @@ stm.transform_values { <span class="o">|</span>value<span class="o">|</span> val
         
         def <strong>transform_values!</strong>(&block : V -> V)
 
-        <a class="method-permalink" href="#transform_values!(&block:V-%3EV)-instance-method">#</a>
+        <a class="method-permalink" href="#transform_values%21%28%26block%3AV-%3EV%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Modifies the values of the current <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> according to the provided block.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="n">:a</span> => <span class="n">1</span>, <span class="n">:b</span> => <span class="n">2</span>, <span class="n">:c</span> => <span class="n">3</span>})
 stm.transform_values! { <span class="o">|</span>value<span class="o">|</span> value <span class="o">+</span> <span class="n">1</span> } <span class="c"># =&gt; {:a =&gt; 2, :b =&gt; 3, :c =&gt; 4}</span></code></pre>
         </div>
@@ -2559,7 +2555,7 @@ stm.transform_values! { <span class="o">|</span>value<span class="o">|</span> va
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L1146" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1182" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2569,14 +2565,13 @@ stm.transform_values! { <span class="o">|</span>value<span class="o">|</span> va
         
         def <strong>values</strong> : Array(V)
 
-        <a class="method-permalink" href="#values:Array(V)-instance-method">#</a>
+        <a class="method-permalink" href="#values%3AArray%28V%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Returns an array containing all of the values in the tree. The array is in
 the order of the associated keys.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>})
 stm.values <span class="c"># =&gt; [1, 2, 3, 4]</span></code></pre>
         </div>
@@ -2584,7 +2579,7 @@ stm.values <span class="c"># =&gt; [1, 2, 3, 4]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L1161" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1197" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2594,14 +2589,13 @@ stm.values <span class="c"># =&gt; [1, 2, 3, 4]</span></code></pre>
         
         def <strong>values_at</strong>(*indexes : K)
 
-        <a class="method-permalink" href="#values_at(*indexes:K)-instance-method">#</a>
+        <a class="method-permalink" href="#values_at%28%2Aindexes%3AK%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Returns a tuple populated with the values associated with the given <em>keys</em>.
 Raises a KeyError if any key is invalid.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>})
 stm.values_at(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>)      <span class="c"># =&gt; {1, 3}</span>
 stm.values_at(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;d&quot;</span>, <span class="s">&quot;e&quot;</span>) <span class="c"># =&gt; KeyError</span></code></pre>
@@ -2610,7 +2604,7 @@ stm.values_at(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;d&quot
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L1175" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1211" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2620,14 +2614,13 @@ stm.values_at(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;d&quot
         
         def <strong>values_at?</strong>(*indexes : K)
 
-        <a class="method-permalink" href="#values_at?(*indexes:K)-instance-method">#</a>
+        <a class="method-permalink" href="#values_at%3F%28%2Aindexes%3AK%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Returns a tuple populated with the values associated with the given <em>keys</em>.
 Returns <code>nil</code> for any key that is invalid.</p>
-
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>})
 stm.values_at?(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>)      <span class="c"># =&gt; {1, 3}</span>
 stm.values_at?(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;d&quot;</span>, <span class="s">&quot;e&quot;</span>) <span class="c"># =&gt; {1, 4, nil}</span></code></pre>
@@ -2636,7 +2629,7 @@ stm.values_at?(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;d&quo
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/7ebcf2de14be3b2ed6217e9b1849a558cbbe6672/src/splay_tree_map.cr#L1187" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1223" target="_blank">View source</a>]
         
       </div>
     </div>
