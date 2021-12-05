@@ -130,12 +130,24 @@ class SplayTreeMap(K, V)
   getter size
   getter root
 
+  # Get the maximum size of the tree. If set to nil, the size in unbounded.
   def maxsize
     @maxsize
   end
 
+  # Set the maximum size of the tree. If set to nil, the size is unbounded.
+  # If the size is set to a value that is less than the current size, an immediate
+  # prune operation will be performed.
   def maxsize=(value)
     @maxsize = value.to_u64
+
+    if mxsz = maxsize
+      if @size > mxsz
+        @lock.synchronize do
+          prune
+        end
+      end
+    end
   end
 
   # Compares two SplayTreeMaps. All contained objects must also be comparable,
@@ -925,8 +937,10 @@ class SplayTreeMap(K, V)
 
     height_limit = height / 2
 
-    descend_from(@root.not_nil!, height_limit)
-    splay(@root.not_nil!.key)
+    @lock.synchronize do
+      descend_from(@root.not_nil!, height_limit)
+      splay(@root.not_nil!.key)
+    end
   end
 
   # Sets the value of *key* to the given *value*.

@@ -32,6 +32,12 @@ in a faster search operation, at the cost of not performing any efficiency impro
 structural changes to the tree. This should not be the primary search method that
 is used, but it can be useful at the right time.
 
+### Maximum Size
+
+If `#maxsize` is set to an integer alue, then the splay tree will perform a prune
+operation when the maximum size of the tree is reached. This is useful for implementing
+a cache.
+
 ## Installation
 
 1. Add the dependency to your `shard.yml`:
