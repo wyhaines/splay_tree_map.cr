@@ -1,3 +1,5 @@
+require "mutex"
+
 # A splay tree is a type of binary search tree that self organizes so that the
 # most frequently accessed items tend to be towards the root of the tree, where
 # they can be accessed more quickly.
@@ -33,14 +35,20 @@
 # puts stm["Gone West"] # => nil
 #
 # # Remove a key from the tree.
+#
 # stm.delete("junk")
 #
 # # Find a value very quickly (particularly if it is near the root of the tree).
+#
 # entry = stm.obtain("something") # This finds, but doesn't splay.
 #
 # # Remove the elements of the tree which are likely to be the least accessed elements.
+#
 # stm.prune # remove all leaves
 #
+# # SplayTreeMap is (mostly) threadsafe
+#
+# As of Crystal 1.0.0, a Hash is not thread safe, by default. A SplayTreeMap is.
 # ```
 #
 # This implementation was originally derived from the incomplete and broken implementation
@@ -55,6 +63,7 @@ class SplayTreeMap(K, V)
   private class Unk; end
 
   @maxsize : UInt64? = nil
+  @lock = Mutex.new(protection: Mutex::Protection::Reentrant)
   @root : Node(K, V)? = nil
   @size : Int32 = 0
   @header : Node(K, V) = Node(K, V).new(nil, nil)
@@ -131,7 +140,7 @@ class SplayTreeMap(K, V)
 
   # Compares two SplayTreeMaps. All contained objects must also be comparable,
   # or this method will trigger an exception.
-  def <=>(other : SplayTreeMap(L, W)) forall L,W
+  def <=>(other : SplayTreeMap(L, W)) forall L, W
     cmp = surface_cmp(other)
     return cmp unless cmp == 0
 
@@ -142,23 +151,27 @@ class SplayTreeMap(K, V)
     other_iter = other.each
 
     cmp = 0
-    loop do
-      me_entry = me_iter.next?
-      other_entry = other_iter.next?
-      if me_entry.nil? || other_entry.nil?
-        return 0
-      else
-        cmp = me_entry.as({K, V}) <=> other_entry.as({L, W})
-        return cmp unless cmp == 0
+    @lock.synchronize do
+      loop do
+        me_entry = me_iter.next?
+        other_entry = other_iter.next?
+        if me_entry.nil? || other_entry.nil?
+          return 0
+        else
+          cmp = me_entry.as({K, V}) <=> other_entry.as({L, W})
+          return cmp unless cmp == 0
+        end
       end
     end
   end
 
   private def surface_cmp(other)
-    return nil if !other.is_a?(SplayTreeMap) || typeof(self) != typeof(other)
+    @lock.synchronize do
+      return nil if !other.is_a?(SplayTreeMap) || typeof(self) != typeof(other)
 
-    return -1 if self.size < other.size
-    return 1 if self.size > other.size
+      return -1 if self.size < other.size
+      return 1 if self.size > other.size
+    end
     0
   end
 
@@ -213,11 +226,13 @@ class SplayTreeMap(K, V)
   end
 
   private def get_impl(key : K)
-    return Unk unless @root
+    @lock.synchronize do
+      return Unk unless @root
 
-    splay(key)
-    if root = @root
-      root.key == key ? root.value : Unk
+      splay(key)
+      if root = @root
+        root.key == key ? root.value : Unk
+      end
     end
   end
 
@@ -236,39 +251,41 @@ class SplayTreeMap(K, V)
     # TODO: This is surprisingly slow. I assume it is due to the overhead
     # of declaring nodes on the heap. Is there a way to make them work as
     # structs instead of classes?
-    unless @root
-      @root = Node(K, V).new(key.as(K), value.as(V))
-      @size = 1
-      return value
-    end
-
-    splay(key)
-
-    if root = @root
-      cmp = key <=> root.key
-      if cmp == 0
-        old_value = root.value
-        root.value = value
-        return old_value
+    @lock.synchronize do
+      unless @root
+        @root = Node(K, V).new(key.as(K), value.as(V))
+        @size = 1
+        return value
       end
-      node = Node(K, V).new(key, value)
-      if cmp == -1
-        node.left = root.left
-        node.right = root
-        root.left = nil
-      else
-        node.right = root.right
-        node.left = root
-        root.right = nil
+
+      splay(key)
+
+      if root = @root
+        cmp = key <=> root.key
+        if cmp == 0
+          old_value = root.value
+          root.value = value
+          return old_value
+        end
+        node = Node(K, V).new(key, value)
+        if cmp == -1
+          node.left = root.left
+          node.right = root
+          root.left = nil
+        else
+          node.right = root.right
+          node.left = root
+          root.right = nil
+        end
       end
-    end
 
-    @root = node
-    @size += 1
+      @root = node
+      @size += 1
 
-    if mxsz = maxsize
-      if @size > mxsz
-        prune
+      if mxsz = maxsize
+        if @size > mxsz
+          prune
+        end
       end
     end
 
@@ -277,9 +294,11 @@ class SplayTreeMap(K, V)
 
   # Resets the state of the `SplayTreeMap`, clearing all key/value associations.
   def clear
-    @root = nil
-    @size = 0
-    @header = Node(K, V).new(nil, nil)
+    @lock.synchronize do
+      @root = nil
+      @size = 0
+      @header = Node(K, V).new(nil, nil)
+    end
   end
 
   # Returns new `SplayTreeMap` that has all of the `nil` values and their
@@ -287,11 +306,13 @@ class SplayTreeMap(K, V)
   #
   # ```
   # stm = SplayTreeMap.new({"hello" => "world", "foo" => nil})
-  # stm.compact  # => {"hello" => "world"}
+  # stm.compact # => {"hello" => "world"}
   # ```
   def compact
-    each_with_object(self.class.new) do |(key, value), memo|
-      memo[key] = value unless value.nil?
+    @lock.synchronize do
+      each_with_object(self.class.new) do |(key, value), memo|
+        memo[key] = value unless value.nil?
+      end
     end
   end
 
@@ -303,7 +324,7 @@ class SplayTreeMap(K, V)
   # stm.compact! # => nil
   # ```
   def compact!
-    reject! { |key, value| value.nil? }
+    reject! { |_key, value| value.nil? }
   end
 
   # Deletes the key-value pair and returns the value, else yields *key* with given block.
@@ -333,20 +354,22 @@ class SplayTreeMap(K, V)
   # :nodoc:
   def delete_impl(key)
     deleted = Unk
-    splay(key)
-    if root = @root
-      if key == root.key # The key exists
-        deleted = root.value
-        if root.left.nil?
-          @root = root.right
-        else
-          x = root.right
-          @root = root.left
-          new_root = max
-          splay(new_root.not_nil!)
-          @root.not_nil!.right = x
+    @lock.synchronize do
+      splay(key)
+      if root = @root
+        if key == root.key # The key exists
+          deleted = root.value
+          if root.left.nil?
+            @root = root.right
+          else
+            x = root.right
+            @root = root.left
+            new_root = max
+            splay(new_root.not_nil!)
+            @root.not_nil!.right = x
+          end
+          @size -= 1
         end
-        @size -= 1
       end
     end
     deleted
@@ -362,7 +385,7 @@ class SplayTreeMap(K, V)
   # stm # => { "bar" => "qux" }
   # ```
   def delete_if : self
-    reject! {|k,v| yield k, v}
+    reject! { |k, v| yield k, v }
     self
   end
 
@@ -376,8 +399,10 @@ class SplayTreeMap(K, V)
   # stm.dig "a", "c" # raises KeyError
   # ```
   def dig(key : K, *subkeys)
-    if (value = self[key]) && value.responds_to?(:dig)
-      return value.dig(*subkeys)
+    @lock.synchronize do
+      if (value = self[key]) && value.responds_to?(:dig)
+        return value.dig(*subkeys)
+      end
     end
     raise KeyError.new "SplayTreeMap value not diggable for key: #{key.inspect}"
   end
@@ -397,8 +422,10 @@ class SplayTreeMap(K, V)
   # stm.dig "a", "c" # => nil
   # ```
   def dig?(key : K, *subkeys)
-    if (value = self[key]?) && value.responds_to?(:dig?)
-      value.dig?(*subkeys)
+    @lock.synchronize do
+      if (value = self[key]?) && value.responds_to?(:dig?)
+        return value.dig?(*subkeys)
+      end
     end
   end
 
@@ -416,7 +443,9 @@ class SplayTreeMap(K, V)
   # stm_a # => {"foo" => "bar"}
   # ```
   def dup
-    stm = SplayTreeMap.new(self)
+    @lock.synchronize do
+      return SplayTreeMap.new(self)
+    end
   end
 
   # Calls the given block for each key/value pair, passing the pair into the block.
@@ -436,9 +465,11 @@ class SplayTreeMap(K, V)
   #
   # The enumeration follows the order the keys were inserted.
   def each(& : {K, V} ->) : Nil
-    iter = EntryIterator(K, V).new(self)
-    while !(entry=iter.next).is_a?(Iterator::Stop)
-      yield entry
+    @lock.synchronize do
+      iter = EntryIterator(K, V).new(self)
+      while !(entry = iter.next).is_a?(Iterator::Stop)
+        yield entry
+      end
     end
   end
 
@@ -470,7 +501,7 @@ class SplayTreeMap(K, V)
   #
   # The enumeration is in tree order, from smallest to largest.
   def each_key
-    each do |key, value|
+    each do |key, _value|
       yield key
     end
   end
@@ -504,7 +535,7 @@ class SplayTreeMap(K, V)
   #
   # The enumeration is in tree order, from smallest to largest.
   def each_value
-    each do |key, value|
+    each do |_key, value|
       yield value
     end
   end
@@ -579,18 +610,20 @@ class SplayTreeMap(K, V)
   end
 
   private def obtain_impl(key : K)
-    node = @root
-    return Unk if node.nil?
+    @lock.synchronize do
+      node = @root
+      return Unk if node.nil?
 
-    loop do
-      return Unk unless node
-      cmp = key <=> node.key
-      if cmp == -1
-        node = node.left
-      elsif cmp == 1
-        node = node.right
-      else
-        return node.value
+      loop do
+        return Unk unless node
+        cmp = key <=> node.key
+        if cmp == -1
+          node = node.left
+        elsif cmp == 1
+          node = node.right
+        else
+          return node.value
+        end
       end
     end
   end
@@ -617,7 +650,7 @@ class SplayTreeMap(K, V)
   # ```
   #
   def has_value?(value) : Bool
-    self.each do |k, v|
+    self.each do |_k, v|
       return true if v == value
     end
     false
@@ -719,9 +752,11 @@ class SplayTreeMap(K, V)
   # ```
   #
   def keys : Array(K)
-    a = [] of K
-    each { |k, v| a << k }
-    a
+    @lock.synchronize do
+      a = [] of K
+      each { |k, _v| a << k }
+      a
+    end
   end
 
   # Returns the largest key in the tree.
@@ -770,7 +805,7 @@ class SplayTreeMap(K, V)
   # stm[7] # => 343
   #
   def merge!(other : T) forall T
-    self.merge!(other) { |k, v1, v2| v2 }
+    self.merge!(other) { |_k, _v1, v2| v2 }
   end
 
   # Adds the contents of *other* to this `SplayTreeMap`.
@@ -804,7 +839,7 @@ class SplayTreeMap(K, V)
   end
 
   def merge!(other : Enumerable(Tuple))
-    other.each do |*args|      
+    other.each do |*args|
       if args[0].size == 1
         k = v = args[0][0]
       else
@@ -917,12 +952,13 @@ class SplayTreeMap(K, V)
   # stm.reject { |k, v| v < 200 } # => {"b" => 200, "c" => 300}
   # ```
   def reject(&block : K, V -> _)
-    each_with_object(SplayTreeMap(K, V).new) do |(k, v), memo|
-      memo[k] = v unless yield k, v
+    @lock.synchronize do
+      each_with_object(SplayTreeMap(K, V).new) do |(k, v), memo|
+        memo[k] = v unless yield k, v
+      end
     end
   end
 
-  
   # Removes a list of keys out of the tree, returning a new tree.
   #
   # ```
@@ -930,9 +966,11 @@ class SplayTreeMap(K, V)
   # h # => {"b" => 2, "d" => 4}
   # ```
   def reject(keys : Array | Tuple)
-    stm = dup
-    keys.each { |k| stm.delete(k) }
-    stm
+    @lock.synchronize do
+      stm = dup
+      keys.each { |k| stm.delete(k) }
+      return stm
+    end
   end
 
   # Returns a new `SplayTreeMap` with the given keys removed.
@@ -947,15 +985,17 @@ class SplayTreeMap(K, V)
   # Equivalent to `SplayTreeMap#reject`, but modifies the current object rather than
   # returning a new one. Returns `nil` if no changes were made.
   def reject!(&block : K, V -> _)
-    num_entries = size
-    keys_to_delete = [] of K
-    each do |key, value|
-      keys_to_delete << key if yield(key, value)
+    @lock.synchronize do
+      num_entries = size
+      keys_to_delete = [] of K
+      each do |key, value|
+        keys_to_delete << key if yield(key, value)
+      end
+      keys_to_delete.each do |key|
+        delete(key)
+      end
+      num_entries == size ? nil : self
     end
-    keys_to_delete.each do |key|
-      delete(key)
-    end
-    num_entries == size ? nil : self
   end
 
   # Removes a list of keys out of the tree.
@@ -965,7 +1005,9 @@ class SplayTreeMap(K, V)
   # h # => {"b" => 2, "d" => 4}
   # ```
   def reject!(keys : Array | Tuple)
-    keys.each { |k| delete(k) }
+    @lock.synchronize do
+      keys.each { |k| delete(k) }
+    end
     self
   end
 
@@ -996,8 +1038,10 @@ class SplayTreeMap(K, V)
   # SplayTreeMap.new({"a" => 1, "b" => 2, "c" => 3, "d" => 4}).select(["a", "c"]) # => {"a" => 1, "c" => 3}
   # ```
   def select(keys : Array | Tuple)
-    stm = SplayTreeMap(K,V).new
-    keys.each { |k| k = k.as(K); stm[k] = obtain(k) if has_key?(k) }
+    stm = SplayTreeMap(K, V).new
+    @lock.synchronize do
+      keys.each { |k| k = k.as(K); stm[k] = obtain(k) if has_key?(k) }
+    end
     stm
   end
 
@@ -1006,7 +1050,6 @@ class SplayTreeMap(K, V)
     self.select(keys)
   end
 
-  
   # Equivalent to `Hash#select` but makes modification on the current object rather that returning a new one. Returns `nil` if no changes were made
   def select!(&block : K, V -> _)
     reject! { |k, v| !yield(k, v) }
@@ -1022,7 +1065,7 @@ class SplayTreeMap(K, V)
   # h1             # => {"a" => 1, "c" => 3}
   # ```
   def select!(keys : Array | Tuple)
-    each { |k, v| delete(k) unless keys.includes?(k) }
+    each { |k, _v| delete(k) unless keys.includes?(k) }
     self
   end
 
@@ -1035,9 +1078,9 @@ class SplayTreeMap(K, V)
   #
   # ```
   # stm = SplayTreeMap.new({"foo" => "bar", "baz" => "qux"})
-  # ary = stm.to_a  # => [{"baz", "qux"}, {"foo", "bar"}]
+  # ary = stm.to_a # => [{"baz", "qux"}, {"foo", "bar"}]
   # stm2 = SplayTreeMap.new(ary)
-  # stm == stm2  # => true
+  # stm == stm2 # => true
   # ```
   def to_a
     a = Array({K, V}).new
@@ -1049,14 +1092,14 @@ class SplayTreeMap(K, V)
   #
   # ```
   # stm = SplayTreeMap.new({"foo" => "bar", "baz" => "qux"})
-  # h = stm.to_h  # => {"baz" => "qux", "foo" => "bar"}
+  # h = stm.to_h # => {"baz" => "qux", "foo" => "bar"}
   # ```
   def to_h
-    h = Hash(K,V).new
+    h = Hash(K, V).new
     each { |k, v| h[k] = v }
     h
   end
-  
+
   # Transform the `SplayTreeMap` into a `String` representation.
   def to_s(io : IO) : Nil
     final = self.size
@@ -1134,12 +1177,12 @@ class SplayTreeMap(K, V)
   #
   # ```
   # stm = SplayTreeMap.new({"a" => 1, "b" => 2, "c" => 3, "d" => 4})
-  # stm.values  # => [1, 2, 3, 4]
+  # stm.values # => [1, 2, 3, 4]
   # ```
   #
   def values : Array(V)
     a = [] of V
-    each { |k, v| a << v }
+    each { |_k, v| a << v }
     a
   end
 
@@ -1174,7 +1217,7 @@ class SplayTreeMap(K, V)
   # # => {"key1" => "value1", "key2" => "value2", "key3" => "value3"}
   # ```
   def self.zip(ary1 : Array(K), ary2 : Array(V))
-    stm = SplayTreeMap(K,V).new
+    stm = SplayTreeMap(K, V).new
     ary1.each_with_index do |key, i|
       stm[key] = ary2[i]
     end
@@ -1312,7 +1355,7 @@ class SplayTreeMap(K, V)
       base_next { |entry| {entry.key, entry.value} }
     end
 
-    def next? : {K,V}?
+    def next? : {K, V}?
       retval = base_next { |entry| {entry.key, entry.value} }
       retval.is_a?(Iterator::Stop) ? nil : retval
     end
@@ -1345,7 +1388,7 @@ class SplayTreeMap(K, V)
   end
 
   private class Node(K, V)
-    include Comparable(Node(K,V))
+    include Comparable(Node(K, V))
     property left : Node(K, V)?
     property right : Node(K, V)?
 
@@ -1365,7 +1408,7 @@ class SplayTreeMap(K, V)
     node_prop key, K
     node_prop value, V
 
-    def <=>(other : Node(K,V))
+    def <=>(other : Node(K, V))
       cmp = key <=> other.key
       return cmp unless cmp == 0
       value <=> other.value

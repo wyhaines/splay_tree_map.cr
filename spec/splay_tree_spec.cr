@@ -45,7 +45,7 @@ describe SplayTreeMap do
     ins = {} of Int32 => Int32
     st = SplayTreeMap(Int32, Int32).new
     1000.times do
-      while true
+      loop do
         x = rand(10000000)
         if !ins.has_key?(x)
           ins[x] = x
@@ -58,11 +58,11 @@ describe SplayTreeMap do
     st.size.should eq 1000
 
     found = 0
-    ins.keys.shuffle.each { |k| found += 1 if st.has_key?(k) }
+    ins.keys.shuffle!.each { |k| found += 1 if st.has_key?(k) }
     found.should eq 1000
 
     found = 0
-    ins.keys.shuffle.each { |k| found += 1 if st[k] == ins[k] }
+    ins.keys.shuffle!.each { |k| found += 1 if st[k] == ins[k] }
     found.should eq 1000
   end
 
@@ -70,7 +70,7 @@ describe SplayTreeMap do
     ins = {} of Int32 => Int32
     st = SplayTreeMap(Int32, Int32).new
     1000.times do
-      while true
+      loop do
         x = rand(10000000)
         if !ins.has_key?(x)
           ins[x] = x
@@ -81,7 +81,7 @@ describe SplayTreeMap do
     end
 
     found = 0
-    ins.keys.shuffle.each { |k| found += 1 if st.obtain(k) == ins[k] }
+    ins.keys.shuffle!.each { |k| found += 1 if st.obtain(k) == ins[k] }
     found.should eq 1000
   end
 
@@ -89,7 +89,7 @@ describe SplayTreeMap do
     ins = {} of Int32 => Int32
     st = SplayTreeMap(Int32, Int32).new
     100000.times do
-      while true
+      loop do
         x = rand(10000000)
         if !ins.has_key?(x)
           ins[x] = x
@@ -99,7 +99,7 @@ describe SplayTreeMap do
       end
     end
 
-    random_300 = ins.keys.shuffle[0..299]
+    random_300 = ins.keys.shuffle![0..299]
     top_100 = random_300[0..99]
     intermediate_100 = random_300[100..199]
     regular_100 = random_300[200..299]
@@ -117,11 +117,11 @@ describe SplayTreeMap do
     intermediate_100.each { |x| intermediate_heights << st.height(x).not_nil! }
     regular_100.each { |x| regular_heights << st.height(x).not_nil! }
 
-    sum_top_100 = top_heights.reduce(0) { |a, v| a += v }
-    sum_intermediate_100 = intermediate_heights.reduce(0) { |a, v| a += v }
-    sum_regular_100 = regular_heights.reduce(0) { |a, v| a += v }
+    sum_top_100 = top_heights.reduce(0) { |a, v| a + v }
+    sum_intermediate_100 = intermediate_heights.reduce(0) { |a, v| a + v }
+    sum_regular_100 = regular_heights.reduce(0) { |a, v| a + v }
 
-    puts "\naverage height -- top :: intermediate :: other == #{sum_top_100 / 100} :: #{sum_intermediate_100 / 100} :: #{sum_regular_100 / 100}"
+    Log.debug { "average height -- top :: intermediate :: other == #{sum_top_100 / 100} :: #{sum_intermediate_100 / 100} :: #{sum_regular_100 / 100}" }
     sum_top_100.should be < sum_intermediate_100
     sum_intermediate_100.should be < sum_regular_100
   end
@@ -136,7 +136,6 @@ describe SplayTreeMap do
     (stm_1 < stm_2).should be_true
     (stm_1 < stm_3).should be_false
     (stm_1 < stm_4).should be_false
-
   end
 
   it "[]?; can retrive values while returning nil if they are missing" do
@@ -175,7 +174,7 @@ describe SplayTreeMap do
 
   it "delete_if; can delete records if block is true" do
     stm = SplayTreeMap.new({"foo" => "bar", "fob" => "baz", "bar" => "qux"})
-    stm.delete_if { |key, value| key.starts_with?("fo") }
+    stm.delete_if { |key, _value| key.starts_with?("fo") }
     stm.size.should eq 1
     stm["bar"].should eq "qux"
     stm["foo"]?.should be_nil
@@ -222,7 +221,7 @@ describe SplayTreeMap do
     log.size.should eq 10
 
     n = 0
-    stm.each do |k, v|
+    stm.each do |k, _v|
       n += 1
       log.delete(k)
     end
@@ -296,7 +295,7 @@ describe SplayTreeMap do
     stm["kleine"].should eq "xyzzy"
     stm.fetch("foo") { "default value" }.should eq "bar"
     stm.fetch("bar") { "default value" }.should eq "default value"
-    stm.fetch("bar") { |key| key.upcase }.should eq "BAR"
+    stm.fetch("bar", &.upcase).should eq "BAR"
     stm.fetch("foo", "foo").should eq "bar"
     stm.fetch("bar", "foo").should eq "foo"
   end
@@ -318,8 +317,8 @@ describe SplayTreeMap do
 
     st_a = SplayTreeMap(Int32, Int32).new({6 => 0, 11 => 0}).merge!(a)
     st_h = SplayTreeMap(Int32, Int32).new.merge!(h)
-    st_c = SplayTreeMap(Int32, Int32).new.merge!([ {0, 0}, {1, 1}, {2, 4}, {3, 9}, {4, 16}, {5}, {6, 36}, {7, 49, 343} ])
-    st_d = SplayTreeMap(Int32, Int32).new.merge!({ {0, 0}, {1, 1}, {2, 4}, {3, 9}, {4, 16}, {5}, {6, 36}, {7, 49, 343} })
+    st_c = SplayTreeMap(Int32, Int32).new.merge!([{0, 0}, {1, 1}, {2, 4}, {3, 9}, {4, 16}, {5}, {6, 36}, {7, 49, 343}])
+    _st_d = SplayTreeMap(Int32, Int32).new.merge!({ {0, 0}, {1, 1}, {2, 4}, {3, 9}, {4, 16}, {5}, {6, 36}, {7, 49, 343} })
     st_a.size.should eq 11
     st_h.size.should eq 10
     st_c.size.should eq 8
@@ -337,8 +336,8 @@ describe SplayTreeMap do
     other1 = SplayTreeMap.new({"b" => 254, "c" => 300})
     stm2 = SplayTreeMap.new({1 => 1, 2 => 2})
     other2 = SplayTreeMap.new({2 => 4, 3 => 9})
-    stm2.merge!(other2) { |k, v1, v2| v1 + v2 }
-    stm1.merge!(other1) { |k, v1, v2| v1 + v2 }
+    stm2.merge!(other2) { |_k, v1, v2| v1 + v2 }
+    stm1.merge!(other1) { |_k, v1, v2| v1 + v2 }
     stm1["a"].should eq 100
     stm1["b"].should eq 454
     stm1["c"].should eq 300
@@ -391,8 +390,8 @@ describe SplayTreeMap do
 
   it "key_for; returns a key for a given value, and handles missing keys appropriately" do
     stm = SplayTreeMap.new({"foo" => "bar", "baz" => "qux"})
-    (stm.key_for("bar") { |value| value.upcase }).should eq "foo"
-    (stm.key_for("qix") { |value| value.upcase }).should eq "QIX"
+    (stm.key_for("bar", &.upcase)).should eq "foo"
+    (stm.key_for("qix", &.upcase)).should eq "QIX"
     stm.key_for("bar").should eq "foo"
     stm.key_for("qux").should eq "baz"
     expect_raises(KeyError) do
@@ -409,7 +408,7 @@ describe SplayTreeMap do
     10.times { |x| st[x] = x; log << x }
 
     st.keys.size.should eq 10
-    st.keys.sort.should eq log.sort
+    st.keys.sort!.should eq log.sort
 
     stm = SplayTreeMap.new({"foo" => "bar", "baz" => "qux"})
     stm.keys.should eq ["baz", "foo"]
@@ -431,11 +430,11 @@ describe SplayTreeMap do
 
   it "reject; can create a new tree with select keys removed" do
     stm = SplayTreeMap.new({"a" => 100, "b" => 200, "c" => 300})
-    res = stm.reject { |k, v| k > "a" }
+    res = stm.reject { |k, _v| k > "a" }
     res.size.should eq 1
     res["a"].should eq 100
     res.has_key?("b").should be_false
-    res = stm.reject { |k, v| v < 200 }
+    res = stm.reject { |_k, v| v < 200 }
     res.size.should eq 2
     res.has_key?("a").should be_false
     res["c"].should eq 300
@@ -455,12 +454,12 @@ describe SplayTreeMap do
 
   it "reject!; can remove a set of keys from the current tree" do
     stm = SplayTreeMap.new({"a" => 100, "b" => 200, "c" => 300})
-    stm.reject! { |k, v| k > "a" }
+    stm.reject! { |k, _v| k > "a" }
     stm.size.should eq 1
     stm["a"].should eq 100
     stm.has_key?("b").should be_false
     stm = SplayTreeMap.new({"a" => 100, "b" => 200, "c" => 300})
-    stm.reject! { |k, v| v < 200 }
+    stm.reject! { |_k, v| v < 200 }
     stm.size.should eq 2
     stm.has_key?("a").should be_false
     stm["c"].should eq 300
@@ -482,11 +481,11 @@ describe SplayTreeMap do
   end
 
   it "select; can create a new tree that includes only specific keys" do
-    stm = SplayTreeMap.new({"a" => 100, "b" => 200, "c" => 300}).select { |k, v| k > "a" }
+    stm = SplayTreeMap.new({"a" => 100, "b" => 200, "c" => 300}).select { |k, _v| k > "a" }
     stm.size.should eq 2
     stm["b"].should eq 200
     stm["c"].should eq 300
-    stm = SplayTreeMap.new({"a" => 100, "b" => 200, "c" => 300}).select { |k, v| v < 200 }
+    stm = SplayTreeMap.new({"a" => 100, "b" => 200, "c" => 300}).select { |_k, v| v < 200 }
     stm.size.should eq 1
     stm["a"].should eq 100
     stm = SplayTreeMap.new({"a" => 1, "b" => 2, "c" => 3, "d" => 4}).select({"a", "c"})
@@ -505,12 +504,12 @@ describe SplayTreeMap do
 
   it "select!; can remove all keys from the current tree except for a small set" do
     stm = SplayTreeMap.new({"a" => 100, "b" => 200, "c" => 300})
-    stm.select! { |k, v| k > "a" }
+    stm.select! { |k, _v| k > "a" }
     stm.size.should eq 2
     stm["b"].should eq 200
     stm["c"].should eq 300
     stm = SplayTreeMap.new({"a" => 100, "b" => 200, "c" => 300})
-    stm.select! { |k, v| v < 200 }
+    stm.select! { |_k, v| v < 200 }
     stm.size.should eq 1
     stm["a"].should eq 100
     stm = SplayTreeMap.new({"a" => 1, "b" => 2, "c" => 3, "d" => 4})
@@ -553,7 +552,7 @@ describe SplayTreeMap do
 
   it "transform; can transform both the keys and the values of a tree to new types" do
     stm = SplayTreeMap.new({1 => 1, 2 => 4, 3 => 9, 4 => 16})
-    stm = stm.transform {|k, v| {k.to_s, v.to_s}}
+    stm = stm.transform { |k, v| {k.to_s, v.to_s} }
     stm["1"]?.should eq "1"
     stm["2"]?.should eq "4"
     stm["3"]?.should eq "9"
@@ -562,7 +561,7 @@ describe SplayTreeMap do
 
   it "transform_keys; can transform the keys of a tree using a block" do
     stm = SplayTreeMap.new({:a => 1, :b => 2, :c => 3})
-    stm = stm.transform_keys { |key| key.to_s }
+    stm = stm.transform_keys(&.to_s)
     stm["a"]?.should eq 1
     stm["b"]?.should eq 2
     stm["c"]?.should eq 3
@@ -582,7 +581,7 @@ describe SplayTreeMap do
     10.times { |x| st[x] = x; log << x }
 
     st.values.size.should eq 10
-    st.values.sort.should eq log.sort
+    st.values.sort!.should eq log.sort
   end
 
   it "values_at; returns a tuple with the associated values, and raises on invalid" do
@@ -622,7 +621,7 @@ describe SplayTreeMap do
     ins = {} of Int32 => Int32
     st = SplayTreeMap(Int32, Int32).new
     100000.times do
-      while true
+      loop do
         x = rand(10000000)
         if !ins.has_key?(x)
           ins[x] = x
@@ -632,10 +631,10 @@ describe SplayTreeMap do
       end
     end
 
-    random_300 = ins.keys.shuffle[0..299]
+    random_300 = ins.keys.shuffle![0..299]
     top_100 = random_300[0..99]
     intermediate_100 = random_300[100..199]
-    regular_100 = random_300[200..299]
+    _regular_100 = random_300[200..299]
 
     1000.times do
       100.times { st[intermediate_100.sample(1).first] }
@@ -644,7 +643,7 @@ describe SplayTreeMap do
 
     st.size.should eq 100000
     st.prune
-    st.size.should be < 95000 # It should actually be around 90000, give or take 2000
+    st.size.should be < 96000 # It should actually be around 90000, give or take, but because random numbers, may sometimes be higher.
   end
 
   it "can automatically enforce a maximum size" do

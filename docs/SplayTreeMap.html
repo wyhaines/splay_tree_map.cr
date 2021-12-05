@@ -3,28 +3,28 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 0.34.0">
+<meta name="generator" content="Crystal Docs 0.35.1">
 <meta name="crystal_docs.project_version" content="main-dev">
-<meta name="crystal_docs.project_name" content="Splay Tree Map">
+<meta name="crystal_docs.project_name" content="splay_tree_map">
+
 
 
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/doc.js"></script>
 
-<svg class="hidden">
-  <symbol id="octicon-link" viewBox="0 0 16 16">
-    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
-  </symbol>
-</svg>
-
-  <meta id="repository-name" content="Splay Tree Map">
-  <title>SplayTreeMap(K, V) - Splay Tree Map main-dev</title>
+  <meta name="repository-name" content="splay_tree_map">
+  <title>SplayTreeMap(K, V) - splay_tree_map main-dev</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "";
   </script>
 </head>
 <body>
 
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
 <div class="sidebar">
   <div class="sidebar-header">
     <div class="search-box">
@@ -34,7 +34,7 @@
     <div class="project-summary">
       <h1 class="project-name">
         <a href="index.html">
-          Splay Tree Map
+          splay_tree_map
         </a>
       </h1>
 
@@ -44,19 +44,19 @@
     </div>
   </div>
 
-  <div class="search-results" class="hidden">
+  <div class="search-results hidden">
     <ul class="search-list"></ul>
   </div>
 
   <div class="types-list">
     <ul>
   
-  <li class=" current" data-id="Splay Tree Map/SplayTreeMap" data-name="splaytreemap(k, v)">
+  <li class=" current" data-id="splay_tree_map/SplayTreeMap" data-name="splaytreemap(k, v)">
       <a href="SplayTreeMap.html">SplayTreeMap</a>
       
     </li>
   
-  <li class=" " data-id="Splay Tree Map/Stm" data-name="stm">
+  <li class=" " data-id="splay_tree_map/Stm" data-name="stm">
       <a href="Stm.html">Stm</a>
       
     </li>
@@ -772,7 +772,7 @@
           <p>Creates a new empty <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with a <em>block</em> that is called when a key is
 missing from the tree.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">String</span>, <span class="t">Array</span>(<span class="t">Int32</span>)).<span class="k">new</span> { <span class="o">|</span>t, k<span class="o">|</span> t[k] <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span> }
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">String</span>, <span class="t">Array</span>(<span class="t">Int32</span>)).<span class="k">new</span> { <span class="o">|</span>t, k<span class="o">|</span> t[k] <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span> }
 stm[<span class="s">&quot;a&quot;</span>] <span class="o">&lt;&lt;</span> <span class="n">1</span>
 stm[<span class="s">&quot;a&quot;</span>] <span class="o">&lt;&lt;</span> <span class="n">2</span>
 stm[<span class="s">&quot;a&quot;</span>] <span class="o">&lt;&lt;</span> <span class="n">3</span>
@@ -798,7 +798,7 @@ puts stm.inspect <span class="c"># =&gt; [1,2,3]</span></code></pre>
           <p>Creates a new empty <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with a <em>block</em> that is called when a key is
 missing from the tree.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">String</span>, <span class="t">Array</span>(<span class="t">Int32</span>)).<span class="k">new</span> { <span class="o">|</span>t, k<span class="o">|</span> t[k] <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span> }
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">String</span>, <span class="t">Array</span>(<span class="t">Int32</span>)).<span class="k">new</span> { <span class="o">|</span>t, k<span class="o">|</span> t[k] <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span> }
 stm[<span class="s">&quot;a&quot;</span>] <span class="o">&lt;&lt;</span> <span class="n">1</span>
 stm[<span class="s">&quot;a&quot;</span>] <span class="o">&lt;&lt;</span> <span class="n">2</span>
 stm[<span class="s">&quot;a&quot;</span>] <span class="o">&lt;&lt;</span> <span class="n">3</span>
@@ -825,7 +825,7 @@ puts stm.inspect <span class="c"># =&gt; [1,2,3]</span></code></pre>
 or the <em>Iterable</em> seed object, and with a default return value for any missing
 key.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;this&quot;</span> => <span class="s">&quot;that&quot;</span>, <span class="s">&quot;something&quot;</span> => <span class="s">&quot;else&quot;</span>}, <span class="s">&quot;Unknown&quot;</span>)
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;this&quot;</span> => <span class="s">&quot;that&quot;</span>, <span class="s">&quot;something&quot;</span> => <span class="s">&quot;else&quot;</span>}, <span class="s">&quot;Unknown&quot;</span>)
 stm[<span class="s">&quot;something&quot;</span>] <span class="c"># =&gt; &quot;else&quot;</span>
 stm[<span class="s">&quot;xyzzy&quot;</span>]     <span class="c"># =&gt; &quot;Unknown&quot;</span></code></pre>
         </div>
@@ -848,7 +848,7 @@ stm[<span class="s">&quot;xyzzy&quot;</span>]     <span class="c"># =&gt; &quot;
           
           <p>Creates a new empty <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with a default return value for any missing key.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>(<span class="s">&quot;Unknown&quot;</span>)
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>(<span class="s">&quot;Unknown&quot;</span>)
 stm[<span class="s">&quot;xyzzy&quot;</span>] <span class="c"># =&gt; &quot;Unknown&quot;</span></code></pre>
         </div>
       
@@ -882,7 +882,7 @@ stm[<span class="s">&quot;xyzzy&quot;</span>] <span class="c"># =&gt; &quot;Unkn
           
           <p>Zips two arrays into a <code><a href="SplayTreeMap.html">SplayTreeMap</a></code>, taking keys from <em>ary1</em> and values from <em>ary2</em>.</p>
 
-<pre><code><span class="t">SplayTreeMap</span>.zip([<span class="s">&quot;key1&quot;</span>, <span class="s">&quot;key2&quot;</span>, <span class="s">&quot;key3&quot;</span>], [<span class="s">&quot;value1&quot;</span>, <span class="s">&quot;value2&quot;</span>, <span class="s">&quot;value3&quot;</span>])
+<pre><code class="language-crystal"><span class="t">SplayTreeMap</span>.zip([<span class="s">&quot;key1&quot;</span>, <span class="s">&quot;key2&quot;</span>, <span class="s">&quot;key3&quot;</span>], [<span class="s">&quot;value1&quot;</span>, <span class="s">&quot;value2&quot;</span>, <span class="s">&quot;value3&quot;</span>])
 <span class="c"># =&gt; {&quot;key1&quot; =&gt; &quot;value1&quot;, &quot;key2&quot; =&gt; &quot;value2&quot;, &quot;key3&quot; =&gt; &quot;value3&quot;}</span></code></pre>
         </div>
       
@@ -937,7 +937,7 @@ or this method will trigger an exception.</p>
           <p>Searches for the given <em>key</em> in the tree and returns the associated value.
 If the key is not in the tree, a KeyError will be raised.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>
 stm[<span class="s">&quot;foo&quot;</span>] <span class="o">=</span> <span class="s">&quot;bar&quot;</span>
 stm[<span class="s">&quot;foo&quot;</span>] <span class="c"># =&gt; &quot;bar&quot;</span>
 
@@ -969,7 +969,7 @@ stm[<span class="s">&quot;foo&quot;</span>] <span class="c"># raises KeyError</s
           
           <p>Create a key/value association.</p>
 
-<pre><code>stm[<span class="s">&quot;this&quot;</span>] <span class="o">=</span> <span class="s">&quot;that&quot;</span></code></pre>
+<pre><code class="language-crystal">stm[<span class="s">&quot;this&quot;</span>] <span class="o">=</span> <span class="s">&quot;that&quot;</span></code></pre>
         </div>
       
       <br/>
@@ -991,7 +991,7 @@ stm[<span class="s">&quot;foo&quot;</span>] <span class="c"># raises KeyError</s
           <p>Returns the value for the key given by <em>key</em>.
 If not found, returns <code>nil</code>. This ignores the default value set by <code>Hash.new</code>.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>
 stm[<span class="s">&quot;foo&quot;</span>]? <span class="c"># =&gt; &quot;bar&quot;</span>
 stm[<span class="s">&quot;bar&quot;</span>]? <span class="c"># =&gt; nil</span>
 
@@ -1037,7 +1037,7 @@ stm[<span class="s">&quot;foo&quot;</span>]? <span class="c"># =&gt; nil</span><
           <p>Returns new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> that has all of the <code>nil</code> values and their
 associated keys removed.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;hello&quot;</span> => <span class="s">&quot;world&quot;</span>, <span class="s">&quot;foo&quot;</span> => <span class="n">nil</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;hello&quot;</span> => <span class="s">&quot;world&quot;</span>, <span class="s">&quot;foo&quot;</span> => <span class="n">nil</span>})
 stm.compact  <span class="c"># =&gt; {&quot;hello&quot; =&gt; &quot;world&quot;}</span></code></pre>
         </div>
       
@@ -1059,7 +1059,7 @@ stm.compact  <span class="c"># =&gt; {&quot;hello&quot; =&gt; &quot;world&quot;}
           
           <p>Removes all <code>nil</code> values from <code>self</code>. Returns <code>nil</code> if no changes were made.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;hello&quot;</span> => <span class="s">&quot;world&quot;</span>, <span class="s">&quot;foo&quot;</span> => <span class="n">nil</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;hello&quot;</span> => <span class="s">&quot;world&quot;</span>, <span class="s">&quot;foo&quot;</span> => <span class="n">nil</span>})
 stm.compact! <span class="c"># =&gt; {&quot;hello&quot; =&gt; &quot;world&quot;}</span>
 stm.compact! <span class="c"># =&gt; nil</span></code></pre>
         </div>
@@ -1082,7 +1082,7 @@ stm.compact! <span class="c"># =&gt; nil</span></code></pre>
           
           <p>Deletes the key-value pair and returns the value, else yields <em>key</em> with given block.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
 stm.delete(<span class="s">&quot;foo&quot;</span>) { <span class="o">|</span>key<span class="o">|</span> <span class="s">&quot;</span><span class="i">#{</span>key<span class="i">}</span><span class="s"> not found&quot;</span> } <span class="c"># =&gt; &quot;bar&quot;</span>
 stm.fetch(<span class="s">&quot;foo&quot;</span>, <span class="n">nil</span>)                          <span class="c"># =&gt; nil</span>
 stm.delete(<span class="s">&quot;baz&quot;</span>) { <span class="o">|</span>key<span class="o">|</span> <span class="s">&quot;</span><span class="i">#{</span>key<span class="i">}</span><span class="s"> not found&quot;</span> } <span class="c"># =&gt; &quot;baz not found&quot;</span></code></pre>
@@ -1106,7 +1106,7 @@ stm.delete(<span class="s">&quot;baz&quot;</span>) { <span class="o">|</span>key
           
           <p>Deletes the key-value pair and returns the value, otherwise returns <code>nil</code>.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
 stm.delete(<span class="s">&quot;foo&quot;</span>)     <span class="c"># =&gt; &quot;bar&quot;</span>
 stm.fetch(<span class="s">&quot;foo&quot;</span>, <span class="n">nil</span>) <span class="c"># =&gt; nil</span></code></pre>
         </div>
@@ -1131,7 +1131,7 @@ stm.fetch(<span class="s">&quot;foo&quot;</span>, <span class="n">nil</span>) <s
 Deletes each key-value pair for which the given block returns <code>true</code>.
 Returns the <code><a href="SplayTreeMap.html">SplayTreeMap</a></code>.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;fob&quot;</span> => <span class="s">&quot;baz&quot;</span>, <span class="s">&quot;bar&quot;</span> => <span class="s">&quot;qux&quot;</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;fob&quot;</span> => <span class="s">&quot;baz&quot;</span>, <span class="s">&quot;bar&quot;</span> => <span class="s">&quot;qux&quot;</span>})
 stm.delete_if { <span class="o">|</span>key, value<span class="o">|</span> key.starts_with?(<span class="s">&quot;fo&quot;</span>) }
 stm <span class="c"># =&gt; { &quot;bar&quot; =&gt; &quot;qux&quot; }</span></code></pre>
         </div>
@@ -1155,7 +1155,7 @@ stm <span class="c"># =&gt; { &quot;bar&quot; =&gt; &quot;qux&quot; }</span></co
           <p>Traverses the depth of a structure and returns the value, otherwise
 raises <code>KeyError</code>.</p>
 
-<pre><code>h <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => {<span class="s">&quot;b&quot;</span> => [<span class="n">10</span>, <span class="n">20</span>, <span class="n">30</span>]}}
+<pre><code class="language-crystal">h <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => {<span class="s">&quot;b&quot;</span> => [<span class="n">10</span>, <span class="n">20</span>, <span class="n">30</span>]}}
 stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>(h)
 stm.dig <span class="s">&quot;a&quot;</span>, <span class="s">&quot;b&quot;</span> <span class="c"># =&gt; [10, 20, 30]</span>
 stm.dig <span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span> <span class="c"># raises KeyError</span></code></pre>
@@ -1180,7 +1180,7 @@ stm.dig <span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</spa
           <p>Traverses the depth of a structure and returns the value.
 Returns <code>nil</code> if not found.</p>
 
-<pre><code>h <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => {<span class="s">&quot;b&quot;</span> => [<span class="n">10</span>, <span class="n">20</span>, <span class="n">30</span>]}}
+<pre><code class="language-crystal">h <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => {<span class="s">&quot;b&quot;</span> => [<span class="n">10</span>, <span class="n">20</span>, <span class="n">30</span>]}}
 stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>(h)
 stm.dig <span class="s">&quot;a&quot;</span>, <span class="s">&quot;b&quot;</span> <span class="c"># =&gt; [10, 20, 30]</span>
 stm.dig <span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span> <span class="c"># =&gt; nil</span></code></pre>
@@ -1204,7 +1204,7 @@ stm.dig <span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</spa
           
           <p>Duplicates a <code><a href="SplayTreeMap.html">SplayTreeMap</a></code>.</p>
 
-<pre><code>stm_a <span class="o">=</span> {<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>}
+<pre><code class="language-crystal">stm_a <span class="o">=</span> {<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>}
 stm_b <span class="o">=</span> hash_a.dup
 stm_b.merge!({<span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>})
 stm_a <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot;bar&quot;}</span></code></pre>
@@ -1228,7 +1228,7 @@ stm_a <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot;bar&quot;}</span></co
           
           <p>Calls the given block for each key/value pair, passing the pair into the block.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
 
 stm.each <span class="k">do</span> <span class="o">|</span>key, value<span class="o">|</span>
   key   <span class="c"># =&gt; &quot;foo&quot;</span>
@@ -1260,7 +1260,7 @@ stm.each <span class="k">do</span> <span class="o">|</span>key_and_value<span cl
           
           <p>Returns an iterator which can be used to access all of the elements in the tree.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;fob&quot;</span> => <span class="s">&quot;baz&quot;</span>, <span class="s">&quot;qix&quot;</span> => <span class="s">&quot;qux&quot;</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;fob&quot;</span> => <span class="s">&quot;baz&quot;</span>, <span class="s">&quot;qix&quot;</span> => <span class="s">&quot;qux&quot;</span>})
 
 set <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="t">Tuple</span>(<span class="t">String</span>, <span class="t">String</span>)
 iterator <span class="o">=</span> stm.each
@@ -1289,7 +1289,7 @@ set  <span class="c"># =&gt; [{&quot;fob&quot; =&gt; &quot;baz&quot;}, {&quot;fo
           
           <p>Returns an iterator over the SplayTreeMap keys.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>})
 iterator <span class="o">=</span> stm.each_key
 
 key <span class="o">=</span> iterator.<span class="k">next</span>
@@ -1319,7 +1319,7 @@ key <span class="c"># =&gt; &quot;baz&quot;</span></code></pre>
           
           <p>Calls the given block for each key-value pair and passes in the key.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
 stm.each_key <span class="k">do</span> <span class="o">|</span>key<span class="o">|</span>
   key <span class="c"># =&gt; &quot;foo&quot;</span>
 <span class="k">end</span></code></pre>
@@ -1346,7 +1346,7 @@ stm.each_key <span class="k">do</span> <span class="o">|</span>key<span class="o
           <p>Returns an iterator over the hash values.
 Which behaves like an <code>Iterator</code> consisting of the value's types.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>})
 iterator <span class="o">=</span> stm.each_value
 
 value <span class="o">=</span> iterator.<span class="k">next</span>
@@ -1376,7 +1376,7 @@ value <span class="c"># =&gt; &quot;qux&quot;</span></code></pre>
           
           <p>Calls the given block for each key-value pair and passes in the value.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
 stm.each_value <span class="k">do</span> <span class="o">|</span>value<span class="o">|</span>
   value <span class="c"># =&gt; &quot;bar&quot;</span>
 <span class="k">end</span></code></pre>
@@ -1402,7 +1402,7 @@ stm.each_value <span class="k">do</span> <span class="o">|</span>value<span clas
           
           <p>Returns true of the tree contains no key/value pairs.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">Int32</span>, <span class="t">Int32</span>).<span class="k">new</span>
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">Int32</span>, <span class="t">Int32</span>).<span class="k">new</span>
 stm.empty? <span class="c"># =&gt; true</span>
 stm[<span class="n">1</span>] <span class="o">=</span> <span class="n">1</span>
 stm.empty? <span class="c"># =&gt; false</span></code></pre>
@@ -1427,7 +1427,7 @@ stm.empty? <span class="c"># =&gt; false</span></code></pre>
           <p>Returns the value for the key given by <em>key</em>, or when not found calls the given block with the key.
 This ignores the default value set by <code><a href="SplayTreeMap.html#new(seed:Enumerable(Tuple(K,V))?%7CIterable(Tuple(K,V))?=nil,block:SplayTreeMap(K,V),K-%3EV?=nil)-class-method">SplayTreeMap.new</a></code>.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
 stm.fetch(<span class="s">&quot;foo&quot;</span>) { <span class="s">&quot;default value&quot;</span> }  <span class="c"># =&gt; &quot;bar&quot;</span>
 stm.fetch(<span class="s">&quot;bar&quot;</span>) { <span class="s">&quot;default value&quot;</span> }  <span class="c"># =&gt; &quot;default value&quot;</span>
 stm.fetch(<span class="s">&quot;bar&quot;</span>) { <span class="o">|</span>key<span class="o">|</span> key.upcase } <span class="c"># =&gt; &quot;BAR&quot;</span></code></pre>
@@ -1452,7 +1452,7 @@ stm.fetch(<span class="s">&quot;bar&quot;</span>) { <span class="o">|</span>key<
           <p>Returns the value for the key given by <em>key</em>, or when not found the value given by <em>default</em>.
 This ignores the default value set by <code><a href="SplayTreeMap.html#new(seed:Enumerable(Tuple(K,V))?%7CIterable(Tuple(K,V))?=nil,block:SplayTreeMap(K,V),K-%3EV?=nil)-class-method">SplayTreeMap.new</a></code>.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
 stm.fetch(<span class="s">&quot;foo&quot;</span>, <span class="s">&quot;foo&quot;</span>) <span class="c"># =&gt; &quot;bar&quot;</span>
 stm.fetch(<span class="s">&quot;bar&quot;</span>, <span class="s">&quot;foo&quot;</span>) <span class="c"># =&gt; &quot;foo&quot;</span></code></pre>
         </div>
@@ -1475,7 +1475,7 @@ stm.fetch(<span class="s">&quot;bar&quot;</span>, <span class="s">&quot;foo&quot
           
           <p>Return a boolean value indicating whether the given key can be found in the tree.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>})
 stm.has_key?(<span class="s">&quot;a&quot;</span>) <span class="c"># =&gt; true</span>
 stm.has_key?(<span class="s">&quot;c&quot;</span>) <span class="c"># =&gt; false</span></code></pre>
         </div>
@@ -1500,7 +1500,7 @@ stm.has_key?(<span class="s">&quot;c&quot;</span>) <span class="c"># =&gt; false
 This is potentially slow as it requires scanning the tree until a match is found or
 the end of the tree is reached.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>})
 stm.has_value?(<span class="s">&quot;2&quot;</span>) <span class="c"># =&gt; true</span>
 stm.has_value?(<span class="s">&quot;4&quot;</span>) <span class="c"># =&gt; false</span></code></pre>
         </div>
@@ -1561,7 +1561,7 @@ stm.has_value?(<span class="s">&quot;4&quot;</span>) <span class="c"># =&gt; fal
           
           <p>Returns a key with the given <em>value</em>, else raises <code>KeyError</code>.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>})
 stm.key_for(<span class="s">&quot;bar&quot;</span>)    <span class="c"># =&gt; &quot;foo&quot;</span>
 stm.key_for(<span class="s">&quot;qux&quot;</span>)    <span class="c"># =&gt; &quot;baz&quot;</span>
 stm.key_for(<span class="s">&quot;foobar&quot;</span>) <span class="c"># raises KeyError</span></code></pre>
@@ -1585,7 +1585,7 @@ stm.key_for(<span class="s">&quot;foobar&quot;</span>) <span class="c"># raises 
           
           <p>Returns a key with the given <em>value</em>, else yields <em>value</em> with the given block.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
 stm.key_for(<span class="s">&quot;bar&quot;</span>) { <span class="o">|</span>value<span class="o">|</span> value.upcase } <span class="c"># =&gt; &quot;foo&quot;</span>
 stm.key_for(<span class="s">&quot;qux&quot;</span>) { <span class="o">|</span>value<span class="o">|</span> value.upcase } <span class="c"># =&gt; &quot;QUX&quot;</span></code></pre>
         </div>
@@ -1608,7 +1608,7 @@ stm.key_for(<span class="s">&quot;qux&quot;</span>) { <span class="o">|</span>va
           
           <p>Returns a key with the given <em>value</em>, else <code>nil</code>.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>})
 stm.key_for?(<span class="s">&quot;bar&quot;</span>)    <span class="c"># =&gt; &quot;foo&quot;</span>
 stm.key_for?(<span class="s">&quot;qux&quot;</span>)    <span class="c"># =&gt; &quot;baz&quot;</span>
 stm.key_for?(<span class="s">&quot;foobar&quot;</span>) <span class="c"># =&gt; nil</span></code></pre>
@@ -1632,7 +1632,7 @@ stm.key_for?(<span class="s">&quot;foobar&quot;</span>) <span class="c"># =&gt; 
           
           <p>Returns an array of all keys in the tree.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>})
 stm.keys.should eq [<span class="s">&quot;baz&quot;</span>, <span class="s">&quot;foo&quot;</span>]</code></pre>
         </div>
       
@@ -1764,7 +1764,7 @@ stm.keys.should eq [<span class="s">&quot;baz&quot;</span>, <span class="s">&quo
 A value in <em>other</em> takes precedence over the one in this tree. Key types <strong>must</strong> be
 comparable or this will cause a missing <code>no overload matches</code> exception on compilation.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>})
 stm.merge({<span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>}) <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot;bar&quot;, &quot;baz&quot; =&gt; &quot;qux&quot;}</span>
 stm                         <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot;bar&quot;}</span></code></pre>
         </div>
@@ -1843,7 +1843,7 @@ the key and value will be used for the key and value in the tree entry.</p>
 the key for the tree entry will come from the first element in the Tuple, and
 the value will come from the last element in the Tuple.</p>
 
-<pre><code>a <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>
+<pre><code class="language-crystal">a <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>
 <span class="n">10</span>.times {<span class="o">|</span>x<span class="o">|</span> a <span class="o">&lt;&lt;</span> x}
 stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">Int32</span>, <span class="t">Int32</span>).<span class="k">new</span>({<span class="n">6</span> => <span class="n">0</span>, <span class="n">11</span> => <span class="n">0</span>}).merge!(a)
 stm[<span class="n">11</span>] <span class="c"># =&gt; 0</span>
@@ -1949,7 +1949,7 @@ node in the tree.</p>
 <p>If a value already exists for <code>key</code>, that (old) value is returned.
 Otherwise the given block is invoked with <em>key</em> and its value is returned.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">Int32</span>, <span class="t">String</span>).<span class="k">new</span>
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">Int32</span>, <span class="t">String</span>).<span class="k">new</span>
 stm.put(<span class="n">1</span>, <span class="s">&quot;one&quot;</span>) { <span class="s">&quot;didn&#39;t exist&quot;</span> } <span class="c"># =&gt; &quot;didn&#39;t exist&quot;</span>
 stm.put(<span class="n">1</span>, <span class="s">&quot;uno&quot;</span>) { <span class="s">&quot;didn&#39;t exist&quot;</span> } <span class="c"># =&gt; &quot;one&quot;</span>
 stm.put(<span class="n">2</span>, <span class="s">&quot;two&quot;</span>) { <span class="o">|</span>key<span class="o">|</span> key.to_s } <span class="c"># =&gt; &quot;2&quot;</span></code></pre>
@@ -1973,7 +1973,7 @@ stm.put(<span class="n">2</span>, <span class="s">&quot;two&quot;</span>) { <spa
           
           <p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with the given keys removed.</p>
 
-<pre><code>{<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.reject(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>) <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span></code></pre>
+<pre><code class="language-crystal">{<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.reject(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>) <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span></code></pre>
         </div>
       
       <br/>
@@ -1994,7 +1994,7 @@ stm.put(<span class="n">2</span>, <span class="s">&quot;two&quot;</span>) { <spa
           
           <p>Removes a list of keys out of the tree, returning a new tree.</p>
 
-<pre><code>h <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.reject(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>)
+<pre><code class="language-crystal">h <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.reject(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>)
 h <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span></code></pre>
         </div>
       
@@ -2016,7 +2016,7 @@ h <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span><
           
           <p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> consisting of entries for which the block returns <code>false</code>.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">100</span>, <span class="s">&quot;b&quot;</span> => <span class="n">200</span>, <span class="s">&quot;c&quot;</span> => <span class="n">300</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">100</span>, <span class="s">&quot;b&quot;</span> => <span class="n">200</span>, <span class="s">&quot;c&quot;</span> => <span class="n">300</span>})
 stm.reject { <span class="o">|</span>k, v<span class="o">|</span> k <span class="o">&gt;</span> <span class="s">&quot;a&quot;</span> } <span class="c"># =&gt; {&quot;a&quot; =&gt; 100}</span>
 stm.reject { <span class="o">|</span>k, v<span class="o">|</span> v <span class="o">&lt;</span> <span class="n">200</span> } <span class="c"># =&gt; {&quot;b&quot; =&gt; 200, &quot;c&quot; =&gt; 300}</span></code></pre>
         </div>
@@ -2059,7 +2059,7 @@ returning a new one. Returns <code>nil</code> if no changes were made.</p>
           
           <p>Removes a list of keys out of the tree.</p>
 
-<pre><code>h <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.reject!(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>)
+<pre><code class="language-crystal">h <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.reject!(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>)
 h <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span></code></pre>
         </div>
       
@@ -2081,7 +2081,7 @@ h <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span><
           
           <p>Removes the given keys from the tree.</p>
 
-<pre><code>{<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.reject!(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>) <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span></code></pre>
+<pre><code class="language-crystal">{<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.reject!(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>) <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span></code></pre>
         </div>
       
       <br/>
@@ -2116,7 +2116,7 @@ h <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span><
           
           <p>Returns a new hash consisting of entries for which the block returns <code>true</code>.</p>
 
-<pre><code>h <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => <span class="n">100</span>, <span class="s">&quot;b&quot;</span> => <span class="n">200</span>, <span class="s">&quot;c&quot;</span> => <span class="n">300</span>}
+<pre><code class="language-crystal">h <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => <span class="n">100</span>, <span class="s">&quot;b&quot;</span> => <span class="n">200</span>, <span class="s">&quot;c&quot;</span> => <span class="n">300</span>}
 h.<span class="k">select</span> { <span class="o">|</span>k, v<span class="o">|</span> k <span class="o">&gt;</span> <span class="s">&quot;a&quot;</span> } <span class="c"># =&gt; {&quot;b&quot; =&gt; 200, &quot;c&quot; =&gt; 300}</span>
 h.<span class="k">select</span> { <span class="o">|</span>k, v<span class="o">|</span> v <span class="o">&lt;</span> <span class="n">200</span> } <span class="c"># =&gt; {&quot;a&quot; =&gt; 100}</span></code></pre>
         </div>
@@ -2139,7 +2139,7 @@ h.<span class="k">select</span> { <span class="o">|</span>k, v<span class="o">|<
           
           <p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with the given keys.</p>
 
-<pre><code><span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}).<span class="k">select</span>({<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>}) <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&gt; 3}</span>
+<pre><code class="language-crystal"><span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}).<span class="k">select</span>({<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>}) <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&gt; 3}</span>
 <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}).<span class="k">select</span>(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>)   <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&gt; 3}</span>
 <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}).<span class="k">select</span>([<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>]) <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&gt; 3}</span></code></pre>
         </div>
@@ -2162,7 +2162,7 @@ h.<span class="k">select</span> { <span class="o">|</span>k, v<span class="o">|<
           
           <p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with the given keys.</p>
 
-<pre><code><span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}).<span class="k">select</span>({<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>}) <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&gt; 3}</span>
+<pre><code class="language-crystal"><span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}).<span class="k">select</span>({<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>}) <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&gt; 3}</span>
 <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}).<span class="k">select</span>(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>)   <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&gt; 3}</span>
 <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}).<span class="k">select</span>([<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>]) <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&gt; 3}</span></code></pre>
         </div>
@@ -2185,7 +2185,7 @@ h.<span class="k">select</span> { <span class="o">|</span>k, v<span class="o">|<
           
           <p>Removes every element except the given ones.</p>
 
-<pre><code>h1 <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.select!({<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>})
+<pre><code class="language-crystal">h1 <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.select!({<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>})
 h2 <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.select!(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>)
 h3 <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.select!([<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>])
 h1 <span class="o">==</span> h2 <span class="o">==</span> h3 <span class="c"># =&gt; true</span>
@@ -2229,7 +2229,7 @@ h1             <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&g
           
           <p>Removes every element except the given ones.</p>
 
-<pre><code>h1 <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.select!({<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>})
+<pre><code class="language-crystal">h1 <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.select!({<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>})
 h2 <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.select!(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>)
 h3 <span class="o">=</span> {<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>}.select!([<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>])
 h1 <span class="o">==</span> h2 <span class="o">==</span> h3 <span class="c"># =&gt; true</span>
@@ -2273,7 +2273,7 @@ h1             <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&g
           
           <p>Transform the <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> into an <code>Array(Tuple(K, V))</code>.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>})
 ary <span class="o">=</span> stm.to_a  <span class="c"># =&gt; [{&quot;baz&quot;, &quot;qux&quot;}, {&quot;foo&quot;, &quot;bar&quot;}]</span>
 stm2 <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>(ary)
 stm <span class="o">==</span> stm2  <span class="c"># =&gt; true</span></code></pre>
@@ -2297,7 +2297,7 @@ stm <span class="o">==</span> stm2  <span class="c"># =&gt; true</span></code></
           
           <p>Transform a <code><a href="SplayTreeMap.html">SplayTreeMap</a>(K,V)</code> into a <code>Hash(K,V)</code>.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;foo&quot;</span> => <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;baz&quot;</span> => <span class="s">&quot;qux&quot;</span>})
 h <span class="o">=</span> stm.to_h  <span class="c"># =&gt; {&quot;baz&quot; =&gt; &quot;qux&quot;, &quot;foo&quot; =&gt; &quot;bar&quot;}</span></code></pre>
         </div>
       
@@ -2339,7 +2339,7 @@ h <span class="o">=</span> stm.to_h  <span class="c"># =&gt; {&quot;baz&quot; =&
           <p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with all of the key/value pairs converted using
 the provided block. The block can change the types of both keys and values.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>({<span class="n">1</span> => <span class="n">1</span>, <span class="n">2</span> => <span class="n">4</span>, <span class="n">3</span> => <span class="n">9</span>, <span class="n">4</span> => <span class="n">16</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>({<span class="n">1</span> => <span class="n">1</span>, <span class="n">2</span> => <span class="n">4</span>, <span class="n">3</span> => <span class="n">9</span>, <span class="n">4</span> => <span class="n">16</span>})
 stm <span class="o">=</span> stm.transform {<span class="o">|</span>k, v<span class="o">|</span> {k.to_s, v.to_s}}
 stm  <span class="c"># =&gt; {&quot;1&quot; =&gt; &quot;1&quot;, &quot;2&quot; =&gt; &quot;4&quot;, &quot;3&quot; =&gt; &quot;9&quot;, &quot;4&quot; =&gt; &quot;16&quot;}</span></code></pre>
         </div>
@@ -2363,7 +2363,7 @@ stm  <span class="c"># =&gt; {&quot;1&quot; =&gt; &quot;1&quot;, &quot;2&quot; =
           <p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with all keys converted using the block operation.
 The block can change a type of keys.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="n">:a</span> => <span class="n">1</span>, <span class="n">:b</span> => <span class="n">2</span>, <span class="n">:c</span> => <span class="n">3</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="n">:a</span> => <span class="n">1</span>, <span class="n">:b</span> => <span class="n">2</span>, <span class="n">:c</span> => <span class="n">3</span>})
 stm.transform_keys { <span class="o">|</span>key<span class="o">|</span> key.to_s } <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;b&quot; =&gt; 2, &quot;c&quot; =&gt; 3}</span></code></pre>
         </div>
       
@@ -2386,7 +2386,7 @@ stm.transform_keys { <span class="o">|</span>key<span class="o">|</span> key.to_
           <p>Returns a new SplayTreeMap with all values converted using the block operation.
 The block can change a type of values.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="n">:a</span> => <span class="n">1</span>, <span class="n">:b</span> => <span class="n">2</span>, <span class="n">:c</span> => <span class="n">3</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="n">:a</span> => <span class="n">1</span>, <span class="n">:b</span> => <span class="n">2</span>, <span class="n">:c</span> => <span class="n">3</span>})
 stm.transform_values { <span class="o">|</span>value<span class="o">|</span> value <span class="o">+</span> <span class="n">1</span> } <span class="c"># =&gt; {:a =&gt; 2, :b =&gt; 3, :c =&gt; 4}</span></code></pre>
         </div>
       
@@ -2408,7 +2408,7 @@ stm.transform_values { <span class="o">|</span>value<span class="o">|</span> val
           
           <p>Modifies the values of the current <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> according to the provided block.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="n">:a</span> => <span class="n">1</span>, <span class="n">:b</span> => <span class="n">2</span>, <span class="n">:c</span> => <span class="n">3</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="n">:a</span> => <span class="n">1</span>, <span class="n">:b</span> => <span class="n">2</span>, <span class="n">:c</span> => <span class="n">3</span>})
 stm.transform_values! { <span class="o">|</span>value<span class="o">|</span> value <span class="o">+</span> <span class="n">1</span> } <span class="c"># =&gt; {:a =&gt; 2, :b =&gt; 3, :c =&gt; 4}</span></code></pre>
         </div>
       
@@ -2431,7 +2431,7 @@ stm.transform_values! { <span class="o">|</span>value<span class="o">|</span> va
           <p>Returns an array containing all of the values in the tree. The array is in
 the order of the associated keys.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>})
 stm.values  <span class="c"># =&gt; [1, 2, 3, 4]</span></code></pre>
         </div>
       
@@ -2454,7 +2454,7 @@ stm.values  <span class="c"># =&gt; [1, 2, 3, 4]</span></code></pre>
           <p>Returns a tuple populated with the values associated with the given <em>keys</em>.
 Raises a KeyError if any key is invalid.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>})
 stm.values_at(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>)      <span class="c"># =&gt; {1, 3}</span>
 stm.values_at(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;d&quot;</span>, <span class="s">&quot;e&quot;</span>) <span class="c"># =&gt; KeyError</span></code></pre>
         </div>
@@ -2478,7 +2478,7 @@ stm.values_at(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;d&quot
           <p>Returns a tuple populated with the values associated with the given <em>keys</em>.
 Returns <code>nil</code> for any key that is invalid.</p>
 
-<pre><code>stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>})
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.<span class="k">new</span>({<span class="s">&quot;a&quot;</span> => <span class="n">1</span>, <span class="s">&quot;b&quot;</span> => <span class="n">2</span>, <span class="s">&quot;c&quot;</span> => <span class="n">3</span>, <span class="s">&quot;d&quot;</span> => <span class="n">4</span>})
 stm.values_at?(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</span>)      <span class="c"># =&gt; {1, 3}</span>
 stm.values_at?(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;d&quot;</span>, <span class="s">&quot;e&quot;</span>) <span class="c"># =&gt; {1, 4, nil}</span></code></pre>
         </div>
