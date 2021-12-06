@@ -675,4 +675,69 @@ describe SplayTreeMap do
     end
     st.size.should be <= 10000
   end
+
+  it "should prune if a maxsize is set to a value less than the current size" do
+    ins = {} of Int32 => Int32
+    st = SplayTreeMap(Int32, Int32).new
+    100000.times do
+      loop do
+        x = Math.sqrt(rand(1000000000000)).to_i
+        if !ins.has_key?(x)
+          ins[x] = x
+          st[x] = x
+          break
+        end
+      end
+    end
+    st.size.should eq 100000
+    st.maxsize = 10000
+    st.size.should be <= 10000
+  end
+
+  it "can report whether pruning occurred and what was pruned" do
+    ins = {} of Int32 => Int32
+    st = SplayTreeMap(Int32, Int32).new
+    1000.times do
+      loop do
+        x = Math.sqrt(rand(100000000)).to_i
+        if !ins.has_key?(x)
+          ins[x] = x
+          st[x] = x
+          break
+        end
+      end
+    end
+    st.size.should eq 1000
+    st.was_pruned?.should eq false
+
+    st = SplayTreeMap(Int32, Int32).new
+    st.maxsize = 10000
+    10000.times do
+      loop do
+        x = Math.sqrt(rand(1000000000000)).to_i
+        if !ins.has_key?(x)
+          ins[x] = x
+          st[x] = x
+          break
+        end
+      end
+    end
+    st.size.should eq 10000
+    full_set = st.values
+    st.values.should eq full_set
+    st.pruned.empty?.should be_true
+
+    loop do
+      x = Math.sqrt(rand(1000000000000)).to_i
+      if !ins.has_key?(x)
+        ins[x] = x
+        st[x] = x
+        break
+      end
+    end
+    st.size.should be <= 10000
+    st.was_pruned?.should eq true
+    (st.size + st.pruned.size).should eq 10001
+    st.pruned.values.should eq (full_set - st.values)
+  end
 end

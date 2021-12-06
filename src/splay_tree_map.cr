@@ -58,9 +58,12 @@ class SplayTreeMap(K, V)
   include Enumerable({K, V})
   include Iterable({K, V})
   include Comparable(SplayTreeMap)
-  VERSION = "0.2.0"
+  VERSION = "0.2.1"
 
   private class Unk; end
+
+  getter pruned : Hash(K, V) = {} of K => V
+  getter? was_pruned : Bool = false
 
   @maxsize : UInt64? = nil
   @lock = Mutex.new(protection: Mutex::Protection::Reentrant)
@@ -142,7 +145,7 @@ class SplayTreeMap(K, V)
     @maxsize = value.to_u64
 
     if mxsz = maxsize
-      if @size > mxsz
+      while @size > mxsz
         @lock.synchronize do
           prune
         end
@@ -297,6 +300,8 @@ class SplayTreeMap(K, V)
       if mxsz = maxsize
         if @size > mxsz
           prune
+        else
+          @was_pruned = false
         end
       end
     end
@@ -307,6 +312,9 @@ class SplayTreeMap(K, V)
   # Resets the state of the `SplayTreeMap`, clearing all key/value associations.
   def clear
     @lock.synchronize do
+      @was_pruned = false
+      @pruned.clear
+      @pcount = 0
       @root = nil
       @size = 0
       @header = Node(K, V).new(nil, nil)
@@ -933,8 +941,12 @@ class SplayTreeMap(K, V)
   # node in the tree.
   # TODO: Come up with a more efficient way of getting this same effect.
   def prune
+    @was_pruned = false
     return if @root.nil?
 
+    @was_pruned = true
+    @pruned.clear
+    @pcount = 0
     height_limit = height / 2
 
     @lock.synchronize do
@@ -1265,12 +1277,14 @@ class SplayTreeMap(K, V)
     return if node.nil?
     n = node.left
     if n && n.terminal?
+      @pruned[n.key] = n.value
       node.left = nil
       @size -= 1
     end
 
     n = node.right
     if n && n.terminal?
+      @pruned[n.key] = n.value
       node.right = nil
       @size -= 1
     end
