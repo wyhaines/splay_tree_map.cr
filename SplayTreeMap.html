@@ -116,7 +116,7 @@
   </h2>
   
     
-      <a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L57" target="_blank">
+      <a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L57" target="_blank">
         splay_tree_map.cr
       </a>
     
@@ -138,7 +138,7 @@
   <dl>
     
       <dt class="entry-const" id="VERSION">
-        <strong>VERSION</strong> = <code><span class="s">&quot;0.2.0&quot;</span></code>
+        <strong>VERSION</strong> = <code><span class="s">&quot;0.2.1&quot;</span></code>
       </dt>
       
     
@@ -533,6 +533,11 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#pruned%3AHash%28K%2CV%29-instance-method" class="signature"><strong>#pruned</strong> : Hash(K, V)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#put%28key%3AK%2Cvalue%3AV%2C%26%29-instance-method" class="signature"><strong>#put</strong>(key : K, value : V, &)</a>
         
           <div class="summary"><p>Sets the value of <em>key</em> to the given <em>value</em>.</p></div>
@@ -705,6 +710,11 @@
         
       </li>
     
+      <li class="entry-summary">
+        <a href="#was_pruned%3F%3ABool-instance-method" class="signature"><strong>#was_pruned?</strong> : Bool</a>
+        
+      </li>
+    
   </ul>
 
 
@@ -797,7 +807,7 @@ puts stm.inspect <span class="c"># =&gt; [1,2,3]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L87" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L90" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -824,7 +834,7 @@ puts stm.inspect <span class="c"># =&gt; [1,2,3]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L102" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L105" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -850,7 +860,7 @@ stm[<span class="s">&quot;xyzzy&quot;</span>]     <span class="c"># =&gt; &quot;
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L125" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L128" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -873,7 +883,7 @@ stm[<span class="s">&quot;xyzzy&quot;</span>] <span class="c"># =&gt; &quot;Unkn
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L112" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L115" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -908,7 +918,7 @@ stm[<span class="s">&quot;xyzzy&quot;</span>] <span class="c"># =&gt; &quot;Unkn
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1233" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L1245" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -942,7 +952,7 @@ or this method will trigger an exception.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L155" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L158" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -976,7 +986,7 @@ stm[<span class="s">&quot;foo&quot;</span>] <span class="c"># raises KeyError</s
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L207" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L210" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -998,7 +1008,7 @@ stm[<span class="s">&quot;foo&quot;</span>] <span class="c"># raises KeyError</s
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L256" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L259" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1026,7 +1036,7 @@ stm[<span class="s">&quot;foo&quot;</span>]? <span class="c"># =&gt; nil</span><
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L222" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L225" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1047,7 +1057,7 @@ stm[<span class="s">&quot;foo&quot;</span>]? <span class="c"># =&gt; nil</span><
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L308" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L313" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1071,7 +1081,7 @@ stm.compact <span class="c"># =&gt; {&quot;hello&quot; =&gt; &quot;world&quot;}<
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L323" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L331" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1095,7 +1105,7 @@ stm.compact! <span class="c"># =&gt; nil</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L338" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L346" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1120,7 +1130,7 @@ stm.delete(<span class="s">&quot;baz&quot;</span>) { <span class="o">|</span>key
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L350" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L358" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1144,7 +1154,7 @@ stm.fetch(<span class="s">&quot;foo&quot;</span>, <span class="n">nil</span>) <s
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L362" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L370" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1170,7 +1180,7 @@ stm <span class="c"># =&gt; { &quot;bar&quot; =&gt; &quot;qux&quot; }</span></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L399" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L407" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1196,7 +1206,7 @@ stm.dig <span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</spa
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L413" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L421" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1222,7 +1232,7 @@ stm.dig <span class="s">&quot;a&quot;</span>, <span class="s">&quot;c&quot;</spa
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L436" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L444" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1247,7 +1257,7 @@ stm_a <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot;bar&quot;}</span></co
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L457" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L465" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1279,7 +1289,7 @@ stm.each <span class="k">do</span> <span class="o">|</span>key_and_value<span cl
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L479" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L487" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1309,7 +1319,7 @@ set  <span class="c"># =&gt; [{&quot;fob&quot; =&gt; &quot;baz&quot;}, {&quot;fo
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L501" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L509" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1335,7 +1345,7 @@ stm.each_key <span class="k">do</span> <span class="o">|</span>key<span class="o
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L515" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L523" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1365,7 +1375,7 @@ key <span class="c"># =&gt; &quot;baz&quot;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L535" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L543" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1391,7 +1401,7 @@ stm.each_value <span class="k">do</span> <span class="o">|</span>value<span clas
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L549" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L557" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1422,7 +1432,7 @@ value <span class="c"># =&gt; &quot;qux&quot;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L570" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L578" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1447,7 +1457,7 @@ stm.empty? <span class="c"># =&gt; false</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L583" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L591" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1473,7 +1483,7 @@ stm.fetch(<span class="s">&quot;bar&quot;</span>) { <span class="o">|</span>key<
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L596" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L604" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1498,7 +1508,7 @@ stm.fetch(<span class="s">&quot;bar&quot;</span>, <span class="s">&quot;foo&quot
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L609" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L617" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1522,7 +1532,7 @@ stm.has_key?(<span class="s">&quot;c&quot;</span>) <span class="c"># =&gt; false
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L651" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L659" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1548,7 +1558,7 @@ stm.has_value?(<span class="s">&quot;4&quot;</span>) <span class="c"># =&gt; fal
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L664" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L672" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1569,7 +1579,7 @@ stm.has_value?(<span class="s">&quot;4&quot;</span>) <span class="c"># =&gt; fal
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L677" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L685" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1590,7 +1600,7 @@ stm.has_value?(<span class="s">&quot;4&quot;</span>) <span class="c"># =&gt; fal
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L672" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L680" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1614,7 +1624,7 @@ stm.key_for(<span class="s">&quot;qux&quot;</span>) { <span class="o">|</span>va
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L716" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L724" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1639,7 +1649,7 @@ stm.key_for(<span class="s">&quot;foobar&quot;</span>) <span class="c"># raises 
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L731" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L739" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1664,7 +1674,7 @@ stm.key_for?(<span class="s">&quot;foobar&quot;</span>) <span class="c"># =&gt; 
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L743" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L751" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1687,7 +1697,7 @@ stm.keys.should eq [<span class="s">&quot;baz&quot;</span>, <span class="s">&quo
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L766" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L774" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1708,7 +1718,7 @@ stm.keys.should eq [<span class="s">&quot;baz&quot;</span>, <span class="s">&quo
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L748" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L756" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1729,7 +1739,7 @@ stm.keys.should eq [<span class="s">&quot;baz&quot;</span>, <span class="s">&quo
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L775" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L783" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1750,7 +1760,7 @@ stm.keys.should eq [<span class="s">&quot;baz&quot;</span>, <span class="s">&quo
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L134" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L137" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1773,7 +1783,7 @@ prune operation will be performed.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L141" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L144" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1799,7 +1809,7 @@ stm                         <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L881" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L889" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1815,7 +1825,7 @@ stm                         <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L887" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L895" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1831,7 +1841,7 @@ stm                         <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L905" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L913" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1847,7 +1857,7 @@ stm                         <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L893" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L901" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1863,7 +1873,7 @@ stm                         <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L899" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L907" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1879,7 +1889,7 @@ stm                         <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L911" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L919" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1925,7 +1935,7 @@ stm[<span class="n">7</span>] <span class="c"># =&gt; 343</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L819" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L827" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1941,7 +1951,7 @@ stm[<span class="n">7</span>] <span class="c"># =&gt; 343</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L829" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L837" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1957,7 +1967,7 @@ stm[<span class="n">7</span>] <span class="c"># =&gt; 343</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L853" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L861" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1973,7 +1983,7 @@ stm[<span class="n">7</span>] <span class="c"># =&gt; 343</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L841" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L849" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1994,7 +2004,7 @@ stm[<span class="n">7</span>] <span class="c"># =&gt; 343</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L918" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L926" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2019,7 +2029,7 @@ Splay Trees.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L619" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L627" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2045,7 +2055,23 @@ node in the tree.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L935" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L943" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pruned:Hash(K,V)-instance-method">
+      <div class="signature">
+        
+        def <strong>pruned</strong> : Hash(K, V)
+
+        <a class="method-permalink" href="#pruned%3AHash%28K%2CV%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L65" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2072,7 +2098,7 @@ stm.put(<span class="n">2</span>, <span class="s">&quot;two&quot;</span>) { <spa
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L957" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L969" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2096,7 +2122,7 @@ stm.reject { <span class="o">|</span>k, v<span class="o">|</span> v <span class=
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L968" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L980" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2119,7 +2145,7 @@ h <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span><
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L982" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L994" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2141,7 +2167,7 @@ h <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span><
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L995" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L1007" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2163,7 +2189,7 @@ returning a new one. Returns <code>nil</code> if no changes were made.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1001" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L1013" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2186,7 +2212,7 @@ h <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span><
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1021" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L1033" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2208,7 +2234,7 @@ h <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span><
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1033" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L1045" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2224,7 +2250,7 @@ h <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span><
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L131" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L134" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2248,7 +2274,7 @@ h.<span class="k">select</span> { <span class="o">|</span>k, v<span class="o">|<
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1043" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L1055" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2272,7 +2298,7 @@ h.<span class="k">select</span> { <span class="o">|</span>k, v<span class="o">|<
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1054" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L1066" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2296,7 +2322,7 @@ h.<span class="k">select</span> { <span class="o">|</span>k, v<span class="o">|<
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1063" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L1075" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2317,7 +2343,7 @@ h.<span class="k">select</span> { <span class="o">|</span>k, v<span class="o">|<
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1068" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L1080" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2343,7 +2369,7 @@ h1             <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&g
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1081" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L1093" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2369,7 +2395,7 @@ h1             <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&g
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1087" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L1099" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2390,7 +2416,7 @@ h1             <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&g
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L130" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L133" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2415,7 +2441,7 @@ stm <span class="o">==</span> stm2 <span class="c"># =&gt; true</span></code></p
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1099" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L1111" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2438,7 +2464,7 @@ h <span class="o">=</span> stm.to_h <span class="c"># =&gt; {&quot;baz&quot; =&g
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1111" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L1123" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2459,7 +2485,7 @@ h <span class="o">=</span> stm.to_h <span class="c"># =&gt; {&quot;baz&quot; =&g
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1118" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L1130" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2484,7 +2510,7 @@ stm  <span class="c"># =&gt; {&quot;1&quot; =&gt; &quot;1&quot;, &quot;2&quot; =
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1143" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L1155" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2508,7 +2534,7 @@ stm.transform_keys { <span class="o">|</span>key<span class="o">|</span> key.to_
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1157" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L1169" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2532,7 +2558,7 @@ stm.transform_values { <span class="o">|</span>value<span class="o">|</span> val
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1170" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L1182" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2555,7 +2581,7 @@ stm.transform_values! { <span class="o">|</span>value<span class="o">|</span> va
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1182" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L1194" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2579,7 +2605,7 @@ stm.values <span class="c"># =&gt; [1, 2, 3, 4]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1197" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L1209" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2604,7 +2630,7 @@ stm.values_at(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;d&quot
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1211" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L1223" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2629,7 +2655,23 @@ stm.values_at?(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;d&quo
       <br/>
       <div>
         
-          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/8a717135b6c4b51ce28d378213e99bec34a8e1a1/src/splay_tree_map.cr#L1223" target="_blank">View source</a>]
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L1235" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="was_pruned?:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>was_pruned?</strong> : Bool
+
+        <a class="method-permalink" href="#was_pruned%3F%3ABool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wyhaines/splay_tree_map.cr/blob/1fe28428b801dde71304453e1f1c37bd343b29c1/src/splay_tree_map.cr#L66" target="_blank">View source</a>]
         
       </div>
     </div>
