@@ -58,11 +58,10 @@ class SplayTreeMap(K, V)
   include Enumerable({K, V})
   include Iterable({K, V})
   include Comparable(SplayTreeMap)
-  VERSION = "0.2.1"
+  VERSION = "0.2.2"
 
   private class Unk; end
 
-  getter pruned : Hash(K, V) = {} of K => V
   getter? was_pruned : Bool = false
 
   @maxsize : UInt64? = nil
@@ -71,6 +70,7 @@ class SplayTreeMap(K, V)
   @size : Int32 = 0
   @header : Node(K, V) = Node(K, V).new(nil, nil)
   @block : (SplayTreeMap(K, V), K -> V)?
+  @on_prune : (K, V ->)?
 
   # Creates an empty `SplayTreeMap`.
   def initialize
@@ -127,6 +127,10 @@ class SplayTreeMap(K, V)
   # ```
   def self.new(seed : Enumerable({K, V})? | Iterable({K, V})?, default_value : V)
     new(seed: seed) { default_value }
+  end
+
+  def on_prune(&block : K, V ->)
+    @on_prune = block
   end
 
   # Return the current number of key/value pairs in the tree.
@@ -313,7 +317,6 @@ class SplayTreeMap(K, V)
   def clear
     @lock.synchronize do
       @was_pruned = false
-      @pruned.clear
       @pcount = 0
       @root = nil
       @size = 0
@@ -945,7 +948,6 @@ class SplayTreeMap(K, V)
     return if @root.nil?
 
     @was_pruned = true
-    @pruned.clear
     @pcount = 0
     height_limit = height / 2
 
@@ -1277,14 +1279,18 @@ class SplayTreeMap(K, V)
     return if node.nil?
     n = node.left
     if n && n.terminal?
-      @pruned[n.key] = n.value
+      if @on_prune && (blk = @on_prune)
+        blk.call(n.key, n.value)
+      end
       node.left = nil
       @size -= 1
     end
 
     n = node.right
     if n && n.terminal?
-      @pruned[n.key] = n.value
+      if @on_prune && (blk = @on_prune)
+        blk.call(n.key, n.value)
+      end
       node.right = nil
       @size -= 1
     end

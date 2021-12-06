@@ -694,7 +694,7 @@ describe SplayTreeMap do
     st.size.should be <= 10000
   end
 
-  it "can report whether pruning occurred and what was pruned" do
+  it "can report whether pruning occurred" do
     ins = {} of Int32 => Int32
     st = SplayTreeMap(Int32, Int32).new
     1000.times do
@@ -708,7 +708,7 @@ describe SplayTreeMap do
       end
     end
     st.size.should eq 1000
-    st.was_pruned?.should eq false
+    st.was_pruned?.should be_false
 
     st = SplayTreeMap(Int32, Int32).new
     st.maxsize = 10000
@@ -725,7 +725,6 @@ describe SplayTreeMap do
     st.size.should eq 10000
     full_set = st.values
     st.values.should eq full_set
-    st.pruned.empty?.should be_true
 
     loop do
       x = Math.sqrt(rand(1000000000000)).to_i
@@ -736,8 +735,43 @@ describe SplayTreeMap do
       end
     end
     st.size.should be <= 10000
-    st.was_pruned?.should eq true
-    (st.size + st.pruned.size).should eq 10001
-    st.pruned.values.should eq (full_set - st.values)
+    st.was_pruned?.should be_true
+  end
+
+  it "can use a callback to collect pruned key/value pairs" do
+    ins = {} of Int32 => Int32
+    st = SplayTreeMap(Int32, Int32).new
+    st.maxsize = 1000
+    pruned_pairs = [] of {Int32, Int32}
+    st.on_prune do |key, value| # collect the key/value pairs that were pruned
+      pruned_pairs << {key, value}
+    end
+    1000.times do
+      loop do
+        x = Math.sqrt(rand(100000000)).to_i
+        if !ins.has_key?(x)
+          ins[x] = x
+          st[x] = x
+          break
+        end
+      end
+    end
+    st.size.should eq 1000
+    st.was_pruned?.should be_false
+    full_values = st.values
+
+    loop do
+      x = Math.sqrt(rand(1000000000000)).to_i
+      if !ins.has_key?(x)
+        ins[x] = x
+        st[x] = x
+        full_values << x
+        break
+      end
+    end
+    st.size.should be <= 1000
+    st.was_pruned?.should be_true
+    st.size.should eq (1001 - pruned_pairs.size)
+    st.values.should eq (full_values - pruned_pairs.map { |x| x[1] })
   end
 end
