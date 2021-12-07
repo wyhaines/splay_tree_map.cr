@@ -129,6 +129,10 @@ class SplayTreeMap(K, V)
     new(seed: seed) { default_value }
   end
 
+  # This method takes a block that accepts key/value pairs from the tree. It will be
+  # called once for every key/value pair that is pruned from the tree. This could be
+  # used to log items that are eliminate from a cache, or to move eliminated items
+  # into a secondard cache, for example.
   def on_prune(&block : K, V ->)
     @on_prune = block
   end
