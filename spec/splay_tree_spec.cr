@@ -211,7 +211,7 @@ describe SplayTreeMap do
     end
 
     stm.each do |key_and_value|
-      key_and_value.should eq ({"foo", "bar"})
+      key_and_value.should eq({"foo", "bar"})
     end
 
     stm = SplayTreeMap(Int32, Int32).new
@@ -304,7 +304,7 @@ describe SplayTreeMap do
     st = SplayTreeMap(Int32, Int32).new
     10.times { |x| st[x] = x }
 
-    st.first.should eq ({0, 0})
+    st.first.should eq({0, 0})
   end
 
   it "merge!; can merge key/value pairs from another structure that responds to #each" do
@@ -418,7 +418,7 @@ describe SplayTreeMap do
     st = SplayTreeMap(Int32, Int32).new
     10.times { |x| st[x] = x }
 
-    st.last.should eq ({9, 9})
+    st.last.should eq({9, 9})
   end
 
   it "min; can find the min key" do
@@ -586,7 +586,7 @@ describe SplayTreeMap do
 
   it "values_at; returns a tuple with the associated values, and raises on invalid" do
     stm = SplayTreeMap.new({"a" => 1, "b" => 2, "c" => 3, "d" => 4})
-    stm.values_at("a", "c").should eq ({1, 3})
+    stm.values_at("a", "c").should eq({1, 3})
     expect_raises(KeyError) do
       stm.values_at("a", "d", "e")
     end
@@ -594,8 +594,8 @@ describe SplayTreeMap do
 
   it "values_at; returns a tuple with the associated values, and nil on invalid" do
     stm = SplayTreeMap.new({"a" => 1, "b" => 2, "c" => 3, "d" => 4})
-    stm.values_at?("a", "c").should eq ({1, 3})
-    stm.values_at?("a", "d", "e").should eq ({1, 4, nil})
+    stm.values_at?("a", "c").should eq({1, 3})
+    stm.values_at?("a", "d", "e").should eq({1, 4, nil})
   end
 
   it "zip; can combine two arrays into a single tree" do
@@ -771,7 +771,7 @@ describe SplayTreeMap do
     end
     st.size.should be <= 1000
     st.was_pruned?.should be_true
-    st.size.should eq (1001 - pruned_pairs.size)
-    st.values.should eq (full_values - pruned_pairs.map { |x| x[1] })
+    st.size.should eq(1001 - pruned_pairs.size)
+    st.values.should eq(full_values - pruned_pairs.map { |x| x[1] })
   end
 end
