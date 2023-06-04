@@ -113,9 +113,9 @@ describe SplayTreeMap do
     intermediate_heights = [] of Int32
     regular_heights = [] of Int32
 
-    top_100.each { |x| top_heights << st.height(x).not_nil! }
-    intermediate_100.each { |x| intermediate_heights << st.height(x).not_nil! }
-    regular_100.each { |x| regular_heights << st.height(x).not_nil! }
+    top_100.each { |x| top_heights << (st.height(x) || 0) }
+    intermediate_100.each { |x| intermediate_heights << (st.height(x) || 0) }
+    regular_100.each { |x| regular_heights << (st.height(x) || 0) }
 
     sum_top_100 = top_heights.reduce(0) { |a, v| a + v }
     sum_intermediate_100 = intermediate_heights.reduce(0) { |a, v| a + v }

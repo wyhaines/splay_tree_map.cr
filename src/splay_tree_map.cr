@@ -1,4 +1,5 @@
 require "mutex"
+require "./version"
 
 # A splay tree is a type of binary search tree that self organizes so that the
 # most frequently accessed items tend to be towards the root of the tree, where
@@ -58,7 +59,6 @@ class SplayTreeMap(K, V)
   include Enumerable({K, V})
   include Iterable({K, V})
   include Comparable(SplayTreeMap)
-  VERSION = "0.2.2"
 
   private class Unk; end
 
@@ -362,7 +362,7 @@ class SplayTreeMap(K, V)
   # stm.fetch("foo", nil)                          # => nil
   # stm.delete("baz") { |key| "#{key} not found" } # => "baz not found"
   # ```
-  def delete(key)
+  def delete(key, &)
     value = delete_impl(key)
     value != Unk ? value : yield key
   end
@@ -392,8 +392,9 @@ class SplayTreeMap(K, V)
             x = root.right
             @root = root.left
             new_root = max
+            # ameba:disable Lint/NotNil
             splay(new_root.not_nil!)
-            @root.not_nil!.right = x
+            @root.try &.right = x
           end
           @size -= 1
         end
@@ -411,7 +412,7 @@ class SplayTreeMap(K, V)
   # stm.delete_if { |key, value| key.starts_with?("fo") }
   # stm # => { "bar" => "qux" }
   # ```
-  def delete_if : self
+  def delete_if(&) : self
     reject! { |k, v| yield k, v }
     self
   end
@@ -527,7 +528,7 @@ class SplayTreeMap(K, V)
   # ```
   #
   # The enumeration is in tree order, from smallest to largest.
-  def each_key
+  def each_key(&)
     each do |key, _value|
       yield key
     end
@@ -561,7 +562,7 @@ class SplayTreeMap(K, V)
   # ```
   #
   # The enumeration is in tree order, from smallest to largest.
-  def each_value
+  def each_value(&)
     each do |_key, value|
       yield value
     end
@@ -608,7 +609,7 @@ class SplayTreeMap(K, V)
   # stm.fetch("bar") { "default value" }  # => "default value"
   # stm.fetch("bar") { |key| key.upcase } # => "BAR"
   # ```
-  def fetch(key)
+  def fetch(key, &)
     value = get_impl(key)
     value != Unk ? value : yield key
   end
@@ -728,7 +729,7 @@ class SplayTreeMap(K, V)
   # stm.key_for("bar") { |value| value.upcase } # => "foo"
   # stm.key_for("qux") { |value| value.upcase } # => "QUX"
   # ```
-  def key_for(value)
+  def key_for(value, &)
     each do |k, v|
       return k if v == value
     end
@@ -768,7 +769,7 @@ class SplayTreeMap(K, V)
       n = n.right
     end
 
-    {n.not_nil!.key, n.not_nil!.value}
+    {n.try &.key, n.try &.value}
   end
 
   # Returns an array of all keys in the tree.
@@ -795,7 +796,7 @@ class SplayTreeMap(K, V)
       n = n.right
     end
 
-    n.not_nil!.key
+    n.try &.key
   end
 
   # Adds the contents of *other* to this `SplayTreeMap`.
@@ -841,7 +842,7 @@ class SplayTreeMap(K, V)
   # arguments, the key, the value in this tree, and the value in *other*. The
   # return value of the block will be used as the merge value for the key.
 
-  def merge!(other : Enumerable({L, W})) forall L, W
+  def merge!(other : Enumerable({L, W}), &) forall L, W
     other.each do |k, v|
       if self.has_key?(k)
         self[k] = yield(k, self[k], v)
@@ -853,7 +854,7 @@ class SplayTreeMap(K, V)
     self
   end
 
-  def merge!(other : Enumerable(L)) forall L
+  def merge!(other : Enumerable(L), &) forall L
     other.each do |k|
       if self.has_key?(k)
         self[k] = yield(k, self[k], k)
@@ -865,7 +866,7 @@ class SplayTreeMap(K, V)
     self
   end
 
-  def merge!(other : Enumerable(Tuple))
+  def merge!(other : Enumerable(Tuple), &)
     other.each do |*args|
       if args[0].size == 1
         k = v = args[0][0]
@@ -899,7 +900,7 @@ class SplayTreeMap(K, V)
     stm
   end
 
-  def merge(other : Enumerable({L, W}), &block : K, V, W -> V | W) forall L, W
+  def merge(other : Enumerable({L, W}), & : K, V, W -> V | W) forall L, W
     stm = SplayTreeMap(K | L, V | W).new(self)
     stm.merge!(other) { |k, v1, v2| yield k, v1, v2 }
     stm
@@ -911,7 +912,7 @@ class SplayTreeMap(K, V)
     stm
   end
 
-  def merge(other : Enumerable({L}), &block : K, V, W -> V | W) forall L
+  def merge(other : Enumerable({L}), & : K, V, W -> V | W) forall L
     stm = SplayTreeMap(K | L, V | L).new(self)
     stm.merge!(other) { |k, v1, v2| yield k, v1, v2 }
     stm
@@ -923,7 +924,7 @@ class SplayTreeMap(K, V)
     stm
   end
 
-  def merge(other : Enumerable(A({L, W})), &block : K, V, W -> V | W) forall A, L, W
+  def merge(other : Enumerable(A({L, W})), & : K, V, W -> V | W) forall A, L, W
     stm = SplayTreeMap(K | L, V | W).new(self)
     stm.merge!(other) { |k, v1, v2| yield k, v1, v2 }
     stm
@@ -938,7 +939,7 @@ class SplayTreeMap(K, V)
       n = n.left
     end
 
-    n.not_nil!.key
+    n.try &.key
   end
 
   # This will remove all of the leaves at the end of the tree branches.
@@ -956,7 +957,10 @@ class SplayTreeMap(K, V)
     height_limit = height / 2
 
     @lock.synchronize do
+      # TODO: Better to do an if root = @root.... and then raise an exception if root is nil?
+      # ameba:disable Lint/NotNil
       descend_from(@root.not_nil!, height_limit)
+      # ameba:disable Lint/NotNil
       splay(@root.not_nil!.key)
     end
   end
@@ -972,7 +976,7 @@ class SplayTreeMap(K, V)
   # stm.put(1, "uno") { "didn't exist" } # => "one"
   # stm.put(2, "two") { |key| key.to_s } # => "2"
   # ```
-  def put(key : K, value : V)
+  def put(key : K, value : V, &)
     old_value = push(key, value)
     old_value || yield key
   end
@@ -983,7 +987,7 @@ class SplayTreeMap(K, V)
   # stm.reject { |k, v| k > "a" } # => {"a" => 100}
   # stm.reject { |k, v| v < 200 } # => {"b" => 200, "c" => 300}
   # ```
-  def reject(&block : K, V -> _)
+  def reject(& : K, V -> _)
     @lock.synchronize do
       each_with_object(SplayTreeMap(K, V).new) do |(k, v), memo|
         memo[k] = v unless yield k, v
@@ -1016,7 +1020,7 @@ class SplayTreeMap(K, V)
 
   # Equivalent to `SplayTreeMap#reject`, but modifies the current object rather than
   # returning a new one. Returns `nil` if no changes were made.
-  def reject!(&block : K, V -> _)
+  def reject!(& : K, V -> _)
     @lock.synchronize do
       num_entries = size
       keys_to_delete = [] of K
@@ -1058,7 +1062,7 @@ class SplayTreeMap(K, V)
   # h.select { |k, v| k > "a" } # => {"b" => 200, "c" => 300}
   # h.select { |k, v| v < 200 } # => {"a" => 100}
   # ```
-  def select(&block : K, V -> _)
+  def select(& : K, V -> _)
     reject { |k, v| !yield(k, v) }
   end
 
@@ -1083,7 +1087,7 @@ class SplayTreeMap(K, V)
   end
 
   # Equivalent to `Hash#select` but makes modification on the current object rather that returning a new one. Returns `nil` if no changes were made
-  def select!(&block : K, V -> _)
+  def select!(& : K, V -> _)
     reject! { |k, v| !yield(k, v) }
   end
 
@@ -1158,7 +1162,7 @@ class SplayTreeMap(K, V)
   # stm  # => {"1" => "1", "2" => "4", "3" => "9", "4" => "16"}
   # ```
   #
-  def transform(&block : {K, V} -> {K2, V2}) forall K2, V2
+  def transform(& : {K, V} -> {K2, V2}) forall K2, V2
     each_with_object(SplayTreeMap(K2, V2).new) do |(key, value), memo|
       key2, value2 = yield({key, value})
       memo[key2] = value2
@@ -1172,7 +1176,7 @@ class SplayTreeMap(K, V)
   # stm = SplayTreeMap.new({:a => 1, :b => 2, :c => 3})
   # stm.transform_keys { |key| key.to_s } # => {"a" => 1, "b" => 2, "c" => 3}
   # ```
-  def transform_keys(&block : K -> K2) forall K2
+  def transform_keys(& : K -> K2) forall K2
     each_with_object(SplayTreeMap(K2, V).new) do |(key, value), memo|
       memo[yield(key)] = value
     end
@@ -1185,7 +1189,7 @@ class SplayTreeMap(K, V)
   # stm = SplayTreeMap.new({:a => 1, :b => 2, :c => 3})
   # stm.transform_values { |value| value + 1 } # => {:a => 2, :b => 3, :c => 4}
   # ```
-  def transform_values(&block : V -> V2) forall V2
+  def transform_values(& : V -> V2) forall V2
     each_with_object(SplayTreeMap(K, V2).new) do |(key, value), memo|
       memo[key] = yield(value)
     end
@@ -1197,7 +1201,7 @@ class SplayTreeMap(K, V)
   # stm = SplayTreeMap.new({:a => 1, :b => 2, :c => 3})
   # stm.transform_values! { |value| value + 1 } # => {:a => 2, :b => 3, :c => 4}
   # ```
-  def transform_values!(&block : V -> V)
+  def transform_values!(& : V -> V)
     each do |key, value|
       memo[key] = yield(value)
     end
@@ -1356,7 +1360,7 @@ class SplayTreeMap(K, V)
       pull_lefts_from @tree.root
     end
 
-    def base_next
+    def base_next(&)
       return stop if @stack.empty?
 
       next_node_to_return = @stack.pop
