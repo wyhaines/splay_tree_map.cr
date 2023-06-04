@@ -120,6 +120,11 @@
     
     <br/>
   
+    
+      version.cr
+    
+    <br/>
+  
 
 
 
@@ -283,7 +288,7 @@
       <li class="entry-summary">
         <a href="#delete_if%28%26%29%3Aself-instance-method" class="signature"><strong>#delete_if</strong>(&) : <span class="k">self</span></a>
         
-          <div class="summary"><p><span class="flag red">DEPRECATED</span>  This is just <code><a href="SplayTreeMap.html#reject%21%28%26block%3AK%2CV-%3E_%29-instance-method">#reject!</a></code> by another name.</p></div>
+          <div class="summary"><p><span class="flag red">DEPRECATED</span>  This is just <code><a href="SplayTreeMap.html#reject%21%28%26%3AK%2CV-%3E_%29-instance-method">#reject!</a></code> by another name.</p></div>
         
       </li>
     
@@ -463,7 +468,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#merge%28other%3AEnumerable%28Tuple%28L%2CW%29%29%2C%26block%3AK%2CV%2CW-%3EV%7CW%29forallL%2CW-instance-method" class="signature"><strong>#merge</strong>(other : Enumerable(Tuple(L, W)), &block : K, V, W -> V | W) forall L, W</a>
+        <a href="#merge%28other%3AEnumerable%28Tuple%28L%2CW%29%29%2C%26%3AK%2CV%2CW-%3EV%7CW%29forallL%2CW-instance-method" class="signature"><strong>#merge</strong>(other : Enumerable(Tuple(L, W)), & : K, V, W -> V | W) forall L, W</a>
         
       </li>
     
@@ -478,12 +483,12 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#merge%28other%3AEnumerable%28Tuple%28L%29%29%2C%26block%3AK%2CV%2CW-%3EV%7CW%29forallL-instance-method" class="signature"><strong>#merge</strong>(other : Enumerable(Tuple(L)), &block : K, V, W -> V | W) forall L</a>
+        <a href="#merge%28other%3AEnumerable%28Tuple%28L%29%29%2C%26%3AK%2CV%2CW-%3EV%7CW%29forallL-instance-method" class="signature"><strong>#merge</strong>(other : Enumerable(Tuple(L)), & : K, V, W -> V | W) forall L</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#merge%28other%3AEnumerable%28A%28Tuple%28L%2CW%29%29%29%2C%26block%3AK%2CV%2CW-%3EV%7CW%29forallA%2CL%2CW-instance-method" class="signature"><strong>#merge</strong>(other : Enumerable(A(Tuple(L, W))), &block : K, V, W -> V | W) forall A, L, W</a>
+        <a href="#merge%28other%3AEnumerable%28A%28Tuple%28L%2CW%29%29%29%2C%26%3AK%2CV%2CW-%3EV%7CW%29forallA%2CL%2CW-instance-method" class="signature"><strong>#merge</strong>(other : Enumerable(A(Tuple(L, W))), & : K, V, W -> V | W) forall A, L, W</a>
         
       </li>
     
@@ -545,7 +550,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#reject%28%26block%3AK%2CV-%3E_%29-instance-method" class="signature"><strong>#reject</strong>(&block : K, V -> _)</a>
+        <a href="#reject%28%26%3AK%2CV-%3E_%29-instance-method" class="signature"><strong>#reject</strong>(& : K, V -> _)</a>
         
           <div class="summary"><p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> consisting of entries for which the block returns <code>false</code>.</p></div>
         
@@ -566,9 +571,9 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#reject%21%28%26block%3AK%2CV-%3E_%29-instance-method" class="signature"><strong>#reject!</strong>(&block : K, V -> _)</a>
+        <a href="#reject%21%28%26%3AK%2CV-%3E_%29-instance-method" class="signature"><strong>#reject!</strong>(& : K, V -> _)</a>
         
-          <div class="summary"><p>Equivalent to <code><a href="SplayTreeMap.html#reject%28%26block%3AK%2CV-%3E_%29-instance-method">SplayTreeMap#reject</a></code>, but modifies the current object rather than returning a new one.</p></div>
+          <div class="summary"><p>Equivalent to <code><a href="SplayTreeMap.html#reject%28%26%3AK%2CV-%3E_%29-instance-method">SplayTreeMap#reject</a></code>, but modifies the current object rather than returning a new one.</p></div>
         
       </li>
     
@@ -592,7 +597,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#select%28%26block%3AK%2CV-%3E_%29-instance-method" class="signature"><strong>#select</strong>(&block : K, V -> _)</a>
+        <a href="#select%28%26%3AK%2CV-%3E_%29-instance-method" class="signature"><strong>#select</strong>(& : K, V -> _)</a>
         
           <div class="summary"><p>Returns a new hash consisting of entries for which the block returns <code>true</code>.</p></div>
         
@@ -613,7 +618,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#select%21%28%26block%3AK%2CV-%3E_%29-instance-method" class="signature"><strong>#select!</strong>(&block : K, V -> _)</a>
+        <a href="#select%21%28%26%3AK%2CV-%3E_%29-instance-method" class="signature"><strong>#select!</strong>(& : K, V -> _)</a>
         
           <div class="summary"><p>Equivalent to <code>Hash#select</code> but makes modification on the current object rather that returning a new one.</p></div>
         
@@ -662,28 +667,28 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#transform%28%26block%3ATuple%28K%2CV%29-%3ETuple%28K2%2CV2%29%29forallK2%2CV2-instance-method" class="signature"><strong>#transform</strong>(&block : Tuple(K, V) -> Tuple(K2, V2)) forall K2, V2</a>
+        <a href="#transform%28%26%3ATuple%28K%2CV%29-%3ETuple%28K2%2CV2%29%29forallK2%2CV2-instance-method" class="signature"><strong>#transform</strong>(& : Tuple(K, V) -> Tuple(K2, V2)) forall K2, V2</a>
         
           <div class="summary"><p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with all of the key/value pairs converted using the provided block.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#transform_keys%28%26block%3AK-%3EK2%29forallK2-instance-method" class="signature"><strong>#transform_keys</strong>(&block : K -> K2) forall K2</a>
+        <a href="#transform_keys%28%26%3AK-%3EK2%29forallK2-instance-method" class="signature"><strong>#transform_keys</strong>(& : K -> K2) forall K2</a>
         
           <div class="summary"><p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with all keys converted using the block operation.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#transform_values%28%26block%3AV-%3EV2%29forallV2-instance-method" class="signature"><strong>#transform_values</strong>(&block : V -> V2) forall V2</a>
+        <a href="#transform_values%28%26%3AV-%3EV2%29forallV2-instance-method" class="signature"><strong>#transform_values</strong>(& : V -> V2) forall V2</a>
         
           <div class="summary"><p>Returns a new SplayTreeMap with all values converted using the block operation.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#transform_values%21%28%26block%3AV-%3EV%29-instance-method" class="signature"><strong>#transform_values!</strong>(&block : V -> V)</a>
+        <a href="#transform_values%21%28%26%3AV-%3EV%29-instance-method" class="signature"><strong>#transform_values!</strong>(& : V -> V)</a>
         
           <div class="summary"><p>Modifies the values of the current <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> according to the provided block.</p></div>
         
@@ -1141,7 +1146,7 @@ stm.fetch(<span class="s">&quot;foo&quot;</span>, <span class="n">nil</span>) <s
       
         <div class="doc">
           
-          <p><span class="flag red">DEPRECATED</span>  This is just <code><a href="SplayTreeMap.html#reject%21%28%26block%3AK%2CV-%3E_%29-instance-method">#reject!</a></code> by another name. Use that instead.
+          <p><span class="flag red">DEPRECATED</span>  This is just <code><a href="SplayTreeMap.html#reject%21%28%26%3AK%2CV-%3E_%29-instance-method">#reject!</a></code> by another name. Use that instead.
 Deletes each key-value pair for which the given block returns <code>true</code>.
 Returns the <code><a href="SplayTreeMap.html">SplayTreeMap</a></code>.</p>
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.new({<span class="s">&quot;foo&quot;</span> <span class="o">=&gt;</span> <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;fob&quot;</span> <span class="o">=&gt;</span> <span class="s">&quot;baz&quot;</span>, <span class="s">&quot;bar&quot;</span> <span class="o">=&gt;</span> <span class="s">&quot;qux&quot;</span>})
@@ -1734,12 +1739,12 @@ stm                         <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot
       </div>
     </div>
   
-    <div class="entry-detail" id="merge(other:Enumerable(Tuple(L,W)),&amp;block:K,V,W-&gt;V|W)forallL,W-instance-method">
+    <div class="entry-detail" id="merge(other:Enumerable(Tuple(L,W)),&amp;:K,V,W-&gt;V|W)forallL,W-instance-method">
       <div class="signature">
         
-        def <strong>merge</strong>(other : Enumerable(Tuple(L, W)), &block : K, V, W -> V | W) forall L, W
+        def <strong>merge</strong>(other : Enumerable(Tuple(L, W)), & : K, V, W -> V | W) forall L, W
 
-        <a class="method-permalink" href="#merge%28other%3AEnumerable%28Tuple%28L%2CW%29%29%2C%26block%3AK%2CV%2CW-%3EV%7CW%29forallL%2CW-instance-method">#</a>
+        <a class="method-permalink" href="#merge%28other%3AEnumerable%28Tuple%28L%2CW%29%29%2C%26%3AK%2CV%2CW-%3EV%7CW%29forallL%2CW-instance-method">#</a>
       </div>
       
       <br/>
@@ -1776,12 +1781,12 @@ stm                         <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot
       </div>
     </div>
   
-    <div class="entry-detail" id="merge(other:Enumerable(Tuple(L)),&amp;block:K,V,W-&gt;V|W)forallL-instance-method">
+    <div class="entry-detail" id="merge(other:Enumerable(Tuple(L)),&amp;:K,V,W-&gt;V|W)forallL-instance-method">
       <div class="signature">
         
-        def <strong>merge</strong>(other : Enumerable(Tuple(L)), &block : K, V, W -> V | W) forall L
+        def <strong>merge</strong>(other : Enumerable(Tuple(L)), & : K, V, W -> V | W) forall L
 
-        <a class="method-permalink" href="#merge%28other%3AEnumerable%28Tuple%28L%29%29%2C%26block%3AK%2CV%2CW-%3EV%7CW%29forallL-instance-method">#</a>
+        <a class="method-permalink" href="#merge%28other%3AEnumerable%28Tuple%28L%29%29%2C%26%3AK%2CV%2CW-%3EV%7CW%29forallL-instance-method">#</a>
       </div>
       
       <br/>
@@ -1790,12 +1795,12 @@ stm                         <span class="c"># =&gt; {&quot;foo&quot; =&gt; &quot
       </div>
     </div>
   
-    <div class="entry-detail" id="merge(other:Enumerable(A(Tuple(L,W))),&amp;block:K,V,W-&gt;V|W)forallA,L,W-instance-method">
+    <div class="entry-detail" id="merge(other:Enumerable(A(Tuple(L,W))),&amp;:K,V,W-&gt;V|W)forallA,L,W-instance-method">
       <div class="signature">
         
-        def <strong>merge</strong>(other : Enumerable(A(Tuple(L, W))), &block : K, V, W -> V | W) forall A, L, W
+        def <strong>merge</strong>(other : Enumerable(A(Tuple(L, W))), & : K, V, W -> V | W) forall A, L, W
 
-        <a class="method-permalink" href="#merge%28other%3AEnumerable%28A%28Tuple%28L%2CW%29%29%29%2C%26block%3AK%2CV%2CW-%3EV%7CW%29forallA%2CL%2CW-instance-method">#</a>
+        <a class="method-permalink" href="#merge%28other%3AEnumerable%28A%28Tuple%28L%2CW%29%29%29%2C%26%3AK%2CV%2CW-%3EV%7CW%29forallA%2CL%2CW-instance-method">#</a>
       </div>
       
       <br/>
@@ -2003,12 +2008,12 @@ stm.put(<span class="n">2</span>, <span class="s">&quot;two&quot;</span>) { <spa
       </div>
     </div>
   
-    <div class="entry-detail" id="reject(&amp;block:K,V-&gt;_)-instance-method">
+    <div class="entry-detail" id="reject(&amp;:K,V-&gt;_)-instance-method">
       <div class="signature">
         
-        def <strong>reject</strong>(&block : K, V -> _)
+        def <strong>reject</strong>(& : K, V -> _)
 
-        <a class="method-permalink" href="#reject%28%26block%3AK%2CV-%3E_%29-instance-method">#</a>
+        <a class="method-permalink" href="#reject%28%26%3AK%2CV-%3E_%29-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -2066,17 +2071,17 @@ h <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span><
       </div>
     </div>
   
-    <div class="entry-detail" id="reject!(&amp;block:K,V-&gt;_)-instance-method">
+    <div class="entry-detail" id="reject!(&amp;:K,V-&gt;_)-instance-method">
       <div class="signature">
         
-        def <strong>reject!</strong>(&block : K, V -> _)
+        def <strong>reject!</strong>(& : K, V -> _)
 
-        <a class="method-permalink" href="#reject%21%28%26block%3AK%2CV-%3E_%29-instance-method">#</a>
+        <a class="method-permalink" href="#reject%21%28%26%3AK%2CV-%3E_%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>Equivalent to <code><a href="SplayTreeMap.html#reject%28%26block%3AK%2CV-%3E_%29-instance-method">SplayTreeMap#reject</a></code>, but modifies the current object rather than
+          <p>Equivalent to <code><a href="SplayTreeMap.html#reject%28%26%3AK%2CV-%3E_%29-instance-method">SplayTreeMap#reject</a></code>, but modifies the current object rather than
 returning a new one. Returns <code>nil</code> if no changes were made.</p>
         </div>
       
@@ -2141,12 +2146,12 @@ h <span class="c"># =&gt; {&quot;b&quot; =&gt; 2, &quot;d&quot; =&gt; 4}</span><
       </div>
     </div>
   
-    <div class="entry-detail" id="select(&amp;block:K,V-&gt;_)-instance-method">
+    <div class="entry-detail" id="select(&amp;:K,V-&gt;_)-instance-method">
       <div class="signature">
         
-        def <strong>select</strong>(&block : K, V -> _)
+        def <strong>select</strong>(& : K, V -> _)
 
-        <a class="method-permalink" href="#select%28%26block%3AK%2CV-%3E_%29-instance-method">#</a>
+        <a class="method-permalink" href="#select%28%26%3AK%2CV-%3E_%29-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -2207,12 +2212,12 @@ h.<span class="k">select</span> { <span class="o">|</span>k, v<span class="o">|<
       </div>
     </div>
   
-    <div class="entry-detail" id="select!(&amp;block:K,V-&gt;_)-instance-method">
+    <div class="entry-detail" id="select!(&amp;:K,V-&gt;_)-instance-method">
       <div class="signature">
         
-        def <strong>select!</strong>(&block : K, V -> _)
+        def <strong>select!</strong>(& : K, V -> _)
 
-        <a class="method-permalink" href="#select%21%28%26block%3AK%2CV-%3E_%29-instance-method">#</a>
+        <a class="method-permalink" href="#select%21%28%26%3AK%2CV-%3E_%29-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -2356,12 +2361,12 @@ h <span class="o">=</span> stm.to_h <span class="c"># =&gt; {&quot;baz&quot; =&g
       </div>
     </div>
   
-    <div class="entry-detail" id="transform(&amp;block:Tuple(K,V)-&gt;Tuple(K2,V2))forallK2,V2-instance-method">
+    <div class="entry-detail" id="transform(&amp;:Tuple(K,V)-&gt;Tuple(K2,V2))forallK2,V2-instance-method">
       <div class="signature">
         
-        def <strong>transform</strong>(&block : Tuple(K, V) -> Tuple(K2, V2)) forall K2, V2
+        def <strong>transform</strong>(& : Tuple(K, V) -> Tuple(K2, V2)) forall K2, V2
 
-        <a class="method-permalink" href="#transform%28%26block%3ATuple%28K%2CV%29-%3ETuple%28K2%2CV2%29%29forallK2%2CV2-instance-method">#</a>
+        <a class="method-permalink" href="#transform%28%26%3ATuple%28K%2CV%29-%3ETuple%28K2%2CV2%29%29forallK2%2CV2-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -2379,12 +2384,12 @@ stm  <span class="c"># =&gt; {&quot;1&quot; =&gt; &quot;1&quot;, &quot;2&quot; =
       </div>
     </div>
   
-    <div class="entry-detail" id="transform_keys(&amp;block:K-&gt;K2)forallK2-instance-method">
+    <div class="entry-detail" id="transform_keys(&amp;:K-&gt;K2)forallK2-instance-method">
       <div class="signature">
         
-        def <strong>transform_keys</strong>(&block : K -> K2) forall K2
+        def <strong>transform_keys</strong>(& : K -> K2) forall K2
 
-        <a class="method-permalink" href="#transform_keys%28%26block%3AK-%3EK2%29forallK2-instance-method">#</a>
+        <a class="method-permalink" href="#transform_keys%28%26%3AK-%3EK2%29forallK2-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -2401,12 +2406,12 @@ stm.transform_keys { <span class="o">|</span>key<span class="o">|</span> key.to_
       </div>
     </div>
   
-    <div class="entry-detail" id="transform_values(&amp;block:V-&gt;V2)forallV2-instance-method">
+    <div class="entry-detail" id="transform_values(&amp;:V-&gt;V2)forallV2-instance-method">
       <div class="signature">
         
-        def <strong>transform_values</strong>(&block : V -> V2) forall V2
+        def <strong>transform_values</strong>(& : V -> V2) forall V2
 
-        <a class="method-permalink" href="#transform_values%28%26block%3AV-%3EV2%29forallV2-instance-method">#</a>
+        <a class="method-permalink" href="#transform_values%28%26%3AV-%3EV2%29forallV2-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -2423,12 +2428,12 @@ stm.transform_values { <span class="o">|</span>value<span class="o">|</span> val
       </div>
     </div>
   
-    <div class="entry-detail" id="transform_values!(&amp;block:V-&gt;V)-instance-method">
+    <div class="entry-detail" id="transform_values!(&amp;:V-&gt;V)-instance-method">
       <div class="signature">
         
-        def <strong>transform_values!</strong>(&block : V -> V)
+        def <strong>transform_values!</strong>(& : V -> V)
 
-        <a class="method-permalink" href="#transform_values%21%28%26block%3AV-%3EV%29-instance-method">#</a>
+        <a class="method-permalink" href="#transform_values%21%28%26%3AV-%3EV%29-instance-method">#</a>
       </div>
       
         <div class="doc">
