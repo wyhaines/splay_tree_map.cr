@@ -8,7 +8,7 @@ describe SplayTreeMap do
 
   it "can create trees with complex keys" do
     st = SplayTreeMap({String, String}, String).new
-    10.times { |n| st[{n.to_s, n.to_s}] = n.to_s }
+    10.times { |num| st[{num.to_s, num.to_s}] = num.to_s }
 
     st.size.should eq 10
     st[{"5", "5"}].should eq "5"
@@ -26,7 +26,7 @@ describe SplayTreeMap do
   end
 
   it "can create a tree with a block to initialize missing values" do
-    st = SplayTreeMap(String, Array(Int32)).new { |t, k| t[k] = [] of Int32 }
+    st = SplayTreeMap(String, Array(Int32)).new { |tmp, key| tmp[key] = [] of Int32 }
     st["a"] << 1
     st["a"] << 2
     st["a"] << 3
@@ -117,9 +117,9 @@ describe SplayTreeMap do
     intermediate_100.each { |x| intermediate_heights << (st.height(x) || 0) }
     regular_100.each { |x| regular_heights << (st.height(x) || 0) }
 
-    sum_top_100 = top_heights.reduce(0) { |a, v| a + v }
-    sum_intermediate_100 = intermediate_heights.reduce(0) { |a, v| a + v }
-    sum_regular_100 = regular_heights.reduce(0) { |a, v| a + v }
+    sum_top_100 = top_heights.reduce(0) { |acc, val| acc + val }
+    sum_intermediate_100 = intermediate_heights.reduce(0) { |acc, val| acc + val }
+    sum_regular_100 = regular_heights.reduce(0) { |acc, val| acc + val }
 
     Log.debug { "average height -- top :: intermediate :: other == #{sum_top_100 / 100} :: #{sum_intermediate_100 / 100} :: #{sum_regular_100 / 100}" }
     sum_top_100.should be < sum_intermediate_100
@@ -221,9 +221,9 @@ describe SplayTreeMap do
     log.size.should eq 10
 
     n = 0
-    stm.each do |k, _v|
+    stm.each do |key, _val|
       n += 1
-      log.delete(k)
+      log.delete(key)
     end
 
     n.should eq 10
@@ -336,8 +336,8 @@ describe SplayTreeMap do
     other1 = SplayTreeMap.new({"b" => 254, "c" => 300})
     stm2 = SplayTreeMap.new({1 => 1, 2 => 2})
     other2 = SplayTreeMap.new({2 => 4, 3 => 9})
-    stm2.merge!(other2) { |_k, v1, v2| v1 + v2 }
-    stm1.merge!(other1) { |_k, v1, v2| v1 + v2 }
+    stm2.merge!(other2) { |_key, val1, val2| val1 + val2 }
+    stm1.merge!(other1) { |_key, val1, val2| val1 + val2 }
     stm1["a"].should eq 100
     stm1["b"].should eq 454
     stm1["c"].should eq 300
@@ -421,6 +421,22 @@ describe SplayTreeMap do
     st.last.should eq({9, 9})
   end
 
+  it "max; can find the max key" do
+    st = SplayTreeMap(Int32, Int32).new
+    10.times { |x| st[x] = x }
+
+    st.max.should eq 9
+  end
+
+  it "max(limit); can find the largest key less than or equal to the limit" do
+    st = SplayTreeMap(Int32, Int32).new
+    10.times { |x| st[x * 2] = x * 2 }
+
+    st.max(6).should eq 6
+    st.max(7).should eq 6
+    st.max(8).should eq 8
+  end
+
   it "min; can find the min key" do
     st = SplayTreeMap(Int32, Int32).new
     10.times { |x| st[x] = x }
@@ -428,13 +444,22 @@ describe SplayTreeMap do
     st.min.should eq 0
   end
 
+  it "min(limit); can find the smallest key greater than or equal to the limit" do
+    st = SplayTreeMap(Int32, Int32).new
+    10.times { |x| st[x * 2] = x * 2 }
+
+    st.min(6).should eq 6
+    st.min(7).should eq 8
+    st.min(8).should eq 8
+  end
+
   it "reject; can create a new tree with select keys removed" do
     stm = SplayTreeMap.new({"a" => 100, "b" => 200, "c" => 300})
-    res = stm.reject { |k, _v| k > "a" }
+    res = stm.reject { |key, _val| key > "a" }
     res.size.should eq 1
     res["a"].should eq 100
     res.has_key?("b").should be_false
-    res = stm.reject { |_k, v| v < 200 }
+    res = stm.reject { |_key, val| val < 200 }
     res.size.should eq 2
     res.has_key?("a").should be_false
     res["c"].should eq 300
@@ -454,12 +479,12 @@ describe SplayTreeMap do
 
   it "reject!; can remove a set of keys from the current tree" do
     stm = SplayTreeMap.new({"a" => 100, "b" => 200, "c" => 300})
-    stm.reject! { |k, _v| k > "a" }
+    stm.reject! { |key, _val| key > "a" }
     stm.size.should eq 1
     stm["a"].should eq 100
     stm.has_key?("b").should be_false
     stm = SplayTreeMap.new({"a" => 100, "b" => 200, "c" => 300})
-    stm.reject! { |_k, v| v < 200 }
+    stm.reject! { |_key, val| val < 200 }
     stm.size.should eq 2
     stm.has_key?("a").should be_false
     stm["c"].should eq 300
@@ -481,11 +506,11 @@ describe SplayTreeMap do
   end
 
   it "select; can create a new tree that includes only specific keys" do
-    stm = SplayTreeMap.new({"a" => 100, "b" => 200, "c" => 300}).select { |k, _v| k > "a" }
+    stm = SplayTreeMap.new({"a" => 100, "b" => 200, "c" => 300}).select { |key, _val| key > "a" }
     stm.size.should eq 2
     stm["b"].should eq 200
     stm["c"].should eq 300
-    stm = SplayTreeMap.new({"a" => 100, "b" => 200, "c" => 300}).select { |_k, v| v < 200 }
+    stm = SplayTreeMap.new({"a" => 100, "b" => 200, "c" => 300}).select { |_key, val| val < 200 }
     stm.size.should eq 1
     stm["a"].should eq 100
     stm = SplayTreeMap.new({"a" => 1, "b" => 2, "c" => 3, "d" => 4}).select({"a", "c"})
@@ -504,12 +529,12 @@ describe SplayTreeMap do
 
   it "select!; can remove all keys from the current tree except for a small set" do
     stm = SplayTreeMap.new({"a" => 100, "b" => 200, "c" => 300})
-    stm.select! { |k, _v| k > "a" }
+    stm.select! { |key, _val| key > "a" }
     stm.size.should eq 2
     stm["b"].should eq 200
     stm["c"].should eq 300
     stm = SplayTreeMap.new({"a" => 100, "b" => 200, "c" => 300})
-    stm.select! { |_k, v| v < 200 }
+    stm.select! { |_key, val| val < 200 }
     stm.size.should eq 1
     stm["a"].should eq 100
     stm = SplayTreeMap.new({"a" => 1, "b" => 2, "c" => 3, "d" => 4})

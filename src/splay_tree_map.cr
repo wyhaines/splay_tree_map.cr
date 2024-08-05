@@ -271,7 +271,7 @@ class SplayTreeMap(K, V)
 
   # :nodoc:
   def push(key, value)
-    # TODO: This is surprisingly slow. I assume it is due to the overhead
+    # This is surprisingly slow. I assume it is due to the overhead
     # of declaring nodes on the heap. Is there a way to make them work as
     # structs instead of classes?
     @lock.synchronize do
@@ -678,8 +678,8 @@ class SplayTreeMap(K, V)
   # ```
   #
   def has_value?(value) : Bool
-    self.each do |_k, v|
-      return true if v == value
+    self.each do |_key, val|
+      return true if val == value
     end
     false
   end
@@ -782,7 +782,7 @@ class SplayTreeMap(K, V)
   def keys : Array(K)
     @lock.synchronize do
       a = [] of K
-      each { |k, _v| a << k }
+      each { |key, _value| a << key }
       a
     end
   end
@@ -797,6 +797,32 @@ class SplayTreeMap(K, V)
     end
 
     n.try &.key
+  end
+
+  # Returns the largest key equal to or less than the provided limit argument.
+  # Returns nil if the SplayTreeMap is empty.
+  def max(limit)
+    return nil unless @root
+
+    n = @root
+    while n
+      cmp = limit <=> n.key
+      if cmp == 0
+        return n.key
+      elsif cmp == -1
+        n = n.left
+      else
+        if right = n.right
+          if limit < right.key
+            return n.key
+          else
+            n = n.right
+          end
+        else
+          return n.key
+        end
+      end
+    end
   end
 
   # Adds the contents of *other* to this `SplayTreeMap`.
@@ -833,7 +859,7 @@ class SplayTreeMap(K, V)
   # stm[7] # => 343
   #
   def merge!(other : T) forall T
-    self.merge!(other) { |_k, _v1, v2| v2 }
+    self.merge!(other) { |_key, _value1, value2| value2 }
   end
 
   # Adds the contents of *other* to this `SplayTreeMap`.
@@ -942,12 +968,38 @@ class SplayTreeMap(K, V)
     n.try &.key
   end
 
+  # Returns the smallest key equal to or greater than the provided limit argument.
+  # Returns nil if the SplayTreeMap is empty.
+
+  def min(limit)
+    return nil unless @root
+
+    n = @root
+    while n
+      cmp = limit <=> n.key
+      if cmp == 0
+        return n.key
+      elsif cmp == -1
+        if left = n.left
+          if limit > left.key
+            return n.key
+          else
+            n = n.left
+          end
+        else
+          return n.key
+        end
+      else
+        n = n.right
+      end
+    end
+  end
+
   # This will remove all of the leaves at the end of the tree branches.
   # That is, every node that does not have any children. This will tend
   # to remove the least used elements from the tree.
   # This function is expensive, as implemented, as it must walk every
   # node in the tree.
-  # TODO: Come up with a more efficient way of getting this same effect.
   def prune
     @was_pruned = false
     return if @root.nil?
@@ -957,7 +1009,7 @@ class SplayTreeMap(K, V)
     height_limit = height / 2
 
     @lock.synchronize do
-      # TODO: Better to do an if root = @root.... and then raise an exception if root is nil?
+      # Is it better to do an if root = @root.... and then raise an exception if root is nil?
       # ameba:disable Lint/NotNil
       descend_from(@root.not_nil!, height_limit)
       # ameba:disable Lint/NotNil
@@ -1101,7 +1153,7 @@ class SplayTreeMap(K, V)
   # h1             # => {"a" => 1, "c" => 3}
   # ```
   def select!(keys : Array | Tuple)
-    each { |k, _v| delete(k) unless keys.includes?(k) }
+    each { |key, _value| delete(key) unless keys.includes?(key) }
     self
   end
 
@@ -1218,7 +1270,7 @@ class SplayTreeMap(K, V)
   #
   def values : Array(V)
     a = [] of V
-    each { |_k, v| a << v }
+    each { |_key, value| a << value }
     a
   end
 
