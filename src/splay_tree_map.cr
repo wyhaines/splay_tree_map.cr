@@ -772,6 +772,46 @@ class SplayTreeMap(K, V)
     {n.try &.key, n.try &.value}
   end
 
+  # Returns the largest key in the tree. Raises if the tree is empty.
+  def last_key : K
+    n = @root
+    raise "Can't get last key of empty SplayTreeMap" if n.nil?
+    while right = n.right
+      n = right
+    end
+    n.key
+  end
+
+  # Returns the largest key in the tree, or `nil` if the tree is empty.
+  def last_key? : K?
+    n = @root
+    return nil if n.nil?
+    while right = n.right
+      n = right
+    end
+    n.key
+  end
+
+  # Returns the value at the largest key in the tree. Raises if the tree is empty.
+  def last_value : V
+    n = @root
+    raise "Can't get last value of empty SplayTreeMap" if n.nil?
+    while right = n.right
+      n = right
+    end
+    n.value
+  end
+
+  # Returns the value at the largest key in the tree, or `nil` if the tree is empty.
+  def last_value? : V?
+    n = @root
+    return nil if n.nil?
+    while right = n.right
+      n = right
+    end
+    n.value
+  end
+
   # Returns an array of all keys in the tree.
   #
   # ```

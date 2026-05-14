@@ -864,4 +864,40 @@ describe SplayTreeMap do
     stm[1] = "one"
     stm.first_value?.should eq "one"
   end
+
+  it "last_key; returns the largest key" do
+    stm = SplayTreeMap(Int32, String).new
+    [5, 1, 3, 7, 2].each { |k| stm[k] = k.to_s }
+    stm.last_key.should eq 7
+  end
+
+  it "last_key; raises on empty tree" do
+    stm = SplayTreeMap(Int32, String).new
+    expect_raises(Exception, /empty/i) { stm.last_key }
+  end
+
+  it "last_key?; returns nil on empty tree" do
+    stm = SplayTreeMap(Int32, String).new
+    stm.last_key?.should be_nil
+    stm[42] = "x"
+    stm.last_key?.should eq 42
+  end
+
+  it "last_value; returns the value at the largest key" do
+    stm = SplayTreeMap(Int32, String).new
+    [5, 1, 3].each { |k| stm[k] = "v#{k}" }
+    stm.last_value.should eq "v5"
+  end
+
+  it "last_value; raises on empty tree" do
+    stm = SplayTreeMap(Int32, String).new
+    expect_raises(Exception, /empty/i) { stm.last_value }
+  end
+
+  it "last_value?; returns nil on empty tree" do
+    stm = SplayTreeMap(Int32, String).new
+    stm.last_value?.should be_nil
+    stm[9] = "nine"
+    stm.last_value?.should eq "nine"
+  end
 end
