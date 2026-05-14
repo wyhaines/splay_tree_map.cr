@@ -552,6 +552,25 @@ class SplayTreeMap(K, V)
     end
   end
 
+  # Returns a deep copy of the tree. Each value is cloned via `Object#clone`.
+  # Unlike `#dup`, mutating a value inside the result does not affect the original.
+  #
+  # ```
+  # stm_a = SplayTreeMap.new({"x" => [1, 2]})
+  # stm_b = stm_a.clone
+  # stm_b["x"] << 3
+  # stm_a["x"] # => [1, 2]
+  # ```
+  def clone : SplayTreeMap(K, V)
+    @lock.synchronize do
+      result = SplayTreeMap(K, V).new
+      each do |k, v|
+        result[k] = v.clone
+      end
+      result
+    end
+  end
+
   # Calls the given block for each key/value pair, passing the pair into the block.
   #
   # ```

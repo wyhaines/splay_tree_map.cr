@@ -1062,4 +1062,20 @@ describe SplayTreeMap do
     outer[stm1] = 1
     outer[stm2].should eq 1
   end
+
+  it "clone; produces a deep copy (mutating cloned value doesn't affect original)" do
+    stm = SplayTreeMap(String, Array(Int32)).new
+    stm["a"] = [1, 2, 3]
+    cloned = stm.clone
+    cloned["a"] << 4
+    stm["a"].should eq [1, 2, 3]
+    cloned["a"].should eq [1, 2, 3, 4]
+  end
+
+  it "clone; works on primitive value types" do
+    stm = SplayTreeMap.new({"a" => 1, "b" => 2})
+    cloned = stm.clone
+    cloned["a"] = 99
+    stm["a"].should eq 1
+  end
 end
