@@ -1495,16 +1495,17 @@ class SplayTreeMap(K, V)
     end
   end
 
-  # Returns a new `SplayTreeMap` with all keys converted using the block operation.
-  # The block can change a type of keys.
+  # Returns a new `SplayTreeMap` with all keys converted using the block.
+  # The block yields the key and value; it may return a key of any type.
   #
   # ```
   # stm = SplayTreeMap.new({:a => 1, :b => 2, :c => 3})
-  # stm.transform_keys { |key| key.to_s } # => {"a" => 1, "b" => 2, "c" => 3}
+  # stm.transform_keys { |key| key.to_s }                # => {"a" => 1, "b" => 2, "c" => 3}
+  # stm.transform_keys { |key, value| key.to_s * value } # => {"a" => 1, "bb" => 2, "ccc" => 3}
   # ```
-  def transform_keys(& : K -> K2) forall K2
+  def transform_keys(& : K, V -> K2) forall K2
     each_with_object(SplayTreeMap(K2, V).new) do |(key, value), memo|
-      memo[yield(key)] = value
+      memo[yield(key, value)] = value
     end
   end
 

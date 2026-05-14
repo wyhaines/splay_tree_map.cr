@@ -1078,4 +1078,19 @@ describe SplayTreeMap do
     cloned["a"] = 99
     stm["a"].should eq 1
   end
+
+  it "transform_keys; block can use both key and value" do
+    stm = SplayTreeMap.new({:a => 1, :b => 2, :c => 3})
+    result = stm.transform_keys { |key, value| key.to_s * value }
+    result["a"].should eq 1
+    result["bb"].should eq 2
+    result["ccc"].should eq 3
+  end
+
+  it "transform_keys; one-arg block still works" do
+    stm = SplayTreeMap.new({:a => 1, :b => 2})
+    result = stm.transform_keys(&.to_s)
+    result["a"].should eq 1
+    result["b"].should eq 2
+  end
 end
