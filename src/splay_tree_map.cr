@@ -1440,6 +1440,20 @@ class SplayTreeMap(K, V)
     self
   end
 
+  # Returns a new `SplayTreeMap` with keys and values swapped. If there are
+  # duplicate values, the entry visited last during in-order traversal wins.
+  #
+  # ```
+  # SplayTreeMap.new({"foo" => "bar"}).invert # => {"bar" => "foo"}
+  # ```
+  def invert : SplayTreeMap(V, K)
+    @lock.synchronize do
+      result = SplayTreeMap(V, K).new
+      each { |k, v| result[v] = k }
+      result
+    end
+  end
+
   # Returns an array containing all of the values in the tree. The array is in
   # the order of the associated keys.
   #

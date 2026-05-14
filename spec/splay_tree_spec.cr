@@ -971,4 +971,18 @@ describe SplayTreeMap do
     stm[1] = "one"
     stm.shift { :empty }.should eq({1, "one"})
   end
+
+  it "invert; swaps keys and values" do
+    stm = SplayTreeMap.new({"foo" => "bar", "baz" => "qux"})
+    inverted = stm.invert
+    inverted["bar"].should eq "foo"
+    inverted["qux"].should eq "baz"
+    inverted.size.should eq 2
+  end
+
+  it "invert; on duplicate values, later traversal order wins" do
+    stm = SplayTreeMap.new({"a" => 1, "b" => 1})
+    # In-order traversal visits "a" before "b"; "b" inserts last and wins.
+    stm.invert[1].should eq "b"
+  end
 end
