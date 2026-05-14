@@ -1385,6 +1385,19 @@ class SplayTreeMap(K, V)
     a
   end
 
+  # Returns an `Array` of the results of yielding each {K, V} tuple to the block.
+  # Order matches in-order traversal of the tree.
+  #
+  # ```
+  # stm = SplayTreeMap.new({"first" => "foo", "last" => "bar"})
+  # stm.to_a { |_k, v| v.capitalize } # => ["Bar", "Foo"]
+  # ```
+  def to_a(& : {K, V} -> U) : Array(U) forall U
+    a = Array(U).new
+    each { |k, v| a << yield({k, v}) }
+    a
+  end
+
   # Transform a `SplayTreeMap(K,V)` into a `Hash(K,V)`.
   #
   # ```

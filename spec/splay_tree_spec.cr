@@ -563,6 +563,12 @@ describe SplayTreeMap do
     (stm == stm2).should be_true
   end
 
+  it "to_a(&); maps each tuple through the block" do
+    stm = SplayTreeMap.new({"a" => 1, "b" => 2, "c" => 3})
+    result = stm.to_a { |k, v| "#{k}=#{v}" }
+    result.should eq ["a=1", "b=2", "c=3"]
+  end
+
   it "to_h; can transform a SplayTreeMap into a Hash representation" do
     stm = SplayTreeMap.new({"foo" => "bar", "baz" => "qux"})
     h = stm.to_h
