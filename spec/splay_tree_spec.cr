@@ -1125,4 +1125,19 @@ describe SplayTreeMap do
     stm["a"].should eq 1
     stm["bb"].should eq 2
   end
+
+  it "rehash; rebuilds tree, preserving content on a healthy tree" do
+    stm = SplayTreeMap(String, Int32).new
+    10.times { |i| stm["k#{i}"] = i }
+    before = stm.to_a
+    stm.rehash
+    stm.to_a.should eq before
+    stm.size.should eq 10
+  end
+
+  it "rehash; works on an empty tree" do
+    stm = SplayTreeMap(String, Int32).new
+    stm.rehash
+    stm.size.should eq 0
+  end
 end

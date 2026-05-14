@@ -1192,6 +1192,19 @@ class SplayTreeMap(K, V)
     end
   end
 
+  # Rebuilds the tree from the current keys. Useful when mutable keys have been
+  # modified post-insertion in a way that affects `<=>` ordering. Tree traversal
+  # is performed first; if the existing tree is too corrupted for traversal to
+  # be sensible, this method cannot help.
+  def rehash : Nil
+    @lock.synchronize do
+      pairs = [] of {K, V}
+      each { |k, v| pairs << {k, v} }
+      clear
+      pairs.each { |(k, v)| push(k, v) }
+    end
+  end
+
   # Sets the value of *key* to the given *value*.
   #
   # If a value already exists for `key`, that (old) value is returned.
