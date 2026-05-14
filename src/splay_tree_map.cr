@@ -1113,6 +1113,41 @@ class SplayTreeMap(K, V)
     old_value || yield key
   end
 
+  # Sets the value of *key* to *value* unless an entry for *key* already exists.
+  # Returns the current value for *key* (the existing one if present, otherwise *value*).
+  #
+  # This is a more performant and falsey-safe alternative to `stm[key] ||= value`.
+  #
+  # ```
+  # stm = SplayTreeMap(Int32, String).new
+  # stm.put_if_absent(1, "one") # => "one"
+  # stm.put_if_absent(1, "uno") # => "one"
+  # ```
+  def put_if_absent(key : K, value : V) : V
+    put_if_absent(key) { value }
+  end
+
+  # Sets the value of *key* to the result of yielding *key* to the given block,
+  # unless an entry for *key* already exists. Returns the current value.
+  #
+  # ```
+  # stm = SplayTreeMap(Int32, Array(String)).new
+  # stm.put_if_absent(1) { |k| [k.to_s] }     # => ["1"]
+  # stm.put_if_absent(1) { |k| [] of String } # => ["1"] (block not called)
+  # ```
+  def put_if_absent(key : K, & : K -> V) : V
+    @lock.synchronize do
+      existing = get_impl(key)
+      if existing == Unk
+        new_value = yield key
+        push(key, new_value)
+        new_value
+      else
+        existing.as(V)
+      end
+    end
+  end
+
   # Returns a new `SplayTreeMap` consisting of entries for which the block returns `false`.
   # ```
   # stm = SplayTreeMap.new({"a" => 100, "b" => 200, "c" => 300})

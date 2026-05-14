@@ -900,4 +900,29 @@ describe SplayTreeMap do
     stm[9] = "nine"
     stm.last_value?.should eq "nine"
   end
+
+  it "put_if_absent(key, value); inserts only when key absent, returns current value" do
+    stm = SplayTreeMap(Int32, String).new
+    stm.put_if_absent(1, "one").should eq "one"
+    stm.put_if_absent(1, "uno").should eq "one"
+    stm.put_if_absent(2, "two").should eq "two"
+    stm[1].should eq "one"
+    stm[2].should eq "two"
+    stm.size.should eq 2
+  end
+
+  it "put_if_absent(key, value); works correctly when stored value is falsey" do
+    stm = SplayTreeMap(String, Bool).new
+    stm["x"] = false
+    stm.put_if_absent("x", true).should eq false
+    stm["x"].should eq false
+  end
+
+  it "put_if_absent(key, &); evaluates block lazily and only on absence" do
+    stm = SplayTreeMap(Int32, Array(String)).new
+    call_count = 0
+    stm.put_if_absent(1) { |k| call_count += 1; [k.to_s] }.should eq ["1"]
+    stm.put_if_absent(1) { |k| call_count += 1; [k.to_s, "extra"] }.should eq ["1"]
+    call_count.should eq 1
+  end
 end
