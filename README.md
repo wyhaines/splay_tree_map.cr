@@ -40,6 +40,21 @@ If `#maxsize` is set to an integer alue, then the splay tree will perform a prun
 operation when the maximum size of the tree is reached. This is useful for implementing
 a cache.
 
+### Hash API Parity
+
+This implementation tracks Crystal's `Hash` API closely. The following methods
+were added in 0.4.0 to close gaps: `first_key`/`first_key?`/`first_value`/`first_value?`,
+`last_key`/`last_key?`/`last_value`/`last_value?`, `put_if_absent`, `update`,
+`shift`/`shift?`/`shift(&)`, `invert`, `subset_of?`/`proper_subset_of?`/`superset_of?`/`proper_superset_of?`,
+`to_a(&)`, `inspect(io)`, `pretty_print(pp)`, `hash(hasher)`, `clone`,
+`transform_keys!`, and `rehash`. The `transform_keys` and `transform_values`
+block signatures were widened from `K -> K2` and `V -> V2` to `K, V -> K2` and
+`V, K -> V2` respectively, matching `Hash`; anonymous one-arg blocks remain
+compatible.
+
+`compare_by_identity` is intentionally not provided — it has no consistent
+meaning for a tree ordered by `<=>`.
+
 ## Installation
 
 1. Add the dependency to your `shard.yml`:
