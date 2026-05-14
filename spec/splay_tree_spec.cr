@@ -1027,4 +1027,11 @@ describe SplayTreeMap do
     a.proper_superset_of?(b).should be_true
     a.proper_superset_of?(a).should be_false
   end
+
+  it "inspect; produces same output as to_s" do
+    stm = SplayTreeMap.new({"a" => 1, "b" => 2})
+    io = IO::Memory.new
+    stm.inspect(io)
+    io.to_s.should eq stm.to_s
+  end
 end

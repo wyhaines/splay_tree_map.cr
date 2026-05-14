@@ -1427,6 +1427,11 @@ class SplayTreeMap(K, V)
     end
   end
 
+  # Same output as `#to_s(io)`. Provided explicitly for parity with `Hash`.
+  def inspect(io : IO) : Nil
+    to_s(io)
+  end
+
   # Returns a new `SplayTreeMap` with all of the key/value pairs converted using
   # the provided block. The block can change the types of both keys and values.
   #
