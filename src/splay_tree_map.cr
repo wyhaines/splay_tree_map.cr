@@ -52,6 +52,18 @@ require "./version"
 # As of Crystal 1.0.0, a Hash is not thread safe, by default. A SplayTreeMap is.
 # ```
 #
+# ### Intentional gaps relative to `Hash`
+#
+# A `SplayTreeMap` mirrors most of `Hash`'s public API, but a few methods are
+# intentionally omitted because they have no consistent meaning for a tree
+# ordered by `<=>`:
+#
+# - `compare_by_identity` / `compare_by_identity?` — a tree orders by `<=>`,
+#   not equality, so swapping in identity comparison would break the BST
+#   invariant.
+# - The `initial_capacity` constructor argument — a tree has no pre-sized
+#   storage to size up front.
+#
 # This implementation was originally derived from the incomplete and broken implementation
 # in the Crystalline shard found at https://github.com/jtomschroeder/crystalline
 
@@ -188,6 +200,19 @@ class SplayTreeMap(K, V)
     end
   end
 
+  # See `Object#hash(hasher)`. Hash code is order-independent: two trees with
+  # the same {key, value} entries hash equally, regardless of insertion order.
+  def hash(hasher)
+    result = hasher.result
+    each do |key, value|
+      copy = hasher
+      copy = key.hash(copy)
+      copy = value.hash(copy)
+      result &+= copy.result
+    end
+    result.hash(hasher)
+  end
+
   private def surface_cmp(other)
     @lock.synchronize do
       return nil if !other.is_a?(SplayTreeMap) || typeof(self) != typeof(other)
@@ -196,6 +221,37 @@ class SplayTreeMap(K, V)
       return 1 if self.size > other.size
     end
     0
+  end
+
+  # Returns `true` if every entry in `self` exists in *other* with an equal value.
+  # An equal-sized identical tree is a subset of itself.
+  def subset_of?(other : SplayTreeMap) : Bool
+    return false if other.size < size
+    each do |key, value|
+      other_value = other.fetch(key) { return false }
+      return false unless other_value == value
+    end
+    true
+  end
+
+  # Returns `true` if `self` is a `subset_of?` *other* AND strictly smaller.
+  def proper_subset_of?(other : SplayTreeMap) : Bool
+    return false if other.size <= size
+    each do |key, value|
+      other_value = other.fetch(key) { return false }
+      return false unless other_value == value
+    end
+    true
+  end
+
+  # Returns `true` if *other* is a `subset_of?` `self`.
+  def superset_of?(other : SplayTreeMap) : Bool
+    other.subset_of?(self)
+  end
+
+  # Returns `true` if *other* is a `proper_subset_of?` `self`.
+  def proper_superset_of?(other : SplayTreeMap) : Bool
+    other.proper_subset_of?(self)
   end
 
   # Searches for the given *key* in the tree and returns the associated value.
@@ -378,6 +434,38 @@ class SplayTreeMap(K, V)
     delete(key) { nil }
   end
 
+  # Removes and returns the smallest key/value pair as a tuple.
+  # Raises `IndexError` if the tree is empty.
+  #
+  # ```
+  # stm = SplayTreeMap.new({3 => "c", 1 => "a", 2 => "b"})
+  # stm.shift # => {1, "a"}
+  # ```
+  def shift : {K, V}
+    shift { raise IndexError.new }
+  end
+
+  # Same as `#shift`, but returns `nil` if the tree is empty.
+  def shift? : {K, V}?
+    shift { nil }
+  end
+
+  # Removes and returns the smallest key/value pair as a tuple.
+  # Yields to the block (and returns its value) if the tree is empty.
+  def shift(&)
+    @lock.synchronize do
+      n = @root
+      return yield if n.nil?
+      while left = n.left
+        n = left
+      end
+      key = n.key
+      value = n.value
+      delete_impl(key)
+      {key, value}
+    end
+  end
+
   # :nodoc:
   def delete_impl(key)
     deleted = Unk
@@ -473,6 +561,25 @@ class SplayTreeMap(K, V)
   def dup
     @lock.synchronize do
       return SplayTreeMap.new(self)
+    end
+  end
+
+  # Returns a deep copy of the tree. Each value is cloned via `Object#clone`.
+  # Unlike `#dup`, mutating a value inside the result does not affect the original.
+  #
+  # ```
+  # stm_a = SplayTreeMap.new({"x" => [1, 2]})
+  # stm_b = stm_a.clone
+  # stm_b["x"] << 3
+  # stm_a["x"] # => [1, 2]
+  # ```
+  def clone : SplayTreeMap(K, V)
+    @lock.synchronize do
+      result = SplayTreeMap(K, V).new
+      each do |k, v|
+        result[k] = v.clone
+      end
+      result
     end
   end
 
@@ -772,6 +879,46 @@ class SplayTreeMap(K, V)
     {n.try &.key, n.try &.value}
   end
 
+  # Returns the largest key in the tree. Raises if the tree is empty.
+  def last_key : K
+    n = @root
+    raise "Can't get last key of empty SplayTreeMap" if n.nil?
+    while right = n.right
+      n = right
+    end
+    n.key
+  end
+
+  # Returns the largest key in the tree, or `nil` if the tree is empty.
+  def last_key? : K?
+    n = @root
+    return nil if n.nil?
+    while right = n.right
+      n = right
+    end
+    n.key
+  end
+
+  # Returns the value at the largest key in the tree. Raises if the tree is empty.
+  def last_value : V
+    n = @root
+    raise "Can't get last value of empty SplayTreeMap" if n.nil?
+    while right = n.right
+      n = right
+    end
+    n.value
+  end
+
+  # Returns the value at the largest key in the tree, or `nil` if the tree is empty.
+  def last_value? : V?
+    n = @root
+    return nil if n.nil?
+    while right = n.right
+      n = right
+    end
+    n.value
+  end
+
   # Returns an array of all keys in the tree.
   #
   # ```
@@ -995,6 +1142,46 @@ class SplayTreeMap(K, V)
     end
   end
 
+  # Returns the smallest key in the tree. Raises if the tree is empty.
+  def first_key : K
+    n = @root
+    raise "Can't get first key of empty SplayTreeMap" if n.nil?
+    while left = n.left
+      n = left
+    end
+    n.key
+  end
+
+  # Returns the smallest key in the tree, or `nil` if the tree is empty.
+  def first_key? : K?
+    n = @root
+    return nil if n.nil?
+    while left = n.left
+      n = left
+    end
+    n.key
+  end
+
+  # Returns the value at the smallest key in the tree. Raises if the tree is empty.
+  def first_value : V
+    n = @root
+    raise "Can't get first value of empty SplayTreeMap" if n.nil?
+    while left = n.left
+      n = left
+    end
+    n.value
+  end
+
+  # Returns the value at the smallest key in the tree, or `nil` if the tree is empty.
+  def first_value? : V?
+    n = @root
+    return nil if n.nil?
+    while left = n.left
+      n = left
+    end
+    n.value
+  end
+
   # This will remove all of the leaves at the end of the tree branches.
   # That is, every node that does not have any children. This will tend
   # to remove the least used elements from the tree.
@@ -1017,6 +1204,19 @@ class SplayTreeMap(K, V)
     end
   end
 
+  # Rebuilds the tree from the current keys. Useful when mutable keys have been
+  # modified post-insertion in a way that affects `<=>` ordering. Tree traversal
+  # is performed first; if the existing tree is too corrupted for traversal to
+  # be sensible, this method cannot help.
+  def rehash : Nil
+    @lock.synchronize do
+      pairs = [] of {K, V}
+      each { |k, v| pairs << {k, v} }
+      clear
+      pairs.each { |(k, v)| push(k, v) }
+    end
+  end
+
   # Sets the value of *key* to the given *value*.
   #
   # If a value already exists for `key`, that (old) value is returned.
@@ -1031,6 +1231,72 @@ class SplayTreeMap(K, V)
   def put(key : K, value : V, &)
     old_value = push(key, value)
     old_value || yield key
+  end
+
+  # Sets the value of *key* to *value* unless an entry for *key* already exists.
+  # Returns the current value for *key* (the existing one if present, otherwise *value*).
+  #
+  # This is a more performant and falsey-safe alternative to `stm[key] ||= value`.
+  #
+  # ```
+  # stm = SplayTreeMap(Int32, String).new
+  # stm.put_if_absent(1, "one") # => "one"
+  # stm.put_if_absent(1, "uno") # => "one"
+  # ```
+  def put_if_absent(key : K, value : V) : V
+    put_if_absent(key) { value }
+  end
+
+  # Sets the value of *key* to the result of yielding *key* to the given block,
+  # unless an entry for *key* already exists. Returns the current value.
+  #
+  # ```
+  # stm = SplayTreeMap(Int32, Array(String)).new
+  # stm.put_if_absent(1) { |k| [k.to_s] }     # => ["1"]
+  # stm.put_if_absent(1) { |k| [] of String } # => ["1"] (block not called)
+  # ```
+  def put_if_absent(key : K, & : K -> V) : V
+    @lock.synchronize do
+      existing = get_impl(key)
+      if existing == Unk
+        new_value = yield key
+        push(key, new_value)
+        new_value
+      else
+        existing.as(V)
+      end
+    end
+  end
+
+  # Updates the current value of *key* with the result of yielding the current value
+  # to the given block. Returns the value used as input to the block (the old value,
+  # or the default if the key was absent).
+  #
+  # If no entry for *key* is present but a default block was configured at construction,
+  # the default block's value is used as input.
+  #
+  # Raises `KeyError` if no entry exists and no default is configured.
+  #
+  # ```
+  # stm = SplayTreeMap.new({"a" => 0, "b" => 1})
+  # stm.update("b") { |v| v + 41 } # => 1
+  # stm["b"]                       # => 42
+  # ```
+  def update(key : K, & : V -> V) : V
+    @lock.synchronize do
+      existing = get_impl(key)
+      if existing != Unk
+        old = existing.as(V)
+        push(key, yield old)
+        old
+      elsif block = @block
+        default_value = block.call(self, key).as(V)
+        push(key, yield default_value)
+        default_value
+      else
+        raise KeyError.new "Missing hash key: #{key.inspect}"
+      end
+    end
   end
 
   # Returns a new `SplayTreeMap` consisting of entries for which the block returns `false`.
@@ -1176,6 +1442,19 @@ class SplayTreeMap(K, V)
     a
   end
 
+  # Returns an `Array` of the results of yielding each {K, V} tuple to the block.
+  # Order matches in-order traversal of the tree.
+  #
+  # ```
+  # stm = SplayTreeMap.new({"first" => "foo", "last" => "bar"})
+  # stm.to_a { |_k, v| v.capitalize } # => ["Bar", "Foo"]
+  # ```
+  def to_a(& : {K, V} -> U) : Array(U) forall U
+    a = Array(U).new
+    each { |k, v| a << yield({k, v}) }
+    a
+  end
+
   # Transform a `SplayTreeMap(K,V)` into a `Hash(K,V)`.
   #
   # ```
@@ -1205,6 +1484,26 @@ class SplayTreeMap(K, V)
     end
   end
 
+  # Same output as `#to_s(io)`. Provided explicitly for parity with `Hash`.
+  def inspect(io : IO) : Nil
+    to_s(io)
+  end
+
+  # Renders the tree using `PrettyPrint` in the same shape as `Hash`:
+  # `{ key => value, key => value }` with `pp.group` and `pp.breakable` for wrapping.
+  def pretty_print(pp) : Nil
+    pp.list("{", self, "}") do |key, value|
+      pp.group do
+        key.pretty_print(pp)
+        pp.text " =>"
+        pp.nest do
+          pp.breakable
+          value.pretty_print(pp)
+        end
+      end
+    end
+  end
+
   # Returns a new `SplayTreeMap` with all of the key/value pairs converted using
   # the provided block. The block can change the types of both keys and values.
   #
@@ -1221,43 +1520,82 @@ class SplayTreeMap(K, V)
     end
   end
 
-  # Returns a new `SplayTreeMap` with all keys converted using the block operation.
-  # The block can change a type of keys.
+  # Returns a new `SplayTreeMap` with all keys converted using the block.
+  # The block yields the key and value; it may return a key of any type.
   #
   # ```
   # stm = SplayTreeMap.new({:a => 1, :b => 2, :c => 3})
-  # stm.transform_keys { |key| key.to_s } # => {"a" => 1, "b" => 2, "c" => 3}
+  # stm.transform_keys { |key| key.to_s }                # => {"a" => 1, "b" => 2, "c" => 3}
+  # stm.transform_keys { |key, value| key.to_s * value } # => {"a" => 1, "bb" => 2, "ccc" => 3}
   # ```
-  def transform_keys(& : K -> K2) forall K2
+  def transform_keys(& : K, V -> K2) forall K2
     each_with_object(SplayTreeMap(K2, V).new) do |(key, value), memo|
-      memo[yield(key)] = value
+      memo[yield(key, value)] = value
     end
   end
 
-  # Returns a new SplayTreeMap with all values converted using the block operation.
-  # The block can change a type of values.
+  # Destructively transforms keys using the block. The block yields key and value
+  # and must return a key of the same type `K`. Returns `self`.
   #
   # ```
-  # stm = SplayTreeMap.new({:a => 1, :b => 2, :c => 3})
-  # stm.transform_values { |value| value + 1 } # => {:a => 2, :b => 3, :c => 4}
+  # stm = SplayTreeMap.new({"a" => 1, "b" => 2})
+  # stm.transform_keys! { |key| key.upcase }
+  # stm # => {"A" => 1, "B" => 2}
   # ```
-  def transform_values(& : V -> V2) forall V2
-    each_with_object(SplayTreeMap(K, V2).new) do |(key, value), memo|
-      memo[key] = yield(value)
-    end
-  end
-
-  # Modifies the values of the current `SplayTreeMap` according to the provided block.
-  #
-  # ```
-  # stm = SplayTreeMap.new({:a => 1, :b => 2, :c => 3})
-  # stm.transform_values! { |value| value + 1 } # => {:a => 2, :b => 3, :c => 4}
-  # ```
-  def transform_values!(& : V -> V)
-    each do |key, value|
-      memo[key] = yield(value)
+  def transform_keys!(& : K, V -> K) : self
+    @lock.synchronize do
+      pairs = [] of {K, V}
+      each { |k, v| pairs << {k, v} }
+      clear
+      pairs.each do |(k, v)|
+        new_key = yield(k, v).as(K)
+        push(new_key, v)
+      end
     end
     self
+  end
+
+  # Returns a new `SplayTreeMap` with all values converted using the block.
+  # The block yields the value and key; it may return a value of any type.
+  #
+  # ```
+  # stm = SplayTreeMap.new({:a => 1, :b => 2, :c => 3})
+  # stm.transform_values { |value| value + 1 }             # => {:a => 2, :b => 3, :c => 4}
+  # stm.transform_values { |value, key| "#{key}#{value}" } # => {:a => "a1", :b => "b2", :c => "c3"}
+  # ```
+  def transform_values(& : V, K -> V2) forall V2
+    each_with_object(SplayTreeMap(K, V2).new) do |(key, value), memo|
+      memo[key] = yield(value, key)
+    end
+  end
+
+  # Mutates each value in place using the result of the given block.
+  # The block yields the current value and key.
+  #
+  # ```
+  # stm = SplayTreeMap.new({:a => 1, :b => 2, :c => 3})
+  # stm.transform_values! { |value, key| value + key.to_s.bytesize }
+  # stm # => {:a => 2, :b => 3, :c => 4}
+  # ```
+  def transform_values!(&blk : V, K -> V) : self
+    @lock.synchronize do
+      transform_each_node(@root, &blk)
+    end
+    self
+  end
+
+  # Returns a new `SplayTreeMap` with keys and values swapped. If there are
+  # duplicate values, the entry visited last during in-order traversal wins.
+  #
+  # ```
+  # SplayTreeMap.new({"foo" => "bar"}).invert # => {"bar" => "foo"}
+  # ```
+  def invert : SplayTreeMap(V, K)
+    @lock.synchronize do
+      result = SplayTreeMap(V, K).new
+      each { |k, v| result[v] = k }
+      result
+    end
   end
 
   # Returns an array containing all of the values in the tree. The array is in
@@ -1319,6 +1657,15 @@ class SplayTreeMap(K, V)
     each_descend_from(node.left, &blk) if !node.left.nil?
     yield(node.key, node.value)
     each_descend_from(node.right, &blk) if !node.right.nil?
+  end
+
+  # Walks the tree in-order, yielding (value, key) for each Node and writing
+  # the block return value back as the node's value. Used by transform_values!.
+  private def transform_each_node(node : Node(K, V)?, &blk : V, K -> V) : Nil
+    return if node.nil?
+    transform_each_node(node.left, &blk) if node.left
+    node.value = yield node.value, node.key
+    transform_each_node(node.right, &blk) if node.right
   end
 
   private def descend_from(node, height_limit, current_height = 0)

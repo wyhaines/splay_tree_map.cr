@@ -563,6 +563,12 @@ describe SplayTreeMap do
     (stm == stm2).should be_true
   end
 
+  it "to_a(&); maps each tuple through the block" do
+    stm = SplayTreeMap.new({"a" => 1, "b" => 2, "c" => 3})
+    result = stm.to_a { |k, v| "#{k}=#{v}" }
+    result.should eq ["a=1", "b=2", "c=3"]
+  end
+
   it "to_h; can transform a SplayTreeMap into a Hash representation" do
     stm = SplayTreeMap.new({"foo" => "bar", "baz" => "qux"})
     h = stm.to_h
@@ -598,6 +604,21 @@ describe SplayTreeMap do
     stm[:a].should eq 2
     stm[:b].should eq 3
     stm[:c].should eq 4
+  end
+
+  it "transform_values; block can use both value and key" do
+    stm = SplayTreeMap.new({:a => 1, :b => 2, :c => 3})
+    result = stm.transform_values { |value, key| "#{key}#{value}" }
+    result[:a].should eq "a1"
+    result[:b].should eq "b2"
+    result[:c].should eq "c3"
+  end
+
+  it "transform_values; one-arg block still works" do
+    stm = SplayTreeMap.new({:a => 1, :b => 2})
+    result = stm.transform_values { |value| value + 10 }
+    result[:a].should eq 11
+    result[:b].should eq 12
   end
 
   it "values; returns all of the values in the tree" do
@@ -798,5 +819,325 @@ describe SplayTreeMap do
     st.was_pruned?.should be_true
     st.size.should eq(1001 - pruned_pairs.size)
     st.values.should eq(full_values - pruned_pairs.map { |x| x[1] })
+  end
+
+  it "transform_values!; mutates values in place, yielding value and key" do
+    stm = SplayTreeMap(String, Int32).new
+    stm["a"] = 1
+    stm["b"] = 2
+    stm["c"] = 3
+
+    result = stm.transform_values! { |value, key| value + key.bytesize }
+    result.should be(stm)
+    stm["a"].should eq 2
+    stm["b"].should eq 3
+    stm["c"].should eq 4
+  end
+
+  it "transform_values!; one-arg block still works (extra yielded arg discarded)" do
+    stm = SplayTreeMap(String, Int32).new
+    stm["a"] = 1
+    stm["b"] = 2
+    stm.transform_values! { |value| value * 10 }
+    stm["a"].should eq 10
+    stm["b"].should eq 20
+  end
+
+  it "transform_values!; empty tree returns self" do
+    stm = SplayTreeMap(String, Int32).new
+    result = stm.transform_values! { |v, _k| v + 1 }
+    result.should be(stm)
+    stm.size.should eq 0
+  end
+
+  it "first_key; returns the smallest key" do
+    stm = SplayTreeMap(Int32, String).new
+    [5, 1, 3, 7, 2].each { |k| stm[k] = k.to_s }
+    stm.first_key.should eq 1
+  end
+
+  it "first_key; raises on empty tree" do
+    stm = SplayTreeMap(Int32, String).new
+    expect_raises(Exception, /empty/i) { stm.first_key }
+  end
+
+  it "first_key?; returns nil on empty tree" do
+    stm = SplayTreeMap(Int32, String).new
+    stm.first_key?.should be_nil
+    stm[42] = "x"
+    stm.first_key?.should eq 42
+  end
+
+  it "first_value; returns the value at the smallest key" do
+    stm = SplayTreeMap(Int32, String).new
+    [5, 1, 3].each { |k| stm[k] = "v#{k}" }
+    stm.first_value.should eq "v1"
+  end
+
+  it "first_value; raises on empty tree" do
+    stm = SplayTreeMap(Int32, String).new
+    expect_raises(Exception, /empty/i) { stm.first_value }
+  end
+
+  it "first_value?; returns nil on empty tree" do
+    stm = SplayTreeMap(Int32, String).new
+    stm.first_value?.should be_nil
+    stm[1] = "one"
+    stm.first_value?.should eq "one"
+  end
+
+  it "last_key; returns the largest key" do
+    stm = SplayTreeMap(Int32, String).new
+    [5, 1, 3, 7, 2].each { |k| stm[k] = k.to_s }
+    stm.last_key.should eq 7
+  end
+
+  it "last_key; raises on empty tree" do
+    stm = SplayTreeMap(Int32, String).new
+    expect_raises(Exception, /empty/i) { stm.last_key }
+  end
+
+  it "last_key?; returns nil on empty tree" do
+    stm = SplayTreeMap(Int32, String).new
+    stm.last_key?.should be_nil
+    stm[42] = "x"
+    stm.last_key?.should eq 42
+  end
+
+  it "last_value; returns the value at the largest key" do
+    stm = SplayTreeMap(Int32, String).new
+    [5, 1, 3].each { |k| stm[k] = "v#{k}" }
+    stm.last_value.should eq "v5"
+  end
+
+  it "last_value; raises on empty tree" do
+    stm = SplayTreeMap(Int32, String).new
+    expect_raises(Exception, /empty/i) { stm.last_value }
+  end
+
+  it "last_value?; returns nil on empty tree" do
+    stm = SplayTreeMap(Int32, String).new
+    stm.last_value?.should be_nil
+    stm[9] = "nine"
+    stm.last_value?.should eq "nine"
+  end
+
+  it "put_if_absent(key, value); inserts only when key absent, returns current value" do
+    stm = SplayTreeMap(Int32, String).new
+    stm.put_if_absent(1, "one").should eq "one"
+    stm.put_if_absent(1, "uno").should eq "one"
+    stm.put_if_absent(2, "two").should eq "two"
+    stm[1].should eq "one"
+    stm[2].should eq "two"
+    stm.size.should eq 2
+  end
+
+  it "put_if_absent(key, value); works correctly when stored value is falsey" do
+    stm = SplayTreeMap(String, Bool).new
+    stm["x"] = false
+    stm.put_if_absent("x", true).should eq false
+    stm["x"].should eq false
+  end
+
+  it "put_if_absent(key, &); evaluates block lazily and only on absence" do
+    stm = SplayTreeMap(Int32, Array(String)).new
+    call_count = 0
+    stm.put_if_absent(1) { |k| call_count += 1; [k.to_s] }.should eq ["1"]
+    stm.put_if_absent(1) { |k| call_count += 1; [k.to_s, "extra"] }.should eq ["1"]
+    call_count.should eq 1
+  end
+
+  it "update; updates an existing value, returning the old value" do
+    stm = SplayTreeMap(String, Int32).new
+    stm["a"] = 0
+    stm["b"] = 1
+    stm.update("b") { |v| v + 41 }.should eq 1
+    stm["b"].should eq 42
+  end
+
+  it "update; uses default block when key absent and returns the default" do
+    stm = SplayTreeMap(String, Int32).new { |_t, _k| 40 }
+    stm.update("foo") { |v| v + 2 }.should eq 40
+    stm["foo"].should eq 42
+  end
+
+  it "update; raises KeyError when key absent and no default" do
+    stm = SplayTreeMap(String, Int32).new
+    expect_raises(KeyError) { stm.update("a") { 42 } }
+  end
+
+  it "shift; removes and returns the smallest key/value tuple" do
+    stm = SplayTreeMap(Int32, String).new
+    [5, 1, 3].each { |k| stm[k] = "v#{k}" }
+    stm.shift.should eq({1, "v1"})
+    stm.size.should eq 2
+    stm.has_key?(1).should be_false
+  end
+
+  it "shift; raises IndexError on empty tree" do
+    stm = SplayTreeMap(Int32, String).new
+    expect_raises(IndexError) { stm.shift }
+  end
+
+  it "shift?; returns nil on empty tree" do
+    stm = SplayTreeMap(Int32, String).new
+    stm.shift?.should be_nil
+    stm[7] = "seven"
+    stm.shift?.should eq({7, "seven"})
+  end
+
+  it "shift(&); yields when empty" do
+    stm = SplayTreeMap(Int32, String).new
+    stm.shift { :empty }.should eq :empty
+    stm[1] = "one"
+    stm.shift { :empty }.should eq({1, "one"})
+  end
+
+  it "invert; swaps keys and values" do
+    stm = SplayTreeMap.new({"foo" => "bar", "baz" => "qux"})
+    inverted = stm.invert
+    inverted["bar"].should eq "foo"
+    inverted["qux"].should eq "baz"
+    inverted.size.should eq 2
+  end
+
+  it "invert; on duplicate values, later traversal order wins" do
+    stm = SplayTreeMap.new({"a" => 1, "b" => 1})
+    # In-order traversal visits "a" before "b"; "b" inserts last and wins.
+    stm.invert[1].should eq "b"
+  end
+
+  it "subset_of?; true when self's entries are all in other with same values" do
+    a = SplayTreeMap.new({1 => "a", 2 => "b"})
+    b = SplayTreeMap.new({1 => "a", 2 => "b", 3 => "c"})
+    a.subset_of?(b).should be_true
+    a.subset_of?(a).should be_true
+    b.subset_of?(a).should be_false
+  end
+
+  it "subset_of?; false when values differ for a shared key" do
+    a = SplayTreeMap.new({1 => "a"})
+    b = SplayTreeMap.new({1 => "z", 2 => "b"})
+    a.subset_of?(b).should be_false
+  end
+
+  it "proper_subset_of?; true only when strictly smaller and subset" do
+    a = SplayTreeMap.new({1 => "a"})
+    b = SplayTreeMap.new({1 => "a", 2 => "b"})
+    a.proper_subset_of?(b).should be_true
+    a.proper_subset_of?(a).should be_false
+  end
+
+  it "superset_of?; mirror of subset_of?" do
+    a = SplayTreeMap.new({1 => "a", 2 => "b", 3 => "c"})
+    b = SplayTreeMap.new({1 => "a", 2 => "b"})
+    a.superset_of?(b).should be_true
+    a.superset_of?(a).should be_true
+    b.superset_of?(a).should be_false
+  end
+
+  it "proper_superset_of?; mirror of proper_subset_of?" do
+    a = SplayTreeMap.new({1 => "a", 2 => "b"})
+    b = SplayTreeMap.new({1 => "a"})
+    a.proper_superset_of?(b).should be_true
+    a.proper_superset_of?(a).should be_false
+  end
+
+  it "inspect; produces same output as to_s" do
+    stm = SplayTreeMap.new({"a" => 1, "b" => 2})
+    io = IO::Memory.new
+    stm.inspect(io)
+    io.to_s.should eq stm.to_s
+  end
+
+  it "pretty_print; renders via PrettyPrint" do
+    stm = SplayTreeMap.new({"a" => 1, "b" => 2})
+    io = IO::Memory.new
+    PrettyPrint.format(stm, io, width: 80, indent: 0)
+    output = io.to_s
+    output.should contain "\"a\""
+    output.should contain "=>"
+    output.should contain "1"
+  end
+
+  it "hash; produces equal hash codes for trees with the same entries regardless of insertion order" do
+    a = SplayTreeMap(Int32, String).new
+    [3, 1, 2].each { |k| a[k] = k.to_s }
+
+    b = SplayTreeMap(Int32, String).new
+    [1, 2, 3].each { |k| b[k] = k.to_s }
+
+    a.hash.should eq b.hash
+  end
+
+  it "hash; usable as a Hash key" do
+    stm1 = SplayTreeMap.new({1 => "a"})
+    stm2 = SplayTreeMap.new({1 => "a"})
+    outer = {} of SplayTreeMap(Int32, String) => Int32
+    outer[stm1] = 1
+    outer[stm2].should eq 1
+  end
+
+  it "clone; produces a deep copy (mutating cloned value doesn't affect original)" do
+    stm = SplayTreeMap(String, Array(Int32)).new
+    stm["a"] = [1, 2, 3]
+    cloned = stm.clone
+    cloned["a"] << 4
+    stm["a"].should eq [1, 2, 3]
+    cloned["a"].should eq [1, 2, 3, 4]
+  end
+
+  it "clone; works on primitive value types" do
+    stm = SplayTreeMap.new({"a" => 1, "b" => 2})
+    cloned = stm.clone
+    cloned["a"] = 99
+    stm["a"].should eq 1
+  end
+
+  it "transform_keys; block can use both key and value" do
+    stm = SplayTreeMap.new({:a => 1, :b => 2, :c => 3})
+    result = stm.transform_keys { |key, value| key.to_s * value }
+    result["a"].should eq 1
+    result["bb"].should eq 2
+    result["ccc"].should eq 3
+  end
+
+  it "transform_keys; one-arg block still works" do
+    stm = SplayTreeMap.new({:a => 1, :b => 2})
+    result = stm.transform_keys(&.to_s)
+    result["a"].should eq 1
+    result["b"].should eq 2
+  end
+
+  it "transform_keys!; mutates keys in place, returns self" do
+    stm = SplayTreeMap.new({"a" => 1, "b" => 2, "c" => 3})
+    result = stm.transform_keys!(&.upcase)
+    result.should be(stm)
+    stm["A"].should eq 1
+    stm["B"].should eq 2
+    stm["C"].should eq 3
+    stm.has_key?("a").should be_false
+  end
+
+  it "transform_keys!; block can use both key and value" do
+    stm = SplayTreeMap.new({"a" => 1, "b" => 2})
+    stm.transform_keys! { |key, value| key * value }
+    stm["a"].should eq 1
+    stm["bb"].should eq 2
+  end
+
+  it "rehash; rebuilds tree, preserving content on a healthy tree" do
+    stm = SplayTreeMap(String, Int32).new
+    10.times { |i| stm["k#{i}"] = i }
+    before = stm.to_a
+    stm.rehash
+    stm.to_a.should eq before
+    stm.size.should eq 10
+  end
+
+  it "rehash; works on an empty tree" do
+    stm = SplayTreeMap(String, Int32).new
+    stm.rehash
+    stm.size.should eq 0
   end
 end
