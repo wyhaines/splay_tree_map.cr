@@ -52,6 +52,18 @@ require "./version"
 # As of Crystal 1.0.0, a Hash is not thread safe, by default. A SplayTreeMap is.
 # ```
 #
+# ### Intentional gaps relative to `Hash`
+#
+# A `SplayTreeMap` mirrors most of `Hash`'s public API, but a few methods are
+# intentionally omitted because they have no consistent meaning for a tree
+# ordered by `<=>`:
+#
+# - `compare_by_identity` / `compare_by_identity?` — a tree orders by `<=>`,
+#   not equality, so swapping in identity comparison would break the BST
+#   invariant.
+# - The `initial_capacity` constructor argument — a tree has no pre-sized
+#   storage to size up front.
+#
 # This implementation was originally derived from the incomplete and broken implementation
 # in the Crystalline shard found at https://github.com/jtomschroeder/crystalline
 
