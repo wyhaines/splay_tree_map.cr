@@ -1247,15 +1247,17 @@ class SplayTreeMap(K, V)
     end
   end
 
-  # Modifies the values of the current `SplayTreeMap` according to the provided block.
+  # Mutates each value in place using the result of the given block.
+  # The block yields the current value and key.
   #
   # ```
   # stm = SplayTreeMap.new({:a => 1, :b => 2, :c => 3})
-  # stm.transform_values! { |value| value + 1 } # => {:a => 2, :b => 3, :c => 4}
+  # stm.transform_values! { |value, key| value + key.to_s.bytesize }
+  # stm # => {:a => 2, :b => 3, :c => 4}
   # ```
-  def transform_values!(& : V -> V)
-    each do |key, value|
-      memo[key] = yield(value)
+  def transform_values!(&blk : V, K -> V) : self
+    @lock.synchronize do
+      transform_each_node(@root, &blk)
     end
     self
   end
@@ -1319,6 +1321,15 @@ class SplayTreeMap(K, V)
     each_descend_from(node.left, &blk) if !node.left.nil?
     yield(node.key, node.value)
     each_descend_from(node.right, &blk) if !node.right.nil?
+  end
+
+  # Walks the tree in-order, yielding (value, key) for each Node and writing
+  # the block return value back as the node's value. Used by transform_values!.
+  private def transform_each_node(node : Node(K, V)?, &blk : V, K -> V) : Nil
+    return if node.nil?
+    transform_each_node(node.left, &blk) if node.left
+    node.value = yield node.value, node.key
+    transform_each_node(node.right, &blk) if node.right
   end
 
   private def descend_from(node, height_limit, current_height = 0)

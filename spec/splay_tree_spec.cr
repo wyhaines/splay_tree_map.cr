@@ -799,4 +799,26 @@ describe SplayTreeMap do
     st.size.should eq(1001 - pruned_pairs.size)
     st.values.should eq(full_values - pruned_pairs.map { |x| x[1] })
   end
+
+  it "transform_values!; mutates values in place, yielding value and key" do
+    stm = SplayTreeMap(String, Int32).new
+    stm["a"] = 1
+    stm["b"] = 2
+    stm["c"] = 3
+
+    result = stm.transform_values! { |value, key| value + key.bytesize }
+    result.should be(stm)
+    stm["a"].should eq 2
+    stm["b"].should eq 3
+    stm["c"].should eq 4
+  end
+
+  it "transform_values!; one-arg block still works (extra yielded arg discarded)" do
+    stm = SplayTreeMap(String, Int32).new
+    stm["a"] = 1
+    stm["b"] = 2
+    stm.transform_values! { |value| value * 10 }
+    stm["a"].should eq 10
+    stm["b"].should eq 20
+  end
 end
