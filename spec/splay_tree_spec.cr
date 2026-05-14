@@ -828,4 +828,35 @@ describe SplayTreeMap do
     result.should be(stm)
     stm.size.should eq 0
   end
+
+  it "first_key; returns the smallest key" do
+    stm = SplayTreeMap(Int32, String).new
+    [5, 1, 3, 7, 2].each { |k| stm[k] = k.to_s }
+    stm.first_key.should eq 1
+  end
+
+  it "first_key; raises on empty tree" do
+    stm = SplayTreeMap(Int32, String).new
+    expect_raises(Exception, /empty/i) { stm.first_key }
+  end
+
+  it "first_key?; returns nil on empty tree" do
+    stm = SplayTreeMap(Int32, String).new
+    stm.first_key?.should be_nil
+    stm[42] = "x"
+    stm.first_key?.should eq 42
+  end
+
+  it "first_value; returns the value at the smallest key" do
+    stm = SplayTreeMap(Int32, String).new
+    [5, 1, 3].each { |k| stm[k] = "v#{k}" }
+    stm.first_value.should eq "v1"
+  end
+
+  it "first_value?; returns nil on empty tree" do
+    stm = SplayTreeMap(Int32, String).new
+    stm.first_value?.should be_nil
+    stm[1] = "one"
+    stm.first_value?.should eq "one"
+  end
 end

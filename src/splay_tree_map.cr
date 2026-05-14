@@ -995,6 +995,46 @@ class SplayTreeMap(K, V)
     end
   end
 
+  # Returns the smallest key in the tree. Raises if the tree is empty.
+  def first_key : K
+    n = @root
+    raise "Can't get first key of empty SplayTreeMap" if n.nil?
+    while left = n.left
+      n = left
+    end
+    n.key
+  end
+
+  # Returns the smallest key in the tree, or `nil` if the tree is empty.
+  def first_key? : K?
+    n = @root
+    return nil if n.nil?
+    while left = n.left
+      n = left
+    end
+    n.key
+  end
+
+  # Returns the value at the smallest key in the tree. Raises if the tree is empty.
+  def first_value : V
+    n = @root
+    raise "Can't get first value of empty SplayTreeMap" if n.nil?
+    while left = n.left
+      n = left
+    end
+    n.value
+  end
+
+  # Returns the value at the smallest key in the tree, or `nil` if the tree is empty.
+  def first_value? : V?
+    n = @root
+    return nil if n.nil?
+    while left = n.left
+      n = left
+    end
+    n.value
+  end
+
   # This will remove all of the leaves at the end of the tree branches.
   # That is, every node that does not have any children. This will tend
   # to remove the least used elements from the tree.
