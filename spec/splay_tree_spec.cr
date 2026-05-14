@@ -1044,4 +1044,22 @@ describe SplayTreeMap do
     output.should contain "=>"
     output.should contain "1"
   end
+
+  it "hash; produces equal hash codes for trees with the same entries regardless of insertion order" do
+    a = SplayTreeMap(Int32, String).new
+    [3, 1, 2].each { |k| a[k] = k.to_s }
+
+    b = SplayTreeMap(Int32, String).new
+    [1, 2, 3].each { |k| b[k] = k.to_s }
+
+    a.hash.should eq b.hash
+  end
+
+  it "hash; usable as a Hash key" do
+    stm1 = SplayTreeMap.new({1 => "a"})
+    stm2 = SplayTreeMap.new({1 => "a"})
+    outer = {} of SplayTreeMap(Int32, String) => Int32
+    outer[stm1] = 1
+    outer[stm2].should eq 1
+  end
 end

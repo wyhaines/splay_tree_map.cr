@@ -188,6 +188,19 @@ class SplayTreeMap(K, V)
     end
   end
 
+  # See `Object#hash(hasher)`. Hash code is order-independent: two trees with
+  # the same {key, value} entries hash equally, regardless of insertion order.
+  def hash(hasher)
+    result = hasher.result
+    each do |key, value|
+      copy = hasher
+      copy = key.hash(copy)
+      copy = value.hash(copy)
+      result &+= copy.result
+    end
+    result.hash(hasher)
+  end
+
   private def surface_cmp(other)
     @lock.synchronize do
       return nil if !other.is_a?(SplayTreeMap) || typeof(self) != typeof(other)
