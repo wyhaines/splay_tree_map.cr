@@ -985,4 +985,40 @@ describe SplayTreeMap do
     # In-order traversal visits "a" before "b"; "b" inserts last and wins.
     stm.invert[1].should eq "b"
   end
+
+  it "subset_of?; true when self's entries are all in other with same values" do
+    a = SplayTreeMap.new({1 => "a", 2 => "b"})
+    b = SplayTreeMap.new({1 => "a", 2 => "b", 3 => "c"})
+    a.subset_of?(b).should be_true
+    a.subset_of?(a).should be_true
+    b.subset_of?(a).should be_false
+  end
+
+  it "subset_of?; false when values differ for a shared key" do
+    a = SplayTreeMap.new({1 => "a"})
+    b = SplayTreeMap.new({1 => "z", 2 => "b"})
+    a.subset_of?(b).should be_false
+  end
+
+  it "proper_subset_of?; true only when strictly smaller and subset" do
+    a = SplayTreeMap.new({1 => "a"})
+    b = SplayTreeMap.new({1 => "a", 2 => "b"})
+    a.proper_subset_of?(b).should be_true
+    a.proper_subset_of?(a).should be_false
+  end
+
+  it "superset_of?; mirror of subset_of?" do
+    a = SplayTreeMap.new({1 => "a", 2 => "b", 3 => "c"})
+    b = SplayTreeMap.new({1 => "a", 2 => "b"})
+    a.superset_of?(b).should be_true
+    a.superset_of?(a).should be_true
+    b.superset_of?(a).should be_false
+  end
+
+  it "proper_superset_of?; mirror of proper_subset_of?" do
+    a = SplayTreeMap.new({1 => "a", 2 => "b"})
+    b = SplayTreeMap.new({1 => "a"})
+    a.proper_superset_of?(b).should be_true
+    a.proper_superset_of?(a).should be_false
+  end
 end

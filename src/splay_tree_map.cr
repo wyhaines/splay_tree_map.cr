@@ -198,6 +198,37 @@ class SplayTreeMap(K, V)
     0
   end
 
+  # Returns `true` if every entry in `self` exists in *other* with an equal value.
+  # An equal-sized identical tree is a subset of itself.
+  def subset_of?(other : SplayTreeMap) : Bool
+    return false if other.size < size
+    each do |key, value|
+      other_value = other.fetch(key) { return false }
+      return false unless other_value == value
+    end
+    true
+  end
+
+  # Returns `true` if `self` is a `subset_of?` *other* AND strictly smaller.
+  def proper_subset_of?(other : SplayTreeMap) : Bool
+    return false if other.size <= size
+    each do |key, value|
+      other_value = other.fetch(key) { return false }
+      return false unless other_value == value
+    end
+    true
+  end
+
+  # Returns `true` if *other* is a `subset_of?` `self`.
+  def superset_of?(other : SplayTreeMap) : Bool
+    other.subset_of?(self)
+  end
+
+  # Returns `true` if *other* is a `proper_subset_of?` `self`.
+  def proper_superset_of?(other : SplayTreeMap) : Bool
+    other.proper_subset_of?(self)
+  end
+
   # Searches for the given *key* in the tree and returns the associated value.
   # If the key is not in the tree, a KeyError will be raised.
   #
