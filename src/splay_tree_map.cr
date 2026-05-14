@@ -1432,6 +1432,21 @@ class SplayTreeMap(K, V)
     to_s(io)
   end
 
+  # Renders the tree using `PrettyPrint` in the same shape as `Hash`:
+  # `{ key => value, key => value }` with `pp.group` and `pp.breakable` for wrapping.
+  def pretty_print(pp) : Nil
+    pp.list("{", self, "}") do |key, value|
+      pp.group do
+        key.pretty_print(pp)
+        pp.text " =>"
+        pp.nest do
+          pp.breakable
+          value.pretty_print(pp)
+        end
+      end
+    end
+  end
+
   # Returns a new `SplayTreeMap` with all of the key/value pairs converted using
   # the provided block. The block can change the types of both keys and values.
   #

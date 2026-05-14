@@ -1034,4 +1034,14 @@ describe SplayTreeMap do
     stm.inspect(io)
     io.to_s.should eq stm.to_s
   end
+
+  it "pretty_print; renders via PrettyPrint" do
+    stm = SplayTreeMap.new({"a" => 1, "b" => 2})
+    io = IO::Memory.new
+    PrettyPrint.format(stm, io, width: 80, indent: 0)
+    output = io.to_s
+    output.should contain "\"a\""
+    output.should contain "=>"
+    output.should contain "1"
+  end
 end
