@@ -378,6 +378,38 @@ class SplayTreeMap(K, V)
     delete(key) { nil }
   end
 
+  # Removes and returns the smallest key/value pair as a tuple.
+  # Raises `IndexError` if the tree is empty.
+  #
+  # ```
+  # stm = SplayTreeMap.new({3 => "c", 1 => "a", 2 => "b"})
+  # stm.shift # => {1, "a"}
+  # ```
+  def shift : {K, V}
+    shift { raise IndexError.new }
+  end
+
+  # Same as `#shift`, but returns `nil` if the tree is empty.
+  def shift? : {K, V}?
+    shift { nil }
+  end
+
+  # Removes and returns the smallest key/value pair as a tuple.
+  # Yields to the block (and returns its value) if the tree is empty.
+  def shift(&)
+    @lock.synchronize do
+      n = @root
+      return yield if n.nil?
+      while left = n.left
+        n = left
+      end
+      key = n.key
+      value = n.value
+      delete_impl(key)
+      {key, value}
+    end
+  end
+
   # :nodoc:
   def delete_impl(key)
     deleted = Unk

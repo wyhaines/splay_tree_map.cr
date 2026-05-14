@@ -944,4 +944,31 @@ describe SplayTreeMap do
     stm = SplayTreeMap(String, Int32).new
     expect_raises(KeyError) { stm.update("a") { 42 } }
   end
+
+  it "shift; removes and returns the smallest key/value tuple" do
+    stm = SplayTreeMap(Int32, String).new
+    [5, 1, 3].each { |k| stm[k] = "v#{k}" }
+    stm.shift.should eq({1, "v1"})
+    stm.size.should eq 2
+    stm.has_key?(1).should be_false
+  end
+
+  it "shift; raises IndexError on empty tree" do
+    stm = SplayTreeMap(Int32, String).new
+    expect_raises(IndexError) { stm.shift }
+  end
+
+  it "shift?; returns nil on empty tree" do
+    stm = SplayTreeMap(Int32, String).new
+    stm.shift?.should be_nil
+    stm[7] = "seven"
+    stm.shift?.should eq({7, "seven"})
+  end
+
+  it "shift(&); yields when empty" do
+    stm = SplayTreeMap(Int32, String).new
+    stm.shift { :empty }.should eq :empty
+    stm[1] = "one"
+    stm.shift { :empty }.should eq({1, "one"})
+  end
 end
