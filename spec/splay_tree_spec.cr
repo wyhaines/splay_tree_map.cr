@@ -853,6 +853,11 @@ describe SplayTreeMap do
     stm.first_value.should eq "v1"
   end
 
+  it "first_value; raises on empty tree" do
+    stm = SplayTreeMap(Int32, String).new
+    expect_raises(Exception, /empty/i) { stm.first_value }
+  end
+
   it "first_value?; returns nil on empty tree" do
     stm = SplayTreeMap(Int32, String).new
     stm.first_value?.should be_nil
