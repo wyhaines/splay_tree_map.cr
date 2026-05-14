@@ -606,6 +606,21 @@ describe SplayTreeMap do
     stm[:c].should eq 4
   end
 
+  it "transform_values; block can use both value and key" do
+    stm = SplayTreeMap.new({:a => 1, :b => 2, :c => 3})
+    result = stm.transform_values { |value, key| "#{key}#{value}" }
+    result[:a].should eq "a1"
+    result[:b].should eq "b2"
+    result[:c].should eq "c3"
+  end
+
+  it "transform_values; one-arg block still works" do
+    stm = SplayTreeMap.new({:a => 1, :b => 2})
+    result = stm.transform_values { |value| value + 10 }
+    result[:a].should eq 11
+    result[:b].should eq 12
+  end
+
   it "values; returns all of the values in the tree" do
     st = SplayTreeMap(Int32, Int32).new
     log = [] of Int32
