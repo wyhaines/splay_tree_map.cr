@@ -821,4 +821,11 @@ describe SplayTreeMap do
     stm["a"].should eq 10
     stm["b"].should eq 20
   end
+
+  it "transform_values!; empty tree returns self" do
+    stm = SplayTreeMap(String, Int32).new
+    result = stm.transform_values! { |v, _k| v + 1 }
+    result.should be(stm)
+    stm.size.should eq 0
+  end
 end
