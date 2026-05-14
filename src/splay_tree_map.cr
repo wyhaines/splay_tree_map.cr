@@ -1555,7 +1555,6 @@ class SplayTreeMap(K, V)
     self
   end
 
-  # Returns a new SplayTreeMap with all values converted using the block operation.
   # Returns a new `SplayTreeMap` with all values converted using the block.
   # The block yields the value and key; it may return a value of any type.
   #
