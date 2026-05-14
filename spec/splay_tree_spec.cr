@@ -925,4 +925,23 @@ describe SplayTreeMap do
     stm.put_if_absent(1) { |k| call_count += 1; [k.to_s, "extra"] }.should eq ["1"]
     call_count.should eq 1
   end
+
+  it "update; updates an existing value, returning the old value" do
+    stm = SplayTreeMap(String, Int32).new
+    stm["a"] = 0
+    stm["b"] = 1
+    stm.update("b") { |v| v + 41 }.should eq 1
+    stm["b"].should eq 42
+  end
+
+  it "update; uses default block when key absent and returns the default" do
+    stm = SplayTreeMap(String, Int32).new { |_t, _k| 40 }
+    stm.update("foo") { |v| v + 2 }.should eq 40
+    stm["foo"].should eq 42
+  end
+
+  it "update; raises KeyError when key absent and no default" do
+    stm = SplayTreeMap(String, Int32).new
+    expect_raises(KeyError) { stm.update("a") { 42 } }
+  end
 end

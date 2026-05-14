@@ -1148,6 +1148,37 @@ class SplayTreeMap(K, V)
     end
   end
 
+  # Updates the current value of *key* with the result of yielding the current value
+  # to the given block. Returns the value used as input to the block (the old value,
+  # or the default if the key was absent).
+  #
+  # If no entry for *key* is present but a default block was configured at construction,
+  # the default block's value is used as input.
+  #
+  # Raises `KeyError` if no entry exists and no default is configured.
+  #
+  # ```
+  # stm = SplayTreeMap.new({"a" => 0, "b" => 1})
+  # stm.update("b") { |v| v + 41 } # => 1
+  # stm["b"]                       # => 42
+  # ```
+  def update(key : K, & : V -> V) : V
+    @lock.synchronize do
+      existing = get_impl(key)
+      if existing != Unk
+        old = existing.as(V)
+        push(key, yield old)
+        old
+      elsif block = @block
+        default_value = block.call(self, key).as(V)
+        push(key, yield default_value)
+        default_value
+      else
+        raise KeyError.new "Missing hash key: #{key.inspect}"
+      end
+    end
+  end
+
   # Returns a new `SplayTreeMap` consisting of entries for which the block returns `false`.
   # ```
   # stm = SplayTreeMap.new({"a" => 100, "b" => 200, "c" => 300})
