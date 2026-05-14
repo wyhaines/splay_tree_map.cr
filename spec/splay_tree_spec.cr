@@ -1108,4 +1108,21 @@ describe SplayTreeMap do
     result["a"].should eq 1
     result["b"].should eq 2
   end
+
+  it "transform_keys!; mutates keys in place, returns self" do
+    stm = SplayTreeMap.new({"a" => 1, "b" => 2, "c" => 3})
+    result = stm.transform_keys!(&.upcase)
+    result.should be(stm)
+    stm["A"].should eq 1
+    stm["B"].should eq 2
+    stm["C"].should eq 3
+    stm.has_key?("a").should be_false
+  end
+
+  it "transform_keys!; block can use both key and value" do
+    stm = SplayTreeMap.new({"a" => 1, "b" => 2})
+    stm.transform_keys! { |key, value| key * value }
+    stm["a"].should eq 1
+    stm["bb"].should eq 2
+  end
 end

@@ -1509,6 +1509,27 @@ class SplayTreeMap(K, V)
     end
   end
 
+  # Destructively transforms keys using the block. The block yields key and value
+  # and must return a key of the same type `K`. Returns `self`.
+  #
+  # ```
+  # stm = SplayTreeMap.new({"a" => 1, "b" => 2})
+  # stm.transform_keys! { |key| key.upcase }
+  # stm # => {"A" => 1, "B" => 2}
+  # ```
+  def transform_keys!(& : K, V -> K) : self
+    @lock.synchronize do
+      pairs = [] of {K, V}
+      each { |k, v| pairs << {k, v} }
+      clear
+      pairs.each do |(k, v)|
+        new_key = yield(k, v).as(K)
+        push(new_key, v)
+      end
+    end
+    self
+  end
+
   # Returns a new SplayTreeMap with all values converted using the block operation.
   # Returns a new `SplayTreeMap` with all values converted using the block.
   # The block yields the value and key; it may return a value of any type.
