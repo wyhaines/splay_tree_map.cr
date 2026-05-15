@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Crystal Docs 1.13.3">
-<meta name="crystal_docs.project_version" content="0.3.0">
+<meta name="generator" content="Crystal Docs 1.19.1">
+<meta name="crystal_docs.project_version" content="0.4.0">
 <meta name="crystal_docs.project_name" content="splay_tree_map">
 
 
@@ -14,7 +14,7 @@
 <script type="text/javascript" src="js/doc.js"></script>
 
   <meta name="repository-name" content="splay_tree_map">
-  <title>splay_tree_map 0.3.0</title>
+  <title>splay_tree_map 0.4.0</title>
   <script type="text/javascript">
   CrystalDocs.base_path = "";
   </script>
@@ -45,7 +45,7 @@
       </h1>
 
       <span class="project-version">
-        0.3.0
+        0.4.0
       </span>
     </div>
   </div>
@@ -115,6 +115,22 @@ is used, but it can be useful at the right time.</p>
 <p>If <code>#maxsize</code> is set to an integer alue, then the splay tree will perform a prune
 operation when the maximum size of the tree is reached. This is useful for implementing
 a cache.</p>
+<h3><a id="hash-api-parity" class="anchor" href="#hash-api-parity">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Hash API Parity</h3>
+<p>This implementation tracks Crystal's <code>Hash</code> API closely. The following methods
+were added in 0.4.0 to close gaps: <code>first_key</code>/<code>first_key?</code>/<code>first_value</code>/<code>first_value?</code>,
+<code>last_key</code>/<code>last_key?</code>/<code>last_value</code>/<code>last_value?</code>, <code>put_if_absent</code>, <code>update</code>,
+<code>shift</code>/<code>shift?</code>/<code>shift(&amp;)</code>, <code>invert</code>, <code>subset_of?</code>/<code>proper_subset_of?</code>/<code>superset_of?</code>/<code>proper_superset_of?</code>,
+<code>to_a(&amp;)</code>, <code>inspect(io)</code>, <code>pretty_print(pp)</code>, <code>hash(hasher)</code>, <code>clone</code>,
+<code>transform_keys!</code>, and <code>rehash</code>. The <code>transform_keys</code> and <code>transform_values</code>
+block signatures were widened from <code>K -&gt; K2</code> and <code>V -&gt; V2</code> to <code>K, V -&gt; K2</code> and
+<code>V, K -&gt; V2</code> respectively, matching <code>Hash</code>; anonymous one-arg blocks remain
+compatible.</p>
+<p><code>compare_by_identity</code> is intentionally not provided — it has no consistent
+meaning for a tree ordered by <code>&lt;=&gt;</code>.</p>
 <h2><a id="installation" class="anchor" href="#installation">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>

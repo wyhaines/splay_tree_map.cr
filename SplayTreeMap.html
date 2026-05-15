@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Crystal Docs 1.13.3">
-<meta name="crystal_docs.project_version" content="0.3.0">
+<meta name="generator" content="Crystal Docs 1.19.1">
+<meta name="crystal_docs.project_version" content="0.4.0">
 <meta name="crystal_docs.project_name" content="splay_tree_map">
 
 
@@ -14,7 +14,7 @@
 <script type="text/javascript" src="js/doc.js"></script>
 
   <meta name="repository-name" content="splay_tree_map">
-  <title>SplayTreeMap(K, V) - splay_tree_map 0.3.0</title>
+  <title>SplayTreeMap(K, V) - splay_tree_map 0.4.0</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "";
   </script>
@@ -45,7 +45,7 @@
       </h1>
 
       <span class="project-version">
-        0.3.0
+        0.4.0
       </span>
     </div>
   </div>
@@ -71,12 +71,16 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> SplayTreeMap(K, V)
+  <span class="kind">
+    class
+  </span> SplayTreeMap(K, V)
 
 </h1>
 
 
   <ul class="superclass-hierarchy"><li class="superclass"><a href="SplayTreeMap.html">SplayTreeMap(K, V)</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
 
 
 
@@ -147,7 +151,7 @@
   <dl>
     
       <dt class="entry-const" id="VERSION">
-        <strong>VERSION</strong> = <code><span class="s">&quot;0.3.0&quot;</span></code>
+        <strong>VERSION</strong> = <code><span class="s">&quot;0.4.0&quot;</span></code>
       </dt>
       
     
@@ -155,6 +159,7 @@
 
 
 
+  
   <h2>
     <a id="constructors" class="anchor" href="#constructors">
   <svg class="octicon-link" aria-hidden="true">
@@ -196,7 +201,7 @@
   </ul>
 
 
-
+  
   <h2>
     <a id="class-method-summary" class="anchor" href="#class-method-summary">
   <svg class="octicon-link" aria-hidden="true">
@@ -217,9 +222,9 @@
   </ul>
 
 
+  
 
-
-
+  
   <h2>
     <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
   <svg class="octicon-link" aria-hidden="true">
@@ -262,6 +267,13 @@
         <a href="#clear-instance-method" class="signature"><strong>#clear</strong></a>
         
           <div class="summary"><p>Resets the state of the <code><a href="SplayTreeMap.html">SplayTreeMap</a></code>, clearing all key/value associations.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#clone%3ASplayTreeMap%28K%2CV%29-instance-method" class="signature"><strong>#clone</strong> : SplayTreeMap(K, V)</a>
+        
+          <div class="summary"><p>Returns a deep copy of the tree.</p></div>
         
       </li>
     
@@ -385,6 +397,34 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#first_key%3AK-instance-method" class="signature"><strong>#first_key</strong> : K</a>
+        
+          <div class="summary"><p>Returns the smallest key in the tree.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#first_key%3F%3AK%7CNil-instance-method" class="signature"><strong>#first_key?</strong> : K | Nil</a>
+        
+          <div class="summary"><p>Returns the smallest key in the tree, or <code>nil</code> if the tree is empty.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#first_value%3AV-instance-method" class="signature"><strong>#first_value</strong> : V</a>
+        
+          <div class="summary"><p>Returns the value at the smallest key in the tree.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#first_value%3F%3AV%7CNil-instance-method" class="signature"><strong>#first_value?</strong> : V | Nil</a>
+        
+          <div class="summary"><p>Returns the value at the smallest key in the tree, or <code>nil</code> if the tree is empty.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#has_key%3F%28key%29%3ABool-instance-method" class="signature"><strong>#has_key?</strong>(key) : Bool</a>
         
           <div class="summary"><p>Return a boolean value indicating whether the given key can be found in the tree.</p></div>
@@ -399,6 +439,13 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#hash%28hasher%29-instance-method" class="signature"><strong>#hash</strong>(hasher)</a>
+        
+          <div class="summary"><p>See <code>Object#hash(hasher)</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#height%28key%29%3AInt32%7CNil-instance-method" class="signature"><strong>#height</strong>(key) : Int32 | Nil</a>
         
           <div class="summary"><p>Return the height at which a given key can be found.</p></div>
@@ -409,6 +456,20 @@
         <a href="#height-instance-method" class="signature"><strong>#height</strong></a>
         
           <div class="summary"><p>Return the height of the current tree.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#inspect%28io%3AIO%29%3ANil-instance-method" class="signature"><strong>#inspect</strong>(io : IO) : Nil</a>
+        
+          <div class="summary"><p>Same output as <code><a href="SplayTreeMap.html#to_s%28io%3AIO%29%3ANil-instance-method">#to_s(io)</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#invert%3ASplayTreeMap%28V%2CK%29-instance-method" class="signature"><strong>#invert</strong> : SplayTreeMap(V, K)</a>
+        
+          <div class="summary"><p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with keys and values swapped.</p></div>
         
       </li>
     
@@ -444,6 +505,34 @@
         <a href="#last-instance-method" class="signature"><strong>#last</strong></a>
         
           <div class="summary"><p>Returns the last key/value pair in the tree.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#last_key%3AK-instance-method" class="signature"><strong>#last_key</strong> : K</a>
+        
+          <div class="summary"><p>Returns the largest key in the tree.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#last_key%3F%3AK%7CNil-instance-method" class="signature"><strong>#last_key?</strong> : K | Nil</a>
+        
+          <div class="summary"><p>Returns the largest key in the tree, or <code>nil</code> if the tree is empty.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#last_value%3AV-instance-method" class="signature"><strong>#last_value</strong> : V</a>
+        
+          <div class="summary"><p>Returns the value at the largest key in the tree.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#last_value%3F%3AV%7CNil-instance-method" class="signature"><strong>#last_value?</strong> : V | Nil</a>
+        
+          <div class="summary"><p>Returns the value at the largest key in the tree, or <code>nil</code> if the tree is empty.</p></div>
         
       </li>
     
@@ -556,6 +645,27 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#pretty_print%28pp%29%3ANil-instance-method" class="signature"><strong>#pretty_print</strong>(pp) : Nil</a>
+        
+          <div class="summary"><p>Renders the tree using <code>PrettyPrint</code> in the same shape as <code>Hash</code>: <code>{ key =&gt; value, key =&gt; value }</code> with <code>pp.group</code> and <code>pp.breakable</code> for wrapping.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#proper_subset_of%3F%28other%3ASplayTreeMap%29%3ABool-instance-method" class="signature"><strong>#proper_subset_of?</strong>(other : SplayTreeMap) : Bool</a>
+        
+          <div class="summary"><p>Returns <code>true</code> if <code>self</code> is a <code><a href="SplayTreeMap.html#subset_of%3F%28other%3ASplayTreeMap%29%3ABool-instance-method">#subset_of?</a></code> <em>other</em> AND strictly smaller.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#proper_superset_of%3F%28other%3ASplayTreeMap%29%3ABool-instance-method" class="signature"><strong>#proper_superset_of?</strong>(other : SplayTreeMap) : Bool</a>
+        
+          <div class="summary"><p>Returns <code>true</code> if <em>other</em> is a <code><a href="SplayTreeMap.html#proper_subset_of%3F%28other%3ASplayTreeMap%29%3ABool-instance-method">#proper_subset_of?</a></code> <code>self</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#prune-instance-method" class="signature"><strong>#prune</strong></a>
         
           <div class="summary"><p>This will remove all of the leaves at the end of the tree branches.</p></div>
@@ -566,6 +676,27 @@
         <a href="#put%28key%3AK%2Cvalue%3AV%2C%26%29-instance-method" class="signature"><strong>#put</strong>(key : K, value : V, &)</a>
         
           <div class="summary"><p>Sets the value of <em>key</em> to the given <em>value</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#put_if_absent%28key%3AK%2Cvalue%3AV%29%3AV-instance-method" class="signature"><strong>#put_if_absent</strong>(key : K, value : V) : V</a>
+        
+          <div class="summary"><p>Sets the value of <em>key</em> to <em>value</em> unless an entry for <em>key</em> already exists.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#put_if_absent%28key%3AK%2C%26%3AK-%3EV%29%3AV-instance-method" class="signature"><strong>#put_if_absent</strong>(key : K, & : K -> V) : V</a>
+        
+          <div class="summary"><p>Sets the value of <em>key</em> to the result of yielding <em>key</em> to the given block, unless an entry for <em>key</em> already exists.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rehash%3ANil-instance-method" class="signature"><strong>#rehash</strong> : Nil</a>
+        
+          <div class="summary"><p>Rebuilds the tree from the current keys.</p></div>
         
       </li>
     
@@ -659,6 +790,27 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#shift%3ATuple%28K%2CV%29-instance-method" class="signature"><strong>#shift</strong> : Tuple(K, V)</a>
+        
+          <div class="summary"><p>Removes and returns the smallest key/value pair as a tuple.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#shift%28%26%29-instance-method" class="signature"><strong>#shift</strong>(&)</a>
+        
+          <div class="summary"><p>Removes and returns the smallest key/value pair as a tuple.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#shift%3F%3ATuple%28K%2CV%29%7CNil-instance-method" class="signature"><strong>#shift?</strong> : Tuple(K, V) | Nil</a>
+        
+          <div class="summary"><p>Same as <code><a href="SplayTreeMap.html#shift%3ATuple%28K%2CV%29-instance-method">#shift</a></code>, but returns <code>nil</code> if the tree is empty.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#size-instance-method" class="signature"><strong>#size</strong></a>
         
           <div class="summary"><p>Return the current number of key/value pairs in the tree.</p></div>
@@ -666,9 +818,30 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#subset_of%3F%28other%3ASplayTreeMap%29%3ABool-instance-method" class="signature"><strong>#subset_of?</strong>(other : SplayTreeMap) : Bool</a>
+        
+          <div class="summary"><p>Returns <code>true</code> if every entry in <code>self</code> exists in <em>other</em> with an equal value.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#superset_of%3F%28other%3ASplayTreeMap%29%3ABool-instance-method" class="signature"><strong>#superset_of?</strong>(other : SplayTreeMap) : Bool</a>
+        
+          <div class="summary"><p>Returns <code>true</code> if <em>other</em> is a <code><a href="SplayTreeMap.html#subset_of%3F%28other%3ASplayTreeMap%29%3ABool-instance-method">#subset_of?</a></code> <code>self</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#to_a-instance-method" class="signature"><strong>#to_a</strong></a>
         
           <div class="summary"><p>Transform the <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> into an <code>Array(Tuple(K, V))</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_a%28%26%3ATuple%28K%2CV%29-%3EU%29%3AArray%28U%29forallU-instance-method" class="signature"><strong>#to_a</strong>(& : Tuple(K, V) -> U) : Array(U) forall U</a>
+        
+          <div class="summary"><p>Returns an <code>Array</code> of the results of yielding each {K, V} tuple to the block.</p></div>
         
       </li>
     
@@ -694,23 +867,37 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#transform_keys%28%26%3AK-%3EK2%29forallK2-instance-method" class="signature"><strong>#transform_keys</strong>(& : K -> K2) forall K2</a>
+        <a href="#transform_keys%28%26%3AK%2CV-%3EK2%29forallK2-instance-method" class="signature"><strong>#transform_keys</strong>(& : K, V -> K2) forall K2</a>
         
-          <div class="summary"><p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with all keys converted using the block operation.</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#transform_values%28%26%3AV-%3EV2%29forallV2-instance-method" class="signature"><strong>#transform_values</strong>(& : V -> V2) forall V2</a>
-        
-          <div class="summary"><p>Returns a new SplayTreeMap with all values converted using the block operation.</p></div>
+          <div class="summary"><p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with all keys converted using the block.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#transform_values%21%28%26%3AV-%3EV%29-instance-method" class="signature"><strong>#transform_values!</strong>(& : V -> V)</a>
+        <a href="#transform_keys%21%28%26%3AK%2CV-%3EK%29%3Aself-instance-method" class="signature"><strong>#transform_keys!</strong>(& : K, V -> K) : <span class="k">self</span></a>
         
-          <div class="summary"><p>Modifies the values of the current <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> according to the provided block.</p></div>
+          <div class="summary"><p>Destructively transforms keys using the block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#transform_values%28%26%3AV%2CK-%3EV2%29forallV2-instance-method" class="signature"><strong>#transform_values</strong>(& : V, K -> V2) forall V2</a>
+        
+          <div class="summary"><p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with all values converted using the block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#transform_values%21%28%26blk%3AV%2CK-%3EV%29%3Aself-instance-method" class="signature"><strong>#transform_values!</strong>(&blk : V, K -> V) : <span class="k">self</span></a>
+        
+          <div class="summary"><p>Mutates each value in place using the result of the given block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#update%28key%3AK%2C%26%3AV-%3EV%29%3AV-instance-method" class="signature"><strong>#update</strong>(key : K, & : V -> V) : V</a>
+        
+          <div class="summary"><p>Updates the current value of <em>key</em> with the result of yielding the current value to the given block.</p></div>
         
       </li>
     
@@ -744,76 +931,76 @@
 
 
 
-<div class="methods-inherited">
+  <div class="methods-inherited">
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+  </div>
+
   
-    
-
-
-    
-
-
-    
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
-    
-
-
-  
-</div>
-
-
   <h2>
     <a id="constructor-detail" class="anchor" href="#constructor-detail">
   <svg class="octicon-link" aria-hidden="true">
@@ -920,7 +1107,7 @@ stm[<span class="s">&quot;xyzzy&quot;</span>] <span class="c"># =&gt; &quot;Unkn
   
 
 
-
+  
   <h2>
     <a id="class-method-detail" class="anchor" href="#class-method-detail">
   <svg class="octicon-link" aria-hidden="true">
@@ -953,9 +1140,9 @@ stm[<span class="s">&quot;xyzzy&quot;</span>] <span class="c"># =&gt; &quot;Unkn
   
 
 
+  
 
-
-
+  
   <h2>
     <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
   <svg class="octicon-link" aria-hidden="true">
@@ -1074,6 +1261,30 @@ stm[<span class="s">&quot;foo&quot;</span>]? <span class="c"># =&gt; nil</span><
         <div class="doc">
           
           <p>Resets the state of the <code><a href="SplayTreeMap.html">SplayTreeMap</a></code>, clearing all key/value associations.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="clone:SplayTreeMap(K,V)-instance-method">
+      <div class="signature">
+        
+        def <strong>clone</strong> : <a href="SplayTreeMap.html">SplayTreeMap</a>(K, V)
+
+        <a class="method-permalink" href="#clone%3ASplayTreeMap%28K%2CV%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns a deep copy of the tree. Each value is cloned via <code>Object#clone</code>.
+Unlike <code><a href="SplayTreeMap.html#dup-instance-method">#dup</a></code>, mutating a value inside the result does not affect the original.</p>
+<pre><code class="language-crystal">stm_a <span class="o">=</span> <span class="t">SplayTreeMap</span>.new({<span class="s">&quot;x&quot;</span> <span class="o">=&gt;</span> [<span class="n">1</span>, <span class="n">2</span>]})
+stm_b <span class="o">=</span> stm_a.clone
+stm_b[<span class="s">&quot;x&quot;</span>] <span class="o">&lt;&lt;</span> <span class="n">3</span>
+stm_a[<span class="s">&quot;x&quot;</span>] <span class="c"># =&gt; [1, 2]</span></code></pre>
         </div>
       
       <br/>
@@ -1315,7 +1526,8 @@ iterator <span class="o">=</span> stm.each
   set <span class="o">&lt;&lt;</span> entry
 <span class="k">end</span>
 
-set  <span class="c"># =&gt; [{&quot;fob&quot; =&gt; &quot;baz&quot;}, {&quot;foo&quot; =&gt; &quot;bar&quot;, &quot;qix&quot; =&gt; &quot;qux&quot;}]</span></code></pre>
+set  <span class="c"># =&gt; [{&quot;fob&quot; =&gt; &quot;baz&quot;}, {&quot;foo&quot; =&gt; &quot;bar&quot;, &quot;qix&quot; =&gt; &quot;qux&quot;}]</span>
+</code></pre>
         </div>
       
       <br/>
@@ -1499,6 +1711,82 @@ stm.fetch(<span class="s">&quot;bar&quot;</span>, <span class="s">&quot;foo&quot
       </div>
     </div>
   
+    <div class="entry-detail" id="first_key:K-instance-method">
+      <div class="signature">
+        
+        def <strong>first_key</strong> : K
+
+        <a class="method-permalink" href="#first_key%3AK-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the smallest key in the tree. Raises if the tree is empty.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="first_key?:K|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>first_key?</strong> : K | Nil
+
+        <a class="method-permalink" href="#first_key%3F%3AK%7CNil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the smallest key in the tree, or <code>nil</code> if the tree is empty.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="first_value:V-instance-method">
+      <div class="signature">
+        
+        def <strong>first_value</strong> : V
+
+        <a class="method-permalink" href="#first_value%3AV-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the value at the smallest key in the tree. Raises if the tree is empty.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="first_value?:V|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>first_value?</strong> : V | Nil
+
+        <a class="method-permalink" href="#first_value%3F%3AV%7CNil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the value at the smallest key in the tree, or <code>nil</code> if the tree is empty.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="has_key?(key):Bool-instance-method">
       <div class="signature">
         
@@ -1545,6 +1833,26 @@ stm.has_value?(<span class="s">&quot;4&quot;</span>) <span class="c"># =&gt; fal
       </div>
     </div>
   
+    <div class="entry-detail" id="hash(hasher)-instance-method">
+      <div class="signature">
+        
+        def <strong>hash</strong>(hasher)
+
+        <a class="method-permalink" href="#hash%28hasher%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>See <code>Object#hash(hasher)</code>. Hash code is order-independent: two trees with
+the same {key, value} entries hash equally, regardless of insertion order.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="height(key):Int32|Nil-instance-method">
       <div class="signature">
         
@@ -1575,6 +1883,46 @@ stm.has_value?(<span class="s">&quot;4&quot;</span>) <span class="c"># =&gt; fal
         <div class="doc">
           
           <p>Return the height of the current tree.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="inspect(io:IO):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>inspect</strong>(io : IO) : Nil
+
+        <a class="method-permalink" href="#inspect%28io%3AIO%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Same output as <code><a href="SplayTreeMap.html#to_s%28io%3AIO%29%3ANil-instance-method">#to_s(io)</a></code>. Provided explicitly for parity with <code>Hash</code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="invert:SplayTreeMap(V,K)-instance-method">
+      <div class="signature">
+        
+        def <strong>invert</strong> : <a href="SplayTreeMap.html">SplayTreeMap</a>(V, K)
+
+        <a class="method-permalink" href="#invert%3ASplayTreeMap%28V%2CK%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with keys and values swapped. If there are
+duplicate values, the entry visited last during in-order traversal wins.</p>
+<pre><code class="language-crystal"><span class="t">SplayTreeMap</span>.new({<span class="s">&quot;foo&quot;</span> <span class="o">=&gt;</span> <span class="s">&quot;bar&quot;</span>}).invert <span class="c"># =&gt; {&quot;bar&quot; =&gt; &quot;foo&quot;}</span></code></pre>
         </div>
       
       <br/>
@@ -1683,6 +2031,82 @@ stm.keys.should eq [<span class="s">&quot;baz&quot;</span>, <span class="s">&quo
         <div class="doc">
           
           <p>Returns the last key/value pair in the tree.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="last_key:K-instance-method">
+      <div class="signature">
+        
+        def <strong>last_key</strong> : K
+
+        <a class="method-permalink" href="#last_key%3AK-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the largest key in the tree. Raises if the tree is empty.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="last_key?:K|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>last_key?</strong> : K | Nil
+
+        <a class="method-permalink" href="#last_key%3F%3AK%7CNil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the largest key in the tree, or <code>nil</code> if the tree is empty.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="last_value:V-instance-method">
+      <div class="signature">
+        
+        def <strong>last_value</strong> : V
+
+        <a class="method-permalink" href="#last_value%3AV-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the value at the largest key in the tree. Raises if the tree is empty.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="last_value?:V|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>last_value?</strong> : V | Nil
+
+        <a class="method-permalink" href="#last_value%3F%3AV%7CNil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the value at the largest key in the tree, or <code>nil</code> if the tree is empty.</p>
         </div>
       
       <br/>
@@ -1899,7 +2323,8 @@ stm[<span class="n">6</span>] <span class="c"># =&gt; 36</span>
 stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">Int32</span>, <span class="t">Int32</span>).new.merge!({ {<span class="n">4</span>,<span class="n">16</span>},{<span class="n">5</span>},{<span class="n">7</span>,<span class="n">49</span>,<span class="n">343</span>} })
 stm[<span class="n">4</span>] <span class="c"># =&gt; 16</span>
 stm[<span class="n">5</span>] <span class="c"># =&gt; 5</span>
-stm[<span class="n">7</span>] <span class="c"># =&gt; 343</span></code></pre>
+stm[<span class="n">7</span>] <span class="c"># =&gt; 343</span>
+</code></pre>
         </div>
       
       <br/>
@@ -2028,6 +2453,64 @@ into a secondard cache, for example.</p>
       </div>
     </div>
   
+    <div class="entry-detail" id="pretty_print(pp):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>pretty_print</strong>(pp) : Nil
+
+        <a class="method-permalink" href="#pretty_print%28pp%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Renders the tree using <code>PrettyPrint</code> in the same shape as <code>Hash</code>:
+<code>{ key =&gt; value, key =&gt; value }</code> with <code>pp.group</code> and <code>pp.breakable</code> for wrapping.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="proper_subset_of?(other:SplayTreeMap):Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>proper_subset_of?</strong>(other : <a href="SplayTreeMap.html">SplayTreeMap</a>) : Bool
+
+        <a class="method-permalink" href="#proper_subset_of%3F%28other%3ASplayTreeMap%29%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns <code>true</code> if <code>self</code> is a <code><a href="SplayTreeMap.html#subset_of%3F%28other%3ASplayTreeMap%29%3ABool-instance-method">#subset_of?</a></code> <em>other</em> AND strictly smaller.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="proper_superset_of?(other:SplayTreeMap):Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>proper_superset_of?</strong>(other : <a href="SplayTreeMap.html">SplayTreeMap</a>) : Bool
+
+        <a class="method-permalink" href="#proper_superset_of%3F%28other%3ASplayTreeMap%29%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns <code>true</code> if <em>other</em> is a <code><a href="SplayTreeMap.html#proper_subset_of%3F%28other%3ASplayTreeMap%29%3ABool-instance-method">#proper_subset_of?</a></code> <code>self</code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="prune-instance-method">
       <div class="signature">
         
@@ -2068,6 +2551,75 @@ Otherwise the given block is invoked with <em>key</em> and its value is returned
 stm.put(<span class="n">1</span>, <span class="s">&quot;one&quot;</span>) { <span class="s">&quot;didn&#39;t exist&quot;</span> } <span class="c"># =&gt; &quot;didn&#39;t exist&quot;</span>
 stm.put(<span class="n">1</span>, <span class="s">&quot;uno&quot;</span>) { <span class="s">&quot;didn&#39;t exist&quot;</span> } <span class="c"># =&gt; &quot;one&quot;</span>
 stm.put(<span class="n">2</span>, <span class="s">&quot;two&quot;</span>) { <span class="o">|</span>key<span class="o">|</span> key.to_s } <span class="c"># =&gt; &quot;2&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="put_if_absent(key:K,value:V):V-instance-method">
+      <div class="signature">
+        
+        def <strong>put_if_absent</strong>(key : K, value : V) : V
+
+        <a class="method-permalink" href="#put_if_absent%28key%3AK%2Cvalue%3AV%29%3AV-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sets the value of <em>key</em> to <em>value</em> unless an entry for <em>key</em> already exists.
+Returns the current value for <em>key</em> (the existing one if present, otherwise <em>value</em>).</p>
+<p>This is a more performant and falsey-safe alternative to <code>stm[key] ||= value</code>.</p>
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">Int32</span>, <span class="t">String</span>).new
+stm.put_if_absent(<span class="n">1</span>, <span class="s">&quot;one&quot;</span>) <span class="c"># =&gt; &quot;one&quot;</span>
+stm.put_if_absent(<span class="n">1</span>, <span class="s">&quot;uno&quot;</span>) <span class="c"># =&gt; &quot;one&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="put_if_absent(key:K,&amp;:K-&gt;V):V-instance-method">
+      <div class="signature">
+        
+        def <strong>put_if_absent</strong>(key : K, & : K -> V) : V
+
+        <a class="method-permalink" href="#put_if_absent%28key%3AK%2C%26%3AK-%3EV%29%3AV-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sets the value of <em>key</em> to the result of yielding <em>key</em> to the given block,
+unless an entry for <em>key</em> already exists. Returns the current value.</p>
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>(<span class="t">Int32</span>, <span class="t">Array</span>(<span class="t">String</span>)).new
+stm.put_if_absent(<span class="n">1</span>) { <span class="o">|</span>k<span class="o">|</span> [k.to_s] }     <span class="c"># =&gt; [&quot;1&quot;]</span>
+stm.put_if_absent(<span class="n">1</span>) { <span class="o">|</span>k<span class="o">|</span> <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span> } <span class="c"># =&gt; [&quot;1&quot;] (block not called)</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rehash:Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>rehash</strong> : Nil
+
+        <a class="method-permalink" href="#rehash%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Rebuilds the tree from the current keys. Useful when mutable keys have been
+modified post-insertion in a way that affects <code>&lt;=&gt;</code> ordering. Tree traversal
+is performed first; if the existing tree is too corrupted for traversal to
+be sensible, this method cannot help.</p>
         </div>
       
       <br/>
@@ -2347,6 +2899,67 @@ h1             <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&g
       </div>
     </div>
   
+    <div class="entry-detail" id="shift:Tuple(K,V)-instance-method">
+      <div class="signature">
+        
+        def <strong>shift</strong> : Tuple(K, V)
+
+        <a class="method-permalink" href="#shift%3ATuple%28K%2CV%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Removes and returns the smallest key/value pair as a tuple.
+Raises <code>IndexError</code> if the tree is empty.</p>
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.new({<span class="n">3</span> <span class="o">=&gt;</span> <span class="s">&quot;c&quot;</span>, <span class="n">1</span> <span class="o">=&gt;</span> <span class="s">&quot;a&quot;</span>, <span class="n">2</span> <span class="o">=&gt;</span> <span class="s">&quot;b&quot;</span>})
+stm.shift <span class="c"># =&gt; {1, &quot;a&quot;}</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="shift(&amp;)-instance-method">
+      <div class="signature">
+        
+        def <strong>shift</strong>(&)
+
+        <a class="method-permalink" href="#shift%28%26%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Removes and returns the smallest key/value pair as a tuple.
+Yields to the block (and returns its value) if the tree is empty.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="shift?:Tuple(K,V)|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>shift?</strong> : Tuple(K, V) | Nil
+
+        <a class="method-permalink" href="#shift%3F%3ATuple%28K%2CV%29%7CNil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Same as <code><a href="SplayTreeMap.html#shift%3ATuple%28K%2CV%29-instance-method">#shift</a></code>, but returns <code>nil</code> if the tree is empty.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="size-instance-method">
       <div class="signature">
         
@@ -2358,6 +2971,45 @@ h1             <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&g
         <div class="doc">
           
           <p>Return the current number of key/value pairs in the tree.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="subset_of?(other:SplayTreeMap):Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>subset_of?</strong>(other : <a href="SplayTreeMap.html">SplayTreeMap</a>) : Bool
+
+        <a class="method-permalink" href="#subset_of%3F%28other%3ASplayTreeMap%29%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns <code>true</code> if every entry in <code>self</code> exists in <em>other</em> with an equal value.
+An equal-sized identical tree is a subset of itself.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="superset_of?(other:SplayTreeMap):Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>superset_of?</strong>(other : <a href="SplayTreeMap.html">SplayTreeMap</a>) : Bool
+
+        <a class="method-permalink" href="#superset_of%3F%28other%3ASplayTreeMap%29%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns <code>true</code> if <em>other</em> is a <code><a href="SplayTreeMap.html#subset_of%3F%28other%3ASplayTreeMap%29%3ABool-instance-method">#subset_of?</a></code> <code>self</code>.</p>
         </div>
       
       <br/>
@@ -2381,6 +3033,28 @@ h1             <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;c&quot; =&g
 ary <span class="o">=</span> stm.to_a <span class="c"># =&gt; [{&quot;baz&quot;, &quot;qux&quot;}, {&quot;foo&quot;, &quot;bar&quot;}]</span>
 stm2 <span class="o">=</span> <span class="t">SplayTreeMap</span>.new(ary)
 stm <span class="o">==</span> stm2 <span class="c"># =&gt; true</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_a(&amp;:Tuple(K,V)-&gt;U):Array(U)forallU-instance-method">
+      <div class="signature">
+        
+        def <strong>to_a</strong>(& : Tuple(K, V) -> U) : Array(U) forall U
+
+        <a class="method-permalink" href="#to_a%28%26%3ATuple%28K%2CV%29-%3EU%29%3AArray%28U%29forallU-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns an <code>Array</code> of the results of yielding each {K, V} tuple to the block.
+Order matches in-order traversal of the tree.</p>
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.new({<span class="s">&quot;first&quot;</span> <span class="o">=&gt;</span> <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;last&quot;</span> <span class="o">=&gt;</span> <span class="s">&quot;bar&quot;</span>})
+stm.to_a { <span class="o">|</span>_k, v<span class="o">|</span> v.capitalize } <span class="c"># =&gt; [&quot;Bar&quot;, &quot;Foo&quot;]</span></code></pre>
         </div>
       
       <br/>
@@ -2452,20 +3126,21 @@ stm  <span class="c"># =&gt; {&quot;1&quot; =&gt; &quot;1&quot;, &quot;2&quot; =
       </div>
     </div>
   
-    <div class="entry-detail" id="transform_keys(&amp;:K-&gt;K2)forallK2-instance-method">
+    <div class="entry-detail" id="transform_keys(&amp;:K,V-&gt;K2)forallK2-instance-method">
       <div class="signature">
         
-        def <strong>transform_keys</strong>(& : K -> K2) forall K2
+        def <strong>transform_keys</strong>(& : K, V -> K2) forall K2
 
-        <a class="method-permalink" href="#transform_keys%28%26%3AK-%3EK2%29forallK2-instance-method">#</a>
+        <a class="method-permalink" href="#transform_keys%28%26%3AK%2CV-%3EK2%29forallK2-instance-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with all keys converted using the block operation.
-The block can change a type of keys.</p>
+          <p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with all keys converted using the block.
+The block yields the key and value; it may return a key of any type.</p>
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.new({<span class="n">:a</span> <span class="o">=&gt;</span> <span class="n">1</span>, <span class="n">:b</span> <span class="o">=&gt;</span> <span class="n">2</span>, <span class="n">:c</span> <span class="o">=&gt;</span> <span class="n">3</span>})
-stm.transform_keys { <span class="o">|</span>key<span class="o">|</span> key.to_s } <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;b&quot; =&gt; 2, &quot;c&quot; =&gt; 3}</span></code></pre>
+stm.transform_keys { <span class="o">|</span>key<span class="o">|</span> key.to_s }                <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;b&quot; =&gt; 2, &quot;c&quot; =&gt; 3}</span>
+stm.transform_keys { <span class="o">|</span>key, value<span class="o">|</span> key.to_s <span class="o">*</span> value } <span class="c"># =&gt; {&quot;a&quot; =&gt; 1, &quot;bb&quot; =&gt; 2, &quot;ccc&quot; =&gt; 3}</span></code></pre>
         </div>
       
       <br/>
@@ -2474,20 +3149,21 @@ stm.transform_keys { <span class="o">|</span>key<span class="o">|</span> key.to_
       </div>
     </div>
   
-    <div class="entry-detail" id="transform_values(&amp;:V-&gt;V2)forallV2-instance-method">
+    <div class="entry-detail" id="transform_keys!(&amp;:K,V-&gt;K):self-instance-method">
       <div class="signature">
         
-        def <strong>transform_values</strong>(& : V -> V2) forall V2
+        def <strong>transform_keys!</strong>(& : K, V -> K) : <span class="k">self</span>
 
-        <a class="method-permalink" href="#transform_values%28%26%3AV-%3EV2%29forallV2-instance-method">#</a>
+        <a class="method-permalink" href="#transform_keys%21%28%26%3AK%2CV-%3EK%29%3Aself-instance-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>Returns a new SplayTreeMap with all values converted using the block operation.
-The block can change a type of values.</p>
-<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.new({<span class="n">:a</span> <span class="o">=&gt;</span> <span class="n">1</span>, <span class="n">:b</span> <span class="o">=&gt;</span> <span class="n">2</span>, <span class="n">:c</span> <span class="o">=&gt;</span> <span class="n">3</span>})
-stm.transform_values { <span class="o">|</span>value<span class="o">|</span> value <span class="o">+</span> <span class="n">1</span> } <span class="c"># =&gt; {:a =&gt; 2, :b =&gt; 3, :c =&gt; 4}</span></code></pre>
+          <p>Destructively transforms keys using the block. The block yields key and value
+and must return a key of the same type <code>K</code>. Returns <code>self</code>.</p>
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.new({<span class="s">&quot;a&quot;</span> <span class="o">=&gt;</span> <span class="n">1</span>, <span class="s">&quot;b&quot;</span> <span class="o">=&gt;</span> <span class="n">2</span>})
+stm.transform_keys! { <span class="o">|</span>key<span class="o">|</span> key.upcase }
+stm <span class="c"># =&gt; {&quot;A&quot; =&gt; 1, &quot;B&quot; =&gt; 2}</span></code></pre>
         </div>
       
       <br/>
@@ -2496,19 +3172,71 @@ stm.transform_values { <span class="o">|</span>value<span class="o">|</span> val
       </div>
     </div>
   
-    <div class="entry-detail" id="transform_values!(&amp;:V-&gt;V)-instance-method">
+    <div class="entry-detail" id="transform_values(&amp;:V,K-&gt;V2)forallV2-instance-method">
       <div class="signature">
         
-        def <strong>transform_values!</strong>(& : V -> V)
+        def <strong>transform_values</strong>(& : V, K -> V2) forall V2
 
-        <a class="method-permalink" href="#transform_values%21%28%26%3AV-%3EV%29-instance-method">#</a>
+        <a class="method-permalink" href="#transform_values%28%26%3AV%2CK-%3EV2%29forallV2-instance-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>Modifies the values of the current <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> according to the provided block.</p>
+          <p>Returns a new <code><a href="SplayTreeMap.html">SplayTreeMap</a></code> with all values converted using the block.
+The block yields the value and key; it may return a value of any type.</p>
 <pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.new({<span class="n">:a</span> <span class="o">=&gt;</span> <span class="n">1</span>, <span class="n">:b</span> <span class="o">=&gt;</span> <span class="n">2</span>, <span class="n">:c</span> <span class="o">=&gt;</span> <span class="n">3</span>})
-stm.transform_values! { <span class="o">|</span>value<span class="o">|</span> value <span class="o">+</span> <span class="n">1</span> } <span class="c"># =&gt; {:a =&gt; 2, :b =&gt; 3, :c =&gt; 4}</span></code></pre>
+stm.transform_values { <span class="o">|</span>value<span class="o">|</span> value <span class="o">+</span> <span class="n">1</span> }             <span class="c"># =&gt; {:a =&gt; 2, :b =&gt; 3, :c =&gt; 4}</span>
+stm.transform_values { <span class="o">|</span>value, key<span class="o">|</span> <span class="s">&quot;</span><span class="i">#{</span>key<span class="i">}</span><span class="s"></span><span class="i">#{</span>value<span class="i">}</span><span class="s">&quot;</span> } <span class="c"># =&gt; {:a =&gt; &quot;a1&quot;, :b =&gt; &quot;b2&quot;, :c =&gt; &quot;c3&quot;}</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="transform_values!(&amp;blk:V,K-&gt;V):self-instance-method">
+      <div class="signature">
+        
+        def <strong>transform_values!</strong>(&blk : V, K -> V) : <span class="k">self</span>
+
+        <a class="method-permalink" href="#transform_values%21%28%26blk%3AV%2CK-%3EV%29%3Aself-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Mutates each value in place using the result of the given block.
+The block yields the current value and key.</p>
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.new({<span class="n">:a</span> <span class="o">=&gt;</span> <span class="n">1</span>, <span class="n">:b</span> <span class="o">=&gt;</span> <span class="n">2</span>, <span class="n">:c</span> <span class="o">=&gt;</span> <span class="n">3</span>})
+stm.transform_values! { <span class="o">|</span>value, key<span class="o">|</span> value <span class="o">+</span> key.to_s.bytesize }
+stm <span class="c"># =&gt; {:a =&gt; 2, :b =&gt; 3, :c =&gt; 4}</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="update(key:K,&amp;:V-&gt;V):V-instance-method">
+      <div class="signature">
+        
+        def <strong>update</strong>(key : K, & : V -> V) : V
+
+        <a class="method-permalink" href="#update%28key%3AK%2C%26%3AV-%3EV%29%3AV-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Updates the current value of <em>key</em> with the result of yielding the current value
+to the given block. Returns the value used as input to the block (the old value,
+or the default if the key was absent).</p>
+<p>If no entry for <em>key</em> is present but a default block was configured at construction,
+the default block's value is used as input.</p>
+<p>Raises <code>KeyError</code> if no entry exists and no default is configured.</p>
+<pre><code class="language-crystal">stm <span class="o">=</span> <span class="t">SplayTreeMap</span>.new({<span class="s">&quot;a&quot;</span> <span class="o">=&gt;</span> <span class="n">0</span>, <span class="s">&quot;b&quot;</span> <span class="o">=&gt;</span> <span class="n">1</span>})
+stm.update(<span class="s">&quot;b&quot;</span>) { <span class="o">|</span>v<span class="o">|</span> v <span class="o">+</span> <span class="n">41</span> } <span class="c"># =&gt; 1</span>
+stm[<span class="s">&quot;b&quot;</span>]                       <span class="c"># =&gt; 42</span></code></pre>
         </div>
       
       <br/>
@@ -2599,6 +3327,7 @@ stm.values_at?(<span class="s">&quot;a&quot;</span>, <span class="s">&quot;d&quo
       </div>
     </div>
   
+
 
 
 </div>
